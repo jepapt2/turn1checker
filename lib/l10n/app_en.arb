@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
   "deckList": "DeckList",
+  "registerDeckName": "Register deck name",
   "hello": "Heeey"
 }

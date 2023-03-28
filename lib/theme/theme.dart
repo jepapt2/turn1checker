@@ -10,5 +10,15 @@ final ThemeData themedata = ThemeData(
       titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold, fontSize: 20.0, color: ColorTheme.white),
       centerTitle: true),
+  dialogTheme: const DialogTheme(
+      backgroundColor: ColorTheme.background,
+      titleTextStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20.0,
+        color: ColorTheme.white,
+      ),
+      contentTextStyle: TextStyle(fontSize: 16.0, color: ColorTheme.white),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)))),
   scaffoldBackgroundColor: ColorTheme.background,
 );

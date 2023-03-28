@@ -1,5 +1,6 @@
 {
   "@@locale": "ja",
   "deckList": "デッキリスト",
+  "registerDeckName": "デッキ名の登録",
   "hello": "こんちゃ"
 }
