@@ -5,6 +5,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:turn1checker/components/ui/primary_floating_action_button.dart';
 import 'package:turn1checker/components/ui/primary_text_field.dart';
 
+import '../components/ui/primary_button.dart';
 import '../components/ui/primary_simple_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -51,14 +52,15 @@ showDeckAddDialog(BuildContext context) {
                         errorText: appLocalizations.deckNameMaxLengthError(32)),
                   ])),
             ),
-            ElevatedButton(
+            const SizedBox(height: 16),
+            PrimaryButton(
                 onPressed: () {
                   if (formKey.currentState!.saveAndValidate()) {
                     Navigator.pop(context);
                     print(formKey.currentState!.value);
                   }
                 },
-                child: Text(appLocalizations.hello))
+                text: appLocalizations.register)
           ],
         ),
       );

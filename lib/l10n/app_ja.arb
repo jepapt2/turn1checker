@@ -6,5 +6,6 @@
   "deckNameRequiredError": "デッキ名を入力してください",
   "deckNameMinLengthError": "デッキ名は{minLength}文字以上で入力してください",
   "deckNameMaxLengthError": "デッキ名は{maxLength}文字以内で入力してください",
+  "register": "登録",
   "hello": "こんちゃ"
 }

@@ -6,5 +6,6 @@
   "deckNameRequiredError": "Please enter a deck name.",
   "deckNameMinLengthError": "Deck name must be at least {minLength} characters.",
   "deckNameMaxLengthError": "Deck name must be {maxLength} characters or less.",
+  "register": "Register",
   "hello": "Heeey"
 }
