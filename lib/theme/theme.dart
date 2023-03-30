@@ -20,5 +20,26 @@ final ThemeData themedata = ThemeData(
       contentTextStyle: TextStyle(fontSize: 16.0, color: ColorTheme.white),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)))),
+  inputDecorationTheme: const InputDecorationTheme(
+    border: UnderlineInputBorder(
+      borderSide: BorderSide(color: ColorTheme.white),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: ColorTheme.white),
+    ),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: ColorTheme.white),
+    ),
+    errorBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: ColorTheme.quaternary),
+    ),
+    focusedErrorBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: ColorTheme.quaternary),
+    ),
+    errorStyle: TextStyle(color: ColorTheme.quaternary, fontSize: 16.0),
+    counterStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
+    labelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
+    floatingLabelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
+  ),
   scaffoldBackgroundColor: ColorTheme.background,
 );

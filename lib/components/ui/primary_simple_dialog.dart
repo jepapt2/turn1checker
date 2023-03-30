@@ -11,6 +11,8 @@ class PrimarySimpleModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double dialogWidth = screenWidth * 0.8;
     return SimpleDialog(
       titlePadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       contentPadding: const EdgeInsets.all(0),
@@ -23,7 +25,7 @@ class PrimarySimpleModal extends StatelessWidget {
         Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-            child: child),
+            child: SizedBox(width: dialogWidth, child: child)),
       ],
     );
   }
