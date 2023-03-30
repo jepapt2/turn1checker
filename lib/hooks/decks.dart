@@ -8,4 +8,9 @@ class Decks extends MyDatabase {
               [(t) => OrderingTerm(expression: t.id, mode: OrderingMode.desc)]))
         .watch();
   }
+
+  Future<int> createDeck(String deckName) {
+    return into(decks).insert(DecksCompanion.insert(
+        name: deckName, updatedAt: DateTime.now(), createdAt: DateTime.now()));
+  }
 }

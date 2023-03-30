@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:turn1checker/components/ui/primary_floating_action_button.dart';
 import 'package:turn1checker/components/ui/primary_text_field.dart';
+import 'package:turn1checker/hooks/decks.dart';
 
 import '../components/ui/primary_button.dart';
 import '../components/ui/primary_simple_dialog.dart';
@@ -19,8 +20,24 @@ class HomeScreen extends StatelessWidget {
         title: Text(appLocalizations.deckList),
       ),
       body: Center(
-        child: Text(''),
-      ),
+          child: StreamBuilder(
+        stream: Decks().watchDecks(),
+        builder: (a, b) {
+          if (b.hasError) {
+            return Text(b.error.toString());
+          }
+          if (!b.hasData) {
+            return const CircularProgressIndicator();
+          }
+          return ListView.builder(
+              itemCount: b.data!.length,
+              itemBuilder: (context, i) {
+                return ListTile(
+                  title: Text(b.data![i].name),
+                );
+              });
+        },
+      )),
       floatingActionButton: PrimaryFloatingActionButton(
           onPressed: () => showDeckAddDialog(context),
           child: const Icon(Icons.add, size: 32)),
@@ -57,7 +74,7 @@ showDeckAddDialog(BuildContext context) {
                 onPressed: () {
                   if (formKey.currentState!.saveAndValidate()) {
                     Navigator.pop(context);
-                    print(formKey.currentState!.value);
+                    Decks().createDeck(formKey.currentState!.value['deckName']);
                   }
                 },
                 text: appLocalizations.register)
