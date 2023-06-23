@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:turn1checker/db/db/db.dart';
+import 'package:turn1checker/model/db/db.dart';
 
 class Decks extends MyDatabase {
   Stream<List<Deck>> watchDecks() {

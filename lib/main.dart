@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:turn1checker/db/db/db.dart';
 import 'package:turn1checker/theme/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
