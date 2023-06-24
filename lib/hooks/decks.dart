@@ -2,11 +2,15 @@ import 'package:drift/drift.dart';
 import 'package:turn1checker/model/db/db.dart';
 
 class Decks extends MyDatabase {
-  Stream<List<Deck>> watchDecks() {
+  Future<List<Deck>> watchDecks() {
     return (select(decks)
           ..orderBy(
               [(t) => OrderingTerm(expression: t.id, mode: OrderingMode.desc)]))
-        .watch();
+        .get();
+  }
+
+  Future<Deck> getDeckById(int id) {
+    return (select(decks)..where((t) => t.id.equals(id))).getSingle();
   }
 
   Future<int> createDeck(String deckName) {
