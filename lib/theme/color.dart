@@ -12,4 +12,6 @@ class ColorTheme {
   static const Color black = Color(0xFF1C1C1C);
   static const Color primaryGradientStart = Color(0xFF5BA892);
   static const Color primaryGradientEnd = Color.fromARGB(255, 81, 97, 139);
+  static const Color secondaryGradientStart = Color(0xFF4F7697);
+  static const Color secondaryGradientEnd = Color.fromARGB(0, 59, 91, 117);
 }

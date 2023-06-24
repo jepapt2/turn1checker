@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:turn1checker/components/deck/decklist_tile.dart';
 import 'package:turn1checker/components/ui/primary_floating_action_button.dart';
 import 'package:turn1checker/components/ui/primary_text_field.dart';
 import 'package:turn1checker/hooks/decks.dart';
@@ -24,15 +25,22 @@ class HomeScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(appLocalizations.deckList),
       ),
-      body: Center(
+      body: Container(
           child: decks.when(
-              data: (data) => ListView.builder(
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(data[index].name),
-                    );
-                  },
-                  itemCount: data.length),
+              data: (decks) => Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 8),
+                    child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 12.0),
+                            child: DeckListTile(
+                                name: decks[index].name,
+                                time: decks[index].updatedAt),
+                          );
+                        },
+                        itemCount: decks.length),
+                  ),
               loading: () => const CircularProgressIndicator(),
               error: (error, stackTrace) => Text('Error: $error'))),
       floatingActionButton: PrimaryFloatingActionButton(
