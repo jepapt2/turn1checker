@@ -5,47 +5,46 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:turn1checker/components/ui/primary_floating_action_button.dart';
 import 'package:turn1checker/components/ui/primary_text_field.dart';
 import 'package:turn1checker/hooks/decks.dart';
-
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:turn1checker/model/db/db.dart';
+import 'package:turn1checker/viewmodel/deck_list.dart';
 import '../components/ui/primary_button.dart';
 import '../components/ui/primary_simple_dialog.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends HookConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+    final AsyncValue<List<Deck>> decks = ref.watch(deckListProvider);
+    final decksNotifier = ref.watch(deckListProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(appLocalizations.deckList),
       ),
       body: Center(
-          child: StreamBuilder(
-        stream: Decks().watchDecks(),
-        builder: (a, b) {
-          if (b.hasError) {
-            return Text(b.error.toString());
-          }
-          if (!b.hasData) {
-            return const CircularProgressIndicator();
-          }
-          return ListView.builder(
-              itemCount: b.data!.length,
-              itemBuilder: (context, i) {
-                return ListTile(
-                  title: Text(b.data![i].name),
-                );
-              });
-        },
-      )),
+          child: decks.when(
+              data: (data) => ListView.builder(
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(data[index].name),
+                    );
+                  },
+                  itemCount: data.length),
+              loading: () => const CircularProgressIndicator(),
+              error: (error, stackTrace) => Text('Error: $error'))),
       floatingActionButton: PrimaryFloatingActionButton(
-          onPressed: () => showDeckAddDialog(context),
+          onPressed: () =>
+              showDeckAddDialog(context: context, decksNotifier: decksNotifier),
           child: const Icon(Icons.add, size: 32)),
     );
   }
 }
 
-showDeckAddDialog(BuildContext context) {
+showDeckAddDialog(
+    {required BuildContext context, required DeckList decksNotifier}) {
   final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
   showDialog(
     context: context,
@@ -71,10 +70,12 @@ showDeckAddDialog(BuildContext context) {
             ),
             const SizedBox(height: 16),
             PrimaryButton(
-                onPressed: () {
+                onPressed: () async {
                   if (formKey.currentState!.saveAndValidate()) {
                     Navigator.pop(context);
-                    Decks().createDeck(formKey.currentState!.value['deckName']);
+                    await decksNotifier
+                        .createDeck(formKey.currentState!.value['deckName']);
+                    // Decks().createDeck('testaaa');
                   }
                 },
                 text: appLocalizations.register)
