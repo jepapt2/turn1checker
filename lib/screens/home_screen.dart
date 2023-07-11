@@ -24,6 +24,16 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(appLocalizations.deckList),
+        actions: [
+          IconButton(
+              onPressed: () => showDeckAddDialog(
+                  context: context, decksNotifier: decksNotifier),
+              icon: const Icon(
+                Icons.add,
+                size: 28,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: Container(
           child: decks.when(
@@ -43,10 +53,6 @@ class HomeScreen extends HookConsumerWidget {
                   ),
               loading: () => const CircularProgressIndicator(),
               error: (error, stackTrace) => Text('Error: $error'))),
-      floatingActionButton: PrimaryFloatingActionButton(
-          onPressed: () =>
-              showDeckAddDialog(context: context, decksNotifier: decksNotifier),
-          child: const Icon(Icons.add, size: 32)),
     );
   }
 }
