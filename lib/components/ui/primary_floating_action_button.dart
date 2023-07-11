@@ -14,6 +14,7 @@ class PrimaryFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
         onPressed: onPressed,
         backgroundColor: Colors.transparent,
+        foregroundColor: ColorTheme.white,
         child: Container(
           height: double.infinity,
           width: double.infinity,
@@ -24,7 +25,7 @@ class PrimaryFloatingActionButton extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     ColorTheme.primaryGradientStart,
-                    ColorTheme.primaryGradientEnd
+                    ColorTheme.primaryGradientEnd,
                   ])),
           child: child,
         ));

@@ -6,10 +6,12 @@ final ThemeData themedata = ThemeData(
   primaryColor: ColorTheme.primary,
   brightness: Brightness.dark,
   appBarTheme: const AppBarTheme(
-      color: ColorTheme.primary,
-      titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 20.0, color: ColorTheme.white),
-      centerTitle: true),
+    color: ColorTheme.primary,
+    titleTextStyle: TextStyle(
+        fontWeight: FontWeight.bold, fontSize: 20.0, color: ColorTheme.white),
+    centerTitle: true,
+    actionsIconTheme: IconThemeData(color: ColorTheme.white),
+  ),
   dialogTheme: const DialogTheme(
       backgroundColor: ColorTheme.background,
       titleTextStyle: TextStyle(
@@ -31,12 +33,12 @@ final ThemeData themedata = ThemeData(
       borderSide: BorderSide(color: ColorTheme.white),
     ),
     errorBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: ColorTheme.quaternary),
+      borderSide: BorderSide(color: ColorTheme.yellow),
     ),
     focusedErrorBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: ColorTheme.quaternary),
+      borderSide: BorderSide(color: ColorTheme.yellow),
     ),
-    errorStyle: TextStyle(color: ColorTheme.quaternary, fontSize: 16.0),
+    errorStyle: TextStyle(color: ColorTheme.yellow, fontSize: 16.0),
     counterStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
     labelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
     floatingLabelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
