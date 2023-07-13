@@ -8,22 +8,23 @@ import 'package:turn1checker/components/ui/primary_text_field.dart';
 import 'package:turn1checker/hooks/decks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/model/db/db.dart';
+import 'package:turn1checker/utils/validations/decks.dart';
 import 'package:turn1checker/viewmodel/deck_list.dart';
 import '../components/ui/primary_button.dart';
 import '../components/ui/primary_simple_dialog.dart';
+import '../i18n/i18n.g.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     final AsyncValue<List<Deck>> decks = ref.watch(deckListProvider);
     final decksNotifier = ref.watch(deckListProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.deckList),
+        title: Text(t.text.deckList),
         actions: [
           IconButton(
               onPressed: () => showDeckAddDialog(
@@ -59,28 +60,21 @@ class HomeScreen extends HookConsumerWidget {
 
 showDeckAddDialog(
     {required BuildContext context, required DeckList decksNotifier}) {
-  final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
   showDialog(
     context: context,
     builder: (BuildContext dialogContext) {
       final formKey = GlobalKey<FormBuilderState>();
       return PrimarySimpleModal(
-        title: Text(appLocalizations.registerDeckName),
+        title: Text(t.text.registerDeckName),
         child: Column(
           children: [
             FormBuilder(
               key: formKey,
               child: PrimaryTextField(
-                  name: 'deckName',
-                  maxLength: 32,
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(
-                        errorText: appLocalizations.deckNameRequiredError),
-                    FormBuilderValidators.minLength(1,
-                        errorText: appLocalizations.deckNameMinLengthError(1)),
-                    FormBuilderValidators.maxLength(32,
-                        errorText: appLocalizations.deckNameMaxLengthError(32)),
-                  ])),
+                name: 'deckName',
+                maxLength: 32,
+                validator: createDeckValidation,
+              ),
             ),
             const SizedBox(height: 16),
             PrimaryButton(
@@ -89,10 +83,9 @@ showDeckAddDialog(
                     Navigator.pop(context);
                     await decksNotifier
                         .createDeck(formKey.currentState!.value['deckName']);
-                    // Decks().createDeck('testaaa');
                   }
                 },
-                text: appLocalizations.register)
+                text: t.text.register)
           ],
         ),
       );

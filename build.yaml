@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      slang_build_runner:
+        options:
+          input_directory: assets/i18n
+          base_locale: ja
+          input_file_pattern: .i18n.csv
+          output_directory: lib/i18n
+          output_file_name: i18n.g.dart
+          namespaces: true
+          pluralization:
+            auto: off
+          translate_var: t

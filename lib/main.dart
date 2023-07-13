@@ -4,10 +4,12 @@ import 'package:turn1checker/theme/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'i18n/i18n.g.dart';
 import 'router/router.dart';
 
 void main() {
-  runApp(const ProviderScope(child: App()));
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(TranslationProvider(child: const ProviderScope(child: App())));
 }
 
 class App extends StatelessWidget {
@@ -18,16 +20,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'turn1Checker',
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      locale: TranslationProvider.of(context).flutterLocale, // use provider
       supportedLocales: const [
         Locale('en'),
         Locale('ja'),
       ],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: themedata,
       routerConfig: router,
     );
