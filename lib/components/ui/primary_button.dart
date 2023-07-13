@@ -11,31 +11,19 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(0)),
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+        backgroundColor: ColorTheme.primary,
+        maximumSize: const Size(double.infinity, 48),
+      ),
       onPressed: onPressed,
-      child: Container(
-        width: double.infinity,
-        height: 48,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient: const LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              ColorTheme.primaryGradientStart,
-              ColorTheme.primaryGradientEnd
-            ],
-          ),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-              color: ColorTheme.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          height: 1,
+          color: ColorTheme.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
