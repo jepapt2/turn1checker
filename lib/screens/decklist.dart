@@ -14,8 +14,8 @@ import '../components/ui/primary_button.dart';
 import '../components/ui/primary_simple_dialog.dart';
 import '../i18n/i18n.g.dart';
 
-class HomeScreen extends HookConsumerWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class DeckListScreen extends HookConsumerWidget {
+  const DeckListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
