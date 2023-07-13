@@ -2,8 +2,10 @@ key,en,ja
 deckList,DeckList,デッキリスト
 deckName,DeckName,デッキ名
 registerDeckName,Register Deckname,デッキ名の登録
+reload,Reload,再読み込み
 deckNameRequiredError,Please enter a deck name.,デッキ名を入力してください
 deckNameMinLengthError,Deck name must be at least $length characters.,デッキ名は$length文字以上で入力してください
 deckNameMaxLengthError,Deck name must be $length characters or less.,デッキ名は$length文字以内で入力してください
+deckListAsyncError,An error occurred while getting the deck list.,デッキリストの取得に失敗しました
 register,Register,登録
 hello,Heeey,こんちゃ

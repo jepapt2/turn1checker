@@ -10,12 +10,13 @@ class DeckList extends AsyncNotifier<List<Deck>> {
   }
 
   Future<List<Deck>> _fetchDecks() {
+    state = const AsyncValue.loading();
+
     return Decks().watchDecks();
   }
 
   Future<void> createDeck(String deckName) async {
     state = const AsyncValue.loading();
-
     state = await AsyncValue.guard(() {
       Decks().createDeck(deckName);
 

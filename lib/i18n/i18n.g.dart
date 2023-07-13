@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 16 (8 per locale)
+/// Strings: 20 (10 per locale)
 ///
-/// Built on 2023-07-13 at 13:47 UTC
+/// Built on 2023-07-13 at 14:37 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -160,9 +160,11 @@ class _I18nTextJa {
 	String get deckList => 'デッキリスト';
 	String get deckName => 'デッキ名';
 	String get registerDeckName => 'デッキ名の登録';
+	String get reload => '再読み込み';
 	String get deckNameRequiredError => 'デッキ名を入力してください';
 	String deckNameMinLengthError({required Object length}) => 'デッキ名は${length}文字以上で入力してください';
 	String deckNameMaxLengthError({required Object length}) => 'デッキ名は${length}文字以内で入力してください';
+	String get deckListAsyncError => 'デッキリストの取得に失敗しました';
 	String get register => '登録';
 	String get hello => 'こんちゃ';
 }
@@ -205,9 +207,11 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get deckList => 'DeckList';
 	@override String get deckName => 'DeckName';
 	@override String get registerDeckName => 'Register Deckname';
+	@override String get reload => 'Reload';
 	@override String get deckNameRequiredError => 'Please enter a deck name.';
 	@override String deckNameMinLengthError({required Object length}) => 'Deck name must be at least ${length} characters.';
 	@override String deckNameMaxLengthError({required Object length}) => 'Deck name must be ${length} characters or less.';
+	@override String get deckListAsyncError => 'An error occurred while getting the deck list.';
 	@override String get register => 'Register';
 	@override String get hello => 'Heeey';
 }
@@ -221,9 +225,11 @@ extension on _I18nJa {
 			case 'text.deckList': return 'デッキリスト';
 			case 'text.deckName': return 'デッキ名';
 			case 'text.registerDeckName': return 'デッキ名の登録';
+			case 'text.reload': return '再読み込み';
 			case 'text.deckNameRequiredError': return 'デッキ名を入力してください';
 			case 'text.deckNameMinLengthError': return ({required Object length}) => 'デッキ名は${length}文字以上で入力してください';
 			case 'text.deckNameMaxLengthError': return ({required Object length}) => 'デッキ名は${length}文字以内で入力してください';
+			case 'text.deckListAsyncError': return 'デッキリストの取得に失敗しました';
 			case 'text.register': return '登録';
 			case 'text.hello': return 'こんちゃ';
 			default: return null;
@@ -237,9 +243,11 @@ extension on _I18nEn {
 			case 'text.deckList': return 'DeckList';
 			case 'text.deckName': return 'DeckName';
 			case 'text.registerDeckName': return 'Register Deckname';
+			case 'text.reload': return 'Reload';
 			case 'text.deckNameRequiredError': return 'Please enter a deck name.';
 			case 'text.deckNameMinLengthError': return ({required Object length}) => 'Deck name must be at least ${length} characters.';
 			case 'text.deckNameMaxLengthError': return ({required Object length}) => 'Deck name must be ${length} characters or less.';
+			case 'text.deckListAsyncError': return 'An error occurred while getting the deck list.';
 			case 'text.register': return 'Register';
 			case 'text.hello': return 'Heeey';
 			default: return null;
