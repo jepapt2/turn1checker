@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:turn1checker/model/db/db.dart';
 
-class Decks extends MyDatabase {
+class Decks extends Database {
   Future<List<Deck>> watchDecks() {
     return (select(decks)
           ..orderBy(

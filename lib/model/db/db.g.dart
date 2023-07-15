@@ -252,8 +252,8 @@ class DecksCompanion extends UpdateCompanion<Deck> {
   }
 }
 
-abstract class _$MyDatabase extends GeneratedDatabase {
-  _$MyDatabase(QueryExecutor e) : super(e);
+abstract class _$Database extends GeneratedDatabase {
+  _$Database(QueryExecutor e) : super(e);
   late final $DecksTable decks = $DecksTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>

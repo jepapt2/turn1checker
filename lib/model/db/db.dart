@@ -10,9 +10,9 @@ import '../decks.dart';
 part 'db.g.dart';
 
 @DriftDatabase(tables: [Decks])
-class MyDatabase extends _$MyDatabase {
+class Database extends _$Database {
   //4
-  MyDatabase() : super(_openConnection()); //追加
+  Database() : super(_openConnection()); //追加
 
   //5
   @override //追加
