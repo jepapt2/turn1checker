@@ -1,0 +1,15 @@
+import 'package:realm/realm.dart';
+import 'package:turn1checker/model/card/card.dart';
+import 'package:turn1checker/model/counter/counter.dart';
+part 'effectCheckButton.g.dart';
+
+@RealmModel()
+class $EffectCheckButton {
+  @PrimaryKey()
+  late ObjectId id;
+  late String description;
+  late int limit;
+  late DateTime createdAt;
+  late DateTime updatedAt;
+  late $ButtonsOrder? order;
+}

@@ -1,13 +1,16 @@
-//primarybutton
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:realm/realm.dart';
+import 'package:turn1checker/hooks/deck.dart';
+import 'package:turn1checker/model/deck/deck.dart';
+
+import 'package:turn1checker/model/realm.dart';
 import 'package:turn1checker/theme/color.dart';
 
 class DeckListTile extends StatelessWidget {
-  const DeckListTile({super.key, required this.name, required this.time});
+  const DeckListTile({super.key, required this.deck});
 
-  final String name;
-  final DateTime time;
+  final Deck deck;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +34,13 @@ class DeckListTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(DateFormat('yyyy/MM/dd HH:mm').format(time),
+                  Text(DateFormat('yyyy/MM/dd HH:mm').format(deck.updatedAt),
                       style: const TextStyle(
                           fontSize: 10,
                           height: 1,
                           color: ColorTheme.lightGray)),
                   Text(
-                    name,
+                    deck.name,
                     style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -49,7 +52,7 @@ class DeckListTile extends StatelessWidget {
               ),
             ),
             IconButton(
-                onPressed: null,
+                onPressed: () async {},
                 icon: const Icon(
                   Icons.edit,
                   color: ColorTheme.white,

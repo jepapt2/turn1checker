@@ -1,30 +1,24 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:turn1checker/model/db/db.dart';
+import 'package:turn1checker/model/deck/deck.dart';
 
-import '../hooks/decks.dart';
+import '../hooks/deck.dart';
+part 'deck_list.g.dart';
 
-class DeckList extends AsyncNotifier<List<Deck>> {
+@riverpod
+class DeckListNotifier extends _$DeckListNotifier {
   @override
-  Future<List<Deck>> build() {
-    return _fetchDecks();
+  List<Deck> build() {
+    fetchDecks();
+    return state;
   }
 
-  Future<List<Deck>> _fetchDecks() {
-    state = const AsyncValue.loading();
-
-    return Decks().watchDecks();
+  void fetchDecks() {
+    state = DeckHooks().getDeckList();
   }
 
-  Future<void> createDeck(String deckName) async {
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() {
-      Decks().createDeck(deckName);
-
-      return _fetchDecks();
-    });
+  void createDeck(String deckName) {
+    DeckHooks().createDeck(deckName);
+    fetchDecks();
   }
 }
-
-final deckListProvider = AsyncNotifierProvider<DeckList, List<Deck>>(() {
-  return DeckList();
-});

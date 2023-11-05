@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:turn1checker/components/deck/decklist_tile.dart';
 import 'package:turn1checker/components/deck/deckname_modal.dart';
 import 'package:turn1checker/components/ui/primary_button.dart';
 import 'package:turn1checker/components/ui/primary_floating_action_button.dart';
 import 'package:turn1checker/components/ui/primary_text_field.dart';
-import 'package:turn1checker/hooks/decks.dart';
+import 'package:turn1checker/hooks/deck.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:turn1checker/model/db/db.dart';
+import 'package:turn1checker/model/deck/deck.dart';
 import 'package:turn1checker/utils/validations/decks.dart';
 import 'package:turn1checker/viewmodel/deck_list.dart';
 import '../components/ui/cyan_gradient_button.dart';
@@ -21,7 +20,7 @@ class DeckListScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<Deck>> decks = ref.watch(deckListProvider);
+    final List<Deck> decks = ref.watch(deckListNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -37,36 +36,20 @@ class DeckListScreen extends HookConsumerWidget {
         ],
       ),
       body: Container(
-          child: decks.when(
-              data: (decks) => Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 8),
-                    child: ListView.builder(
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 12.0),
-                            child: DeckListTile(
-                                name: decks[index].name,
-                                time: decks[index].updatedAt),
-                          );
-                        },
-                        itemCount: decks.length),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+          child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: DeckListTile(
+                    deck: decks[index],
                   ),
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) => Center(
-                      child: Expanded(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Text(t.text.deckListAsyncError),
-                        ),
-                        PrimaryButton(
-                          onPressed: () => ref.refresh(deckListProvider),
-                          text: t.text.reload,
-                        )
-                      ]))))),
+                );
+              },
+              itemCount: decks.length),
+        ),
+      ),
     );
   }
 }

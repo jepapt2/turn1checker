@@ -1,8 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../i18n/i18n.g.dart';
 import '../../utils/validations/decks.dart';
 import '../../viewmodel/deck_list.dart';
@@ -16,7 +14,7 @@ class DeckNameModal extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = GlobalKey<FormBuilderState>();
-    final decksNotifier = ref.watch(deckListProvider.notifier);
+    final decksNotifier = ref.watch(deckListNotifierProvider.notifier);
     return PrimarySimpleModal(
       title: Text(t.text.registerDeckName),
       child: Column(
@@ -34,7 +32,7 @@ class DeckNameModal extends ConsumerWidget {
               onPressed: () async {
                 if (formKey.currentState!.saveAndValidate()) {
                   Navigator.pop(context);
-                  await decksNotifier
+                  decksNotifier
                       .createDeck(formKey.currentState!.value['deckName']);
                 }
               },
