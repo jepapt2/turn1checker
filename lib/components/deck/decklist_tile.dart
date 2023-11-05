@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:realm/realm.dart';
 import 'package:turn1checker/hooks/deck.dart';
@@ -52,7 +53,7 @@ class DeckListTile extends StatelessWidget {
               ),
             ),
             IconButton(
-                onPressed: () async {},
+                onPressed: () => context.push('/edit/${deck.id}'),
                 icon: const Icon(
                   Icons.edit,
                   color: ColorTheme.white,

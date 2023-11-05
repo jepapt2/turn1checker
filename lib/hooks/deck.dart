@@ -8,10 +8,16 @@ class DeckHooks {
     return decks.toList();
   }
 
-  createDeck(String deckName) {
+  Deck? getDeck(ObjectId id) {
+    final deck = realm.find<Deck>(id);
+    return deck;
+  }
+
+  Deck createDeck(String deckName) {
+    final deck = Deck(ObjectId(), deckName, DateTime.now(), DateTime.now());
     realm.write(() {
-      realm.add<Deck>(
-          Deck(ObjectId(), deckName, DateTime.now(), DateTime.now()));
+      realm.add<Deck>(deck);
     });
+    return deck;
   }
 }

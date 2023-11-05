@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'deck_list.dart';
+part of 'deckList.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$deckListNotifierHash() => r'd2927fd9f64891acf20c71b7daac5b1a1b7a8624';
+String _$deckListNotifierHash() => r'5e060189a1c26fc538ba00c852e8ccebfaed256b';
 
 /// See also [DeckListNotifier].
 @ProviderFor(DeckListNotifier)
