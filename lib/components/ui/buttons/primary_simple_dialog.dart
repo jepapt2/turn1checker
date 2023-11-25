@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../theme/color.dart';
+import 'package:turn1checker/theme/color.dart';
 
 class PrimarySimpleModal extends StatelessWidget {
   const PrimarySimpleModal({Key? key, required this.title, required this.child})

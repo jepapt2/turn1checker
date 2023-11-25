@@ -13,14 +13,15 @@ class Deck extends $Deck with RealmEntity, RealmObjectBase, RealmObject {
     DateTime createdAt,
     DateTime updatedAt, {
     CardsOrder? cardsOrder,
-    Iterable<Card> cards = const [],
+    Iterable<CardButtons> cards = const [],
   }) {
     RealmObjectBase.set(this, 'id', id);
     RealmObjectBase.set(this, 'name', name);
     RealmObjectBase.set(this, 'cardsOrder', cardsOrder);
     RealmObjectBase.set(this, 'createdAt', createdAt);
     RealmObjectBase.set(this, 'updatedAt', updatedAt);
-    RealmObjectBase.set<RealmList<Card>>(this, 'cards', RealmList<Card>(cards));
+    RealmObjectBase.set<RealmList<CardButtons>>(
+        this, 'cards', RealmList<CardButtons>(cards));
   }
 
   Deck._();
@@ -36,10 +37,10 @@ class Deck extends $Deck with RealmEntity, RealmObjectBase, RealmObject {
   set name(String value) => RealmObjectBase.set(this, 'name', value);
 
   @override
-  RealmList<Card> get cards =>
-      RealmObjectBase.get<Card>(this, 'cards') as RealmList<Card>;
+  RealmList<CardButtons> get cards =>
+      RealmObjectBase.get<CardButtons>(this, 'cards') as RealmList<CardButtons>;
   @override
-  set cards(covariant RealmList<Card> value) =>
+  set cards(covariant RealmList<CardButtons> value) =>
       throw RealmUnsupportedSetError();
 
   @override
@@ -78,7 +79,7 @@ class Deck extends $Deck with RealmEntity, RealmObjectBase, RealmObject {
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('cards', RealmPropertyType.object,
-          linkTarget: 'Card', collectionType: RealmCollectionType.list),
+          linkTarget: 'CardButtons', collectionType: RealmCollectionType.list),
       SchemaProperty('cardsOrder', RealmPropertyType.object,
           optional: true, linkTarget: 'CardsOrder'),
       SchemaProperty('createdAt', RealmPropertyType.timestamp),

@@ -1,10 +1,11 @@
 import 'package:realm/realm.dart';
-part 'card.g.dart';
+part 'cardButtons.g.dart';
 
 @RealmModel()
-class $Card {
+class $CardButtons {
   @PrimaryKey()
   late ObjectId id;
+  late $CardType? type;
   late String name;
   late String image;
   late DateTime createdAt;
@@ -16,7 +17,7 @@ class $Card {
 class $ButtonsOrder {
   @PrimaryKey()
   late ObjectId id;
-  late String order;
+  late int order;
   late DateTime createdAt;
   late DateTime updatedAt;
 }
@@ -24,7 +25,7 @@ class $ButtonsOrder {
 @RealmModel()
 class $CardType {
   @PrimaryKey()
-  late ObjectId id;
+  late int id;
   late String name;
   late String color;
   late DateTime createdAt;

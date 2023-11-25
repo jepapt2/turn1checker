@@ -43,5 +43,9 @@ final ThemeData themedata = ThemeData(
     labelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
     floatingLabelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
   ),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(100))),
+  ),
   scaffoldBackgroundColor: ColorTheme.background,
 );

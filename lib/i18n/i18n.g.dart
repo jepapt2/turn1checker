@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 20 (10 per locale)
+/// Strings: 22 (11 per locale)
 ///
-/// Built on 2023-11-04 at 14:48 UTC
+/// Built on 2023-11-15 at 15:51 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -168,6 +168,7 @@ class _I18nTextJa {
 	String deckNameMinLengthError({required Object length}) => 'デッキ名は${length}文字以上で入力してください';
 	String deckNameMaxLengthError({required Object length}) => 'デッキ名は${length}文字以内で入力してください';
 	String get deckListAsyncError => 'デッキリストの取得に失敗しました';
+	String get cardEdit => 'カード編集';
 	String get register => '登録';
 	String get hello => 'こんちゃ';
 }
@@ -215,6 +216,7 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String deckNameMinLengthError({required Object length}) => 'Deck name must be at least ${length} characters.';
 	@override String deckNameMaxLengthError({required Object length}) => 'Deck name must be ${length} characters or less.';
 	@override String get deckListAsyncError => 'An error occurred while getting the deck list.';
+	@override String get cardEdit => 'CardEdit';
 	@override String get register => 'Register';
 	@override String get hello => 'Heeey';
 }
@@ -233,6 +235,7 @@ extension on _I18nJa {
 			case 'text.deckNameMinLengthError': return ({required Object length}) => 'デッキ名は${length}文字以上で入力してください';
 			case 'text.deckNameMaxLengthError': return ({required Object length}) => 'デッキ名は${length}文字以内で入力してください';
 			case 'text.deckListAsyncError': return 'デッキリストの取得に失敗しました';
+			case 'text.cardEdit': return 'カード編集';
 			case 'text.register': return '登録';
 			case 'text.hello': return 'こんちゃ';
 			default: return null;
@@ -251,6 +254,7 @@ extension on _I18nEn {
 			case 'text.deckNameMinLengthError': return ({required Object length}) => 'Deck name must be at least ${length} characters.';
 			case 'text.deckNameMaxLengthError': return ({required Object length}) => 'Deck name must be ${length} characters or less.';
 			case 'text.deckListAsyncError': return 'An error occurred while getting the deck list.';
+			case 'text.cardEdit': return 'CardEdit';
 			case 'text.register': return 'Register';
 			case 'text.hello': return 'Heeey';
 			default: return null;

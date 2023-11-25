@@ -2,8 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-
-import '../../theme/color.dart';
+import 'package:turn1checker/theme/color.dart';
 
 class PrimaryTextField extends FormBuilderTextField {
   PrimaryTextField({

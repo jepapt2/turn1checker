@@ -7,5 +7,6 @@ deckNameRequiredError,Please enter a deck name.,デッキ名を入力してく�
 deckNameMinLengthError,Deck name must be at least $length characters.,デッキ名は$length文字以上で入力してください
 deckNameMaxLengthError,Deck name must be $length characters or less.,デッキ名は$length文字以内で入力してください
 deckListAsyncError,An error occurred while getting the deck list.,デッキリストの取得に失敗しました
+cardEdit,CardEdit,カード編集
 register,Register,登録
 hello,Heeey,こんちゃ

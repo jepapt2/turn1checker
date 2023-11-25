@@ -1,21 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'card.dart';
+part of 'cardButtons.dart';
 
 // **************************************************************************
 // RealmObjectGenerator
 // **************************************************************************
 
-class Card extends $Card with RealmEntity, RealmObjectBase, RealmObject {
-  Card(
+class CardButtons extends $CardButtons
+    with RealmEntity, RealmObjectBase, RealmObject {
+  CardButtons(
     ObjectId id,
     String name,
     String image,
     DateTime createdAt,
     DateTime updatedAt,
-    int order,
-  ) {
+    int order, {
+    CardType? type,
+  }) {
     RealmObjectBase.set(this, 'id', id);
+    RealmObjectBase.set(this, 'type', type);
     RealmObjectBase.set(this, 'name', name);
     RealmObjectBase.set(this, 'image', image);
     RealmObjectBase.set(this, 'createdAt', createdAt);
@@ -23,12 +26,19 @@ class Card extends $Card with RealmEntity, RealmObjectBase, RealmObject {
     RealmObjectBase.set(this, 'order', order);
   }
 
-  Card._();
+  CardButtons._();
 
   @override
   ObjectId get id => RealmObjectBase.get<ObjectId>(this, 'id') as ObjectId;
   @override
   set id(ObjectId value) => RealmObjectBase.set(this, 'id', value);
+
+  @override
+  CardType? get type =>
+      RealmObjectBase.get<CardType>(this, 'type') as CardType?;
+  @override
+  set type(covariant CardType? value) =>
+      RealmObjectBase.set(this, 'type', value);
 
   @override
   String get name => RealmObjectBase.get<String>(this, 'name') as String;
@@ -60,18 +70,21 @@ class Card extends $Card with RealmEntity, RealmObjectBase, RealmObject {
   set order(int value) => RealmObjectBase.set(this, 'order', value);
 
   @override
-  Stream<RealmObjectChanges<Card>> get changes =>
-      RealmObjectBase.getChanges<Card>(this);
+  Stream<RealmObjectChanges<CardButtons>> get changes =>
+      RealmObjectBase.getChanges<CardButtons>(this);
 
   @override
-  Card freeze() => RealmObjectBase.freezeObject<Card>(this);
+  CardButtons freeze() => RealmObjectBase.freezeObject<CardButtons>(this);
 
   static SchemaObject get schema => _schema ??= _initSchema();
   static SchemaObject? _schema;
   static SchemaObject _initSchema() {
-    RealmObjectBase.registerFactory(Card._);
-    return const SchemaObject(ObjectType.realmObject, Card, 'Card', [
+    RealmObjectBase.registerFactory(CardButtons._);
+    return const SchemaObject(
+        ObjectType.realmObject, CardButtons, 'CardButtons', [
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
+      SchemaProperty('type', RealmPropertyType.object,
+          optional: true, linkTarget: 'CardType'),
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('image', RealmPropertyType.string),
       SchemaProperty('createdAt', RealmPropertyType.timestamp),
@@ -85,7 +98,7 @@ class ButtonsOrder extends $ButtonsOrder
     with RealmEntity, RealmObjectBase, RealmObject {
   ButtonsOrder(
     ObjectId id,
-    String order,
+    int order,
     DateTime createdAt,
     DateTime updatedAt,
   ) {
@@ -103,9 +116,9 @@ class ButtonsOrder extends $ButtonsOrder
   set id(ObjectId value) => RealmObjectBase.set(this, 'id', value);
 
   @override
-  String get order => RealmObjectBase.get<String>(this, 'order') as String;
+  int get order => RealmObjectBase.get<int>(this, 'order') as int;
   @override
-  set order(String value) => RealmObjectBase.set(this, 'order', value);
+  set order(int value) => RealmObjectBase.set(this, 'order', value);
 
   @override
   DateTime get createdAt =>
@@ -135,7 +148,7 @@ class ButtonsOrder extends $ButtonsOrder
     return const SchemaObject(
         ObjectType.realmObject, ButtonsOrder, 'ButtonsOrder', [
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
-      SchemaProperty('order', RealmPropertyType.string),
+      SchemaProperty('order', RealmPropertyType.int),
       SchemaProperty('createdAt', RealmPropertyType.timestamp),
       SchemaProperty('updatedAt', RealmPropertyType.timestamp),
     ]);
@@ -145,7 +158,7 @@ class ButtonsOrder extends $ButtonsOrder
 class CardType extends $CardType
     with RealmEntity, RealmObjectBase, RealmObject {
   CardType(
-    ObjectId id,
+    int id,
     String name,
     String color,
     DateTime createdAt,
@@ -161,9 +174,9 @@ class CardType extends $CardType
   CardType._();
 
   @override
-  ObjectId get id => RealmObjectBase.get<ObjectId>(this, 'id') as ObjectId;
+  int get id => RealmObjectBase.get<int>(this, 'id') as int;
   @override
-  set id(ObjectId value) => RealmObjectBase.set(this, 'id', value);
+  set id(int value) => RealmObjectBase.set(this, 'id', value);
 
   @override
   String get name => RealmObjectBase.get<String>(this, 'name') as String;
@@ -201,7 +214,7 @@ class CardType extends $CardType
   static SchemaObject _initSchema() {
     RealmObjectBase.registerFactory(CardType._);
     return const SchemaObject(ObjectType.realmObject, CardType, 'CardType', [
-      SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
+      SchemaProperty('id', RealmPropertyType.int, primaryKey: true),
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('color', RealmPropertyType.string),
       SchemaProperty('createdAt', RealmPropertyType.timestamp),

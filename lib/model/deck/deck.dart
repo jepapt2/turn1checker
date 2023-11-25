@@ -1,6 +1,6 @@
 import 'package:realm/realm.dart';
 
-import '../card/card.dart';
+import '../cardButtons/cardButtons.dart';
 part 'deck.g.dart';
 
 @RealmModel()
@@ -8,7 +8,7 @@ class $Deck {
   @PrimaryKey()
   late ObjectId id;
   late String name;
-  late List<$Card> cards;
+  late List<$CardButtons> cards;
   late $CardsOrder? cardsOrder;
   late DateTime createdAt;
   late DateTime updatedAt;

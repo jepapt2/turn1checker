@@ -6,7 +6,7 @@ part of 'deckEdit.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$deckEditNotifierHash() => r'f10bc10d373c320afd9771be6f2387894fd00bfa';
+String _$deckEditNotifierHash() => r'3a2355c21e8ba8826e23a4df76e984a73c4be0a3';
 
 /// Copied from Dart SDK
 class _SystemHash {

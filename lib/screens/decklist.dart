@@ -3,16 +3,12 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:turn1checker/components/deck/decklist_tile.dart';
 import 'package:turn1checker/components/deck/deckname_modal.dart';
-import 'package:turn1checker/components/ui/primary_button.dart';
-import 'package:turn1checker/components/ui/primary_floating_action_button.dart';
-import 'package:turn1checker/components/ui/primary_text_field.dart';
 import 'package:turn1checker/hooks/deck.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/model/deck/deck.dart';
 import 'package:turn1checker/utils/validations/decks.dart';
 import 'package:turn1checker/viewmodel/deckList/deckList.dart';
-import '../components/ui/cyan_gradient_button.dart';
-import '../components/ui/primary_simple_dialog.dart';
+
 import '../i18n/i18n.g.dart';
 
 class DeckListScreen extends HookConsumerWidget {

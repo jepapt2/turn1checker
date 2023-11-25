@@ -1,6 +1,7 @@
 import 'package:realm/realm.dart';
-import 'package:turn1checker/model/card/card.dart';
+import 'package:turn1checker/model/cardButtons/cardButtons.dart';
 import 'package:turn1checker/model/counter/counter.dart';
+
 part 'effectCheckButton.g.dart';
 
 @RealmModel()
