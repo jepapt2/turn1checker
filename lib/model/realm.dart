@@ -15,13 +15,13 @@ initialdata(Realm realm) {
 
 final config = Configuration.local(
   [
-    // CardButton.schema,
-    // CardType.schema,
-    // Deck.schema,
-    // CardsOrder.schema,
-    // ButtonsOrder.schema,
-    // Counter.schema,
-    // CounterButton.schema,
+    CardButtons.schema,
+    CardType.schema,
+    Deck.schema,
+    CardsOrder.schema,
+    ButtonsOrder.schema,
+    Counter.schema,
+    CounterButton.schema,
     EffectCheckButton.schema,
   ],
   schemaVersion: 2,

@@ -4,8 +4,8 @@ import 'package:turn1checker/theme/color.dart';
 import 'package:turn1checker/types/CardButtonState/cardButtonState.dart';
 import 'package:turn1checker/utils/functions/cardAspectRatio.dart';
 
-class CardButtonsWidget extends StatelessWidget {
-  const CardButtonsWidget({Key? key, required this.card}) : super(key: key);
+class CardButtonsList extends StatelessWidget {
+  const CardButtonsList({Key? key, required this.card}) : super(key: key);
 
   final CardButtonState card;
 
@@ -47,6 +47,38 @@ class CardButtonsWidget extends StatelessWidget {
             width: cardWidth,
             height: cardWidth,
             color: Colors.lightBlue,
+            child: Column(
+              children: card.buttonWithOrderState.map((e) {
+                if (e is EffectCheckButtonWithOrderState) {
+                  final button = e;
+                  return Expanded(
+                    child: Container(
+                      width: cardWidth,
+                      color: Colors.lightBlue,
+                      child: Column(
+                        children: [
+                          Text(button.effectButton.description),
+                          Text(button.effectButton.count.toString()),
+                        ],
+                      ),
+                    ),
+                  );
+                } else if (e is CounterButtonWithOrderState) {
+                  final counter = e;
+                  return Container(
+                    width: cardWidth,
+                    color: Colors.lightBlue,
+                    child: Column(
+                      children: [
+                        Text(counter.counterButton.value.toString()),
+                      ],
+                    ),
+                  );
+                } else {
+                  return Container();
+                }
+              }).toList(),
+            ),
           ),
         ],
       ),

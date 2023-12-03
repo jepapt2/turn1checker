@@ -1,25 +1,38 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:turn1checker/theme/color.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class PrimaryTextField extends FormBuilderTextField {
+class PrimaryTextField extends HookWidget {
   PrimaryTextField({
     Key? key,
-    required String name,
-    InputDecoration? decoration,
-    String? Function(String?)? validator,
-    String? initialValue,
-    int? maxLength,
+    required this.name,
+    this.decoration,
+    this.validator,
+    this.initialValue,
+    this.maxLength,
+    this.onChanged,
   }) : super(
-          style: const TextStyle(color: ColorTheme.white, fontSize: 20.0),
-          cursorColor: ColorTheme.white,
           key: key,
-          name: name,
-          decoration: decoration ?? const InputDecoration(),
-          validator: validator,
-          initialValue: initialValue,
-          maxLength: maxLength,
         );
+
+  final String name;
+  final InputDecoration? decoration;
+  final String? Function(String?)? validator;
+  final String? initialValue;
+  final int? maxLength;
+  final void Function(String?)? onChanged;
+  final TextEditingController controller = useTextEditingController(text: '');
+
+  @override
+  Widget build(BuildContext context) {
+    return FormBuilderTextField(
+      name: name,
+      validator: validator,
+      decoration: decoration ?? const InputDecoration(),
+      initialValue: initialValue,
+      maxLength: maxLength,
+      onChanged: onChanged,
+      controller: controller,
+    );
+  }
 }

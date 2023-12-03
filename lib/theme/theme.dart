@@ -40,8 +40,8 @@ final ThemeData themedata = ThemeData(
     ),
     errorStyle: TextStyle(color: ColorTheme.yellow, fontSize: 16.0),
     counterStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
-    labelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
-    floatingLabelStyle: TextStyle(color: ColorTheme.lightGray, fontSize: 16.0),
+    labelStyle: TextStyle(color: ColorTheme.white, fontSize: 16.0),
+    floatingLabelStyle: TextStyle(color: ColorTheme.white, fontSize: 16.0),
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     shape: RoundedRectangleBorder(

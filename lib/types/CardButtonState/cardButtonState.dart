@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:turn1checker/types/EffectCheckButtonState/effectCheckButtonState.dart';
+import 'package:turn1checker/types/counterState/counterState.dart';
 
 part 'cardButtonState.freezed.dart';
 
@@ -17,12 +19,36 @@ sealed class ButtonWithOrderState {
   ButtonWithOrderState(this.order);
 }
 
-class EffectCheckButtonState extends ButtonWithOrderState {
+class EffectCheckButtonWithOrderState extends ButtonWithOrderState {
   final EffectCheckButtonState effectButton;
-  EffectCheckButtonState(int order, this.effectButton) : super(order);
+  EffectCheckButtonWithOrderState(int order, this.effectButton) : super(order);
+
+  get effectCheckButtonState => null;
+
+  EffectCheckButtonWithOrderState copyWith({
+    int? order,
+    EffectCheckButtonState? effectButton,
+  }) {
+    return EffectCheckButtonWithOrderState(
+      order ?? this.order,
+      effectButton ?? this.effectButton,
+    );
+  }
 }
 
-class CounterButtonState extends ButtonWithOrderState {
-  final CounterButtonState counterButton;
-  CounterButtonState(int order, this.counterButton) : super(order);
+class CounterButtonWithOrderState extends ButtonWithOrderState {
+  final CounterState counterButton;
+  CounterButtonWithOrderState(int order, this.counterButton) : super(order);
+
+  get counterState => null;
+
+  CounterButtonWithOrderState copyWith({
+    int? order,
+    CounterState? counterButton,
+  }) {
+    return CounterButtonWithOrderState(
+      order ?? this.order,
+      counterButton ?? this.counterButton,
+    );
+  }
 }
