@@ -6,9 +6,11 @@ import 'package:turn1checker/components/card/edit_counter.dart';
 import 'package:turn1checker/components/card/edit_effect_button.dart';
 import 'package:turn1checker/components/ui/buttons/CyanGradientRectangleButton.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:turn1checker/components/ui/buttons/primary_text_field.dart';
+import 'package:turn1checker/components/ui/inputs/primary_dropdown.dart';
+import 'package:turn1checker/components/ui/inputs/primary_text_field.dart';
 import 'package:turn1checker/model/cardButtons/cardButtons.dart';
 import 'package:turn1checker/model/deck/deck.dart';
+import 'package:turn1checker/model/realm.dart';
 import 'package:turn1checker/theme/color.dart';
 import 'package:turn1checker/types/CardButtonState/cardButtonState.dart';
 import 'package:turn1checker/utils/functions/getObjectId.dart';
@@ -30,6 +32,27 @@ class CardEditScreen extends HookConsumerWidget {
     final cardNotifier = ref.watch(cardEditNotifierProvider.notifier);
     final double mediaWidth = MediaQuery.of(context).size.width;
     final formKey = GlobalKey<FormBuilderState>();
+    final cardType = realm.all<CardType>();
+    final cardTypeItems = cardType
+        .map((e) => DropdownMenuItem(
+            value: e,
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color(e.color),
+                    border: Border.all(
+                        color: const Color.fromARGB(255, 87, 87, 87),
+                        width: 0.5),
+                  ),
+                  width: 16,
+                  height: 16,
+                ),
+                const SizedBox(width: 10),
+                Text(e.name)
+              ],
+            )))
+        .toList();
 
     return Scaffold(
         appBar: AppBar(
@@ -62,11 +85,21 @@ class CardEditScreen extends HookConsumerWidget {
                         children: [
                           PrimaryTextField(
                             name: 'name',
-                            decoration:
-                                const InputDecoration(label: Text('名前')),
+                            label: t.text.name,
                             onChanged: (value) => cardNotifier.updateState(
                                 (prev) => prev.copyWith(name: value ?? '')),
                           ),
+                          const SizedBox(height: 16),
+                          PrimaryDropDown(
+                              name: 'type',
+                              label: t.text.cardType,
+                              items: cardTypeItems,
+                              onChanged: (value) {
+                                cardNotifier.updateState((prev) =>
+                                    prev.copyWith(
+                                        color:
+                                            Color(value?.color ?? 0x00000000)));
+                              }),
                           Consumer(builder: (context, ref, w) {
                             var buttonList = ref
                                 .watch(cardEditNotifierProvider)

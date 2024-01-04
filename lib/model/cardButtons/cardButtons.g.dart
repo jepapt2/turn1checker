@@ -160,7 +160,7 @@ class CardType extends $CardType
   CardType(
     int id,
     String name,
-    String color,
+    int color,
     DateTime createdAt,
     DateTime updatedAt,
   ) {
@@ -184,9 +184,9 @@ class CardType extends $CardType
   set name(String value) => RealmObjectBase.set(this, 'name', value);
 
   @override
-  String get color => RealmObjectBase.get<String>(this, 'color') as String;
+  int get color => RealmObjectBase.get<int>(this, 'color') as int;
   @override
-  set color(String value) => RealmObjectBase.set(this, 'color', value);
+  set color(int value) => RealmObjectBase.set(this, 'color', value);
 
   @override
   DateTime get createdAt =>
@@ -216,7 +216,7 @@ class CardType extends $CardType
     return const SchemaObject(ObjectType.realmObject, CardType, 'CardType', [
       SchemaProperty('id', RealmPropertyType.int, primaryKey: true),
       SchemaProperty('name', RealmPropertyType.string),
-      SchemaProperty('color', RealmPropertyType.string),
+      SchemaProperty('color', RealmPropertyType.int),
       SchemaProperty('createdAt', RealmPropertyType.timestamp),
       SchemaProperty('updatedAt', RealmPropertyType.timestamp),
     ]);

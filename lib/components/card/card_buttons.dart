@@ -30,7 +30,7 @@ class CardButtonsList extends StatelessWidget {
               children: [
                 Container(
                   color: card.color,
-                  width: 4,
+                  width: 6,
                   height: double.infinity,
                 ),
                 const SizedBox(
@@ -38,7 +38,7 @@ class CardButtonsList extends StatelessWidget {
                 ),
                 Text(
                   card.name,
-                  style: const TextStyle(fontSize: 18, height: 1),
+                  style: const TextStyle(fontSize: 16, height: 1),
                 )
               ],
             ),
@@ -57,8 +57,7 @@ class CardButtonsList extends StatelessWidget {
                       color: Colors.lightBlue,
                       child: Column(
                         children: [
-                          Text(button.effectButton.description),
-                          Text(button.effectButton.count.toString()),
+                          Text(button.order.toString()),
                         ],
                       ),
                     ),
@@ -70,7 +69,7 @@ class CardButtonsList extends StatelessWidget {
                     color: Colors.lightBlue,
                     child: Column(
                       children: [
-                        Text(counter.counterButton.value.toString()),
+                        Text(counter.order.toString()),
                       ],
                     ),
                   );

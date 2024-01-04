@@ -9,4 +9,16 @@ deckNameMaxLengthError,Deck name must be $length characters or less.,デッキ�
 deckListAsyncError,An error occurred while getting the deck list.,デッキリストの取得に失敗しました
 cardEdit,CardEdit,カード編集
 register,Register,登録
+name,Name,名前
+counter,Counter,カウンター
+monster,Monster,モンスター
+ritualMonster,RitualMonster,儀式モンスター
+fusionMonster,FusionMonster,融合モンスター
+synchroMonster,SynchroMonster,シンクロモンスター
+xyzMonster,XyzMonster,エクシーズモンスター
+pendulumMonster,PendulumMonster,ペンデュラムモンスター
+linkMonster,LinkMonster,リンクモンスター
+spell,Spell,魔法
+trap,Trap,罠
+cardType,CardType,カードの種類
 hello,Heeey,こんちゃ

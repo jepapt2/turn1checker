@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 22 (11 per locale)
+/// Strings: 46 (23 per locale)
 ///
-/// Built on 2023-12-03 at 14:08 UTC
+/// Built on 2024-01-04 at 08:39 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -170,6 +170,18 @@ class _I18nTextJa {
 	String get deckListAsyncError => 'デッキリストの取得に失敗しました';
 	String get cardEdit => 'カード編集';
 	String get register => '登録';
+	String get name => '名前';
+	String get counter => 'カウンター';
+	String get monster => 'モンスター';
+	String get ritualMonster => '儀式モンスター';
+	String get fusionMonster => '融合モンスター';
+	String get synchroMonster => 'シンクロモンスター';
+	String get xyzMonster => 'エクシーズモンスター';
+	String get pendulumMonster => 'ペンデュラムモンスター';
+	String get linkMonster => 'リンクモンスター';
+	String get spell => '魔法';
+	String get trap => '罠';
+	String get cardType => 'カードの種類';
 	String get hello => 'こんちゃ';
 }
 
@@ -218,6 +230,18 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get deckListAsyncError => 'An error occurred while getting the deck list.';
 	@override String get cardEdit => 'CardEdit';
 	@override String get register => 'Register';
+	@override String get name => 'Name';
+	@override String get counter => 'Counter';
+	@override String get monster => 'Monster';
+	@override String get ritualMonster => 'RitualMonster';
+	@override String get fusionMonster => 'FusionMonster';
+	@override String get synchroMonster => 'SynchroMonster';
+	@override String get xyzMonster => 'XyzMonster';
+	@override String get pendulumMonster => 'PendulumMonster';
+	@override String get linkMonster => 'LinkMonster';
+	@override String get spell => 'Spell';
+	@override String get trap => 'Trap';
+	@override String get cardType => 'CardType';
 	@override String get hello => 'Heeey';
 }
 
@@ -237,6 +261,18 @@ extension on _I18nJa {
 			case 'text.deckListAsyncError': return 'デッキリストの取得に失敗しました';
 			case 'text.cardEdit': return 'カード編集';
 			case 'text.register': return '登録';
+			case 'text.name': return '名前';
+			case 'text.counter': return 'カウンター';
+			case 'text.monster': return 'モンスター';
+			case 'text.ritualMonster': return '儀式モンスター';
+			case 'text.fusionMonster': return '融合モンスター';
+			case 'text.synchroMonster': return 'シンクロモンスター';
+			case 'text.xyzMonster': return 'エクシーズモンスター';
+			case 'text.pendulumMonster': return 'ペンデュラムモンスター';
+			case 'text.linkMonster': return 'リンクモンスター';
+			case 'text.spell': return '魔法';
+			case 'text.trap': return '罠';
+			case 'text.cardType': return 'カードの種類';
 			case 'text.hello': return 'こんちゃ';
 			default: return null;
 		}
@@ -256,6 +292,18 @@ extension on _I18nEn {
 			case 'text.deckListAsyncError': return 'An error occurred while getting the deck list.';
 			case 'text.cardEdit': return 'CardEdit';
 			case 'text.register': return 'Register';
+			case 'text.name': return 'Name';
+			case 'text.counter': return 'Counter';
+			case 'text.monster': return 'Monster';
+			case 'text.ritualMonster': return 'RitualMonster';
+			case 'text.fusionMonster': return 'FusionMonster';
+			case 'text.synchroMonster': return 'SynchroMonster';
+			case 'text.xyzMonster': return 'XyzMonster';
+			case 'text.pendulumMonster': return 'PendulumMonster';
+			case 'text.linkMonster': return 'LinkMonster';
+			case 'text.spell': return 'Spell';
+			case 'text.trap': return 'Trap';
+			case 'text.cardType': return 'CardType';
 			case 'text.hello': return 'Heeey';
 			default: return null;
 		}

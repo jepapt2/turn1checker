@@ -53,4 +53,16 @@ class CardEditNotifier extends _$CardEditNotifier {
       }
     }).toList());
   }
+
+  void updateCounter(int order, CounterState Function(CounterState) update) {
+    state = state.copyWith(
+        buttonWithOrderState: state.buttonWithOrderState.map((e) {
+      if (e is CounterButtonWithOrderState && e.order == order) {
+        final button = e;
+        return button.copyWith(counterButton: update(e.counterButton));
+      } else {
+        return e;
+      }
+    }).toList());
+  }
 }

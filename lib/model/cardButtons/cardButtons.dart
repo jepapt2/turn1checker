@@ -27,7 +27,7 @@ class $CardType {
   @PrimaryKey()
   late int id;
   late String name;
-  late String color;
+  late int color;
   late DateTime createdAt;
   late DateTime updatedAt;
 }
