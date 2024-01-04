@@ -100,6 +100,28 @@ class CardEditScreen extends HookConsumerWidget {
                                         color:
                                             Color(value?.color ?? 0x00000000)));
                               }),
+                          const SizedBox(height: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(t.text.illustration,
+                                  style: const TextStyle(
+                                      color: ColorTheme.white, fontSize: 16)),
+                              const SizedBox(height: 4),
+                              Row(children: [
+                                CyanGradientRectangleButton(
+                                    text: 'ギャラリーから選択',
+                                    icon: Icons.check_box_outlined,
+                                    onPressed: () =>
+                                        cardNotifier.addEditEffectButton()),
+                                const SizedBox(width: 10),
+                                CyanGradientRectangleButton(
+                                    text: 'カメラから選択',
+                                    icon: Icons.check_box_outlined,
+                                    onPressed: () => cardNotifier.addCounter()),
+                              ]),
+                            ],
+                          ),
                           Consumer(builder: (context, ref, w) {
                             var buttonList = ref
                                 .watch(cardEditNotifierProvider)

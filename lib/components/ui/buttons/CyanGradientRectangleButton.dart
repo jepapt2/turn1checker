@@ -20,6 +20,7 @@ class CyanGradientRectangleButton extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         height: 48,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         decoration: const BoxDecoration(
           //0.4のborderをつける
           border: Border.fromBorderSide(BorderSide(
