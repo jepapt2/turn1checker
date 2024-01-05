@@ -1,6 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:turn1checker/components/card/card_buttons.dart';
 import 'package:turn1checker/components/card/edit_counter.dart';
 import 'package:turn1checker/components/card/edit_effect_button.dart';
@@ -14,6 +18,7 @@ import 'package:turn1checker/model/realm.dart';
 import 'package:turn1checker/theme/color.dart';
 import 'package:turn1checker/types/CardButtonState/cardButtonState.dart';
 import 'package:turn1checker/utils/functions/getObjectId.dart';
+import 'package:turn1checker/utils/functions/pick_and_crop_image.dart';
 import 'package:turn1checker/viewmodel/cardEdit/card_edit.dart';
 import 'package:turn1checker/viewmodel/deckEdit/deckEdit.dart';
 import '../i18n/i18n.g.dart';
@@ -26,8 +31,6 @@ class CardEditScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //gorouterで現在のルートを取得
-
     final Deck deck = ref.watch(deckEditNotifierProvider(getObjectId(deckId)));
     final cardNotifier = ref.watch(cardEditNotifierProvider.notifier);
     final double mediaWidth = MediaQuery.of(context).size.width;
@@ -95,10 +98,11 @@ class CardEditScreen extends HookConsumerWidget {
                               label: t.text.cardType,
                               items: cardTypeItems,
                               onChanged: (value) {
-                                cardNotifier.updateState((prev) =>
-                                    prev.copyWith(
-                                        color:
-                                            Color(value?.color ?? 0x00000000)));
+                                final color = value?.color;
+                                if (color != null) {
+                                  cardNotifier.updateState((prev) =>
+                                      prev.copyWith(color: Color(color)));
+                                }
                               }),
                           const SizedBox(height: 16),
                           Column(
@@ -110,15 +114,21 @@ class CardEditScreen extends HookConsumerWidget {
                               const SizedBox(height: 4),
                               Row(children: [
                                 CyanGradientRectangleButton(
-                                    text: 'ギャラリーから選択',
-                                    icon: Icons.check_box_outlined,
-                                    onPressed: () =>
-                                        cardNotifier.addEditEffectButton()),
-                                const SizedBox(width: 10),
-                                CyanGradientRectangleButton(
                                     text: 'カメラから選択',
                                     icon: Icons.check_box_outlined,
                                     onPressed: () => cardNotifier.addCounter()),
+                                const SizedBox(width: 10),
+                                CyanGradientRectangleButton(
+                                    text: 'ギャラリーから選択',
+                                    icon: Icons.image,
+                                    onPressed: () async {
+                                      final imagePath =
+                                          await pickAndCropImage();
+                                      if (imagePath != null) {
+                                        cardNotifier.updateState((prev) =>
+                                            prev.copyWith(image: imagePath));
+                                      }
+                                    }),
                               ]),
                             ],
                           ),

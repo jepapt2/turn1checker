@@ -1,0 +1,11 @@
+"NSPhotoLibraryUsageDescription" = "Access to the photo library is required to save card illustrations.";
+"NSMicrophoneUsageDescription" = "Access to the microphone is required to record audio.";
+"NSCameraUsageDescription" = "Access to the camera is required to save card illustrations.";
+
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by 富永青 on 2024/01/05.
+  
+*/

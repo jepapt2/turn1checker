@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CardButtonState {
   String get name => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
   List<ButtonWithOrderState> get buttonWithOrderState =>
       throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ abstract class $CardButtonStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
+      String image,
       Color color,
       List<ButtonWithOrderState> buttonWithOrderState});
 }
@@ -52,6 +54,7 @@ class _$CardButtonStateCopyWithImpl<$Res, $Val extends CardButtonState>
   @override
   $Res call({
     Object? name = null,
+    Object? image = null,
     Object? color = null,
     Object? buttonWithOrderState = null,
   }) {
@@ -59,6 +62,10 @@ class _$CardButtonStateCopyWithImpl<$Res, $Val extends CardButtonState>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       color: null == color
           ? _value.color
@@ -82,6 +89,7 @@ abstract class _$$CardButtonStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String name,
+      String image,
       Color color,
       List<ButtonWithOrderState> buttonWithOrderState});
 }
@@ -98,6 +106,7 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? image = null,
     Object? color = null,
     Object? buttonWithOrderState = null,
   }) {
@@ -105,6 +114,10 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       color: null == color
           ? _value.color
@@ -123,12 +136,15 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
 class _$CardButtonStateImpl implements _CardButtonState {
   const _$CardButtonStateImpl(
       {required this.name,
+      required this.image,
       required this.color,
       required final List<ButtonWithOrderState> buttonWithOrderState})
       : _buttonWithOrderState = buttonWithOrderState;
 
   @override
   final String name;
+  @override
+  final String image;
   @override
   final Color color;
   final List<ButtonWithOrderState> _buttonWithOrderState;
@@ -142,7 +158,7 @@ class _$CardButtonStateImpl implements _CardButtonState {
 
   @override
   String toString() {
-    return 'CardButtonState(name: $name, color: $color, buttonWithOrderState: $buttonWithOrderState)';
+    return 'CardButtonState(name: $name, image: $image, color: $color, buttonWithOrderState: $buttonWithOrderState)';
   }
 
   @override
@@ -151,13 +167,14 @@ class _$CardButtonStateImpl implements _CardButtonState {
         (other.runtimeType == runtimeType &&
             other is _$CardButtonStateImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.color, color) || other.color == color) &&
             const DeepCollectionEquality()
                 .equals(other._buttonWithOrderState, _buttonWithOrderState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, color,
+  int get hashCode => Object.hash(runtimeType, name, image, color,
       const DeepCollectionEquality().hash(_buttonWithOrderState));
 
   @JsonKey(ignore: true)
@@ -171,12 +188,15 @@ class _$CardButtonStateImpl implements _CardButtonState {
 abstract class _CardButtonState implements CardButtonState {
   const factory _CardButtonState(
           {required final String name,
+          required final String image,
           required final Color color,
           required final List<ButtonWithOrderState> buttonWithOrderState}) =
       _$CardButtonStateImpl;
 
   @override
   String get name;
+  @override
+  String get image;
   @override
   Color get color;
   @override

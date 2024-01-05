@@ -18,7 +18,7 @@ class CardEditNotifier extends _$CardEditNotifier {
 
   void initialCardState() {
     state = const CardButtonState(
-        name: '', color: Colors.white, buttonWithOrderState: []);
+        name: '', image: '', color: Colors.white, buttonWithOrderState: []);
   }
 
   void updateState(CardButtonState Function(CardButtonState) updatedCard) {

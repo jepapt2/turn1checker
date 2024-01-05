@@ -1,0 +1,11 @@
+"NSPhotoLibraryUsageDescription" = "カードイラストを保存するために写真ライブラリへのアクセスが必要です";
+"NSMicrophoneUsageDescription" = "音声を録音するためにマイクへのアクセスが必要です。";
+"NSCameraUsageDescription" = "カードイラストを保存するためにカメラへのアクセスが必要です。";
+
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by 富永青 on 2024/01/05.
+  
+*/

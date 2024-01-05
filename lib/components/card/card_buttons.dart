@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:turn1checker/model/cardButtons/cardButtons.dart';
 import 'package:turn1checker/theme/color.dart';
@@ -43,41 +45,47 @@ class CardButtonsList extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: cardWidth,
-            height: cardWidth,
-            color: Colors.lightBlue,
-            child: Column(
-              children: card.buttonWithOrderState.map((e) {
-                if (e is EffectCheckButtonWithOrderState) {
-                  final button = e;
-                  return Expanded(
-                    child: Container(
-                      width: cardWidth,
-                      color: Colors.lightBlue,
-                      child: Column(
-                        children: [
-                          Text(button.order.toString()),
-                        ],
-                      ),
+          Column(
+            children: [
+              SizedBox(
+                width: cardWidth,
+                height: cardWidth,
+                child: Column(
+                  children: [
+                    if (card.image != '') Image.file(File(card.image)),
+                    Column(
+                      children: card.buttonWithOrderState.map((e) {
+                        if (e is EffectCheckButtonWithOrderState) {
+                          final button = e;
+                          return Expanded(
+                            child: Container(
+                              width: cardWidth,
+                              child: Column(
+                                children: [
+                                  Text(button.order.toString()),
+                                ],
+                              ),
+                            ),
+                          );
+                        } else if (e is CounterButtonWithOrderState) {
+                          final counter = e;
+                          return Container(
+                            width: cardWidth,
+                            child: Column(
+                              children: [
+                                Text(counter.order.toString()),
+                              ],
+                            ),
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }).toList(),
                     ),
-                  );
-                } else if (e is CounterButtonWithOrderState) {
-                  final counter = e;
-                  return Container(
-                    width: cardWidth,
-                    color: Colors.lightBlue,
-                    child: Column(
-                      children: [
-                        Text(counter.order.toString()),
-                      ],
-                    ),
-                  );
-                } else {
-                  return Container();
-                }
-              }).toList(),
-            ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
