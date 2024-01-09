@@ -3,7 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:turn1checker/theme/color.dart';
 
 class PrimaryTextField extends StatelessWidget {
-  PrimaryTextField({
+  const PrimaryTextField({
     Key? key,
     required this.name,
     this.label,
@@ -21,7 +21,6 @@ class PrimaryTextField extends StatelessWidget {
   final String? initialValue;
   final int? maxLength;
   final void Function(String?)? onChanged;
-  final TextEditingController controller = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,6 @@ class PrimaryTextField extends StatelessWidget {
           initialValue: initialValue,
           maxLength: maxLength,
           onChanged: onChanged,
-          controller: controller,
           style: const TextStyle(color: ColorTheme.black),
         )
       ],

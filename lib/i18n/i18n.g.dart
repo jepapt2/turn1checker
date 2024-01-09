@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 48 (24 per locale)
+/// Strings: 50 (25 per locale)
 ///
-/// Built on 2024-01-05 at 15:18 UTC
+/// Built on 2024-01-05 at 15:54 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -183,6 +183,7 @@ class _I18nTextJa {
 	String get trap => '罠';
 	String get cardType => 'カードの種類';
 	String get illustration => 'イラスト';
+	String get cropIluustration => 'イラストの切り抜き';
 	String get hello => 'こんちゃ';
 }
 
@@ -244,6 +245,7 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get trap => 'Trap';
 	@override String get cardType => 'CardType';
 	@override String get illustration => 'Illustration';
+	@override String get cropIluustration => 'CropIllustration';
 	@override String get hello => 'Heeey';
 }
 
@@ -276,6 +278,7 @@ extension on _I18nJa {
 			case 'text.trap': return '罠';
 			case 'text.cardType': return 'カードの種類';
 			case 'text.illustration': return 'イラスト';
+			case 'text.cropIluustration': return 'イラストの切り抜き';
 			case 'text.hello': return 'こんちゃ';
 			default: return null;
 		}
@@ -308,6 +311,7 @@ extension on _I18nEn {
 			case 'text.trap': return 'Trap';
 			case 'text.cardType': return 'CardType';
 			case 'text.illustration': return 'Illustration';
+			case 'text.cropIluustration': return 'CropIllustration';
 			case 'text.hello': return 'Heeey';
 			default: return null;
 		}

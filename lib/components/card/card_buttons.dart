@@ -50,9 +50,9 @@ class CardButtonsList extends StatelessWidget {
               SizedBox(
                 width: cardWidth,
                 height: cardWidth,
-                child: Column(
+                child: Stack(
                   children: [
-                    if (card.image != '') Image.file(File(card.image)),
+                    if (card.image.isNotEmpty) Image.file(File(card.image)),
                     Column(
                       children: card.buttonWithOrderState.map((e) {
                         if (e is EffectCheckButtonWithOrderState) {

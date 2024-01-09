@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:turn1checker/i18n/i18n.g.dart';
 import 'package:turn1checker/theme/color.dart';
 
 Future<String?> pickAndCropImage() async {
@@ -15,14 +16,14 @@ Future<String?> pickAndCropImage() async {
       cropStyle: CropStyle.rectangle,
       uiSettings: [
         AndroidUiSettings(
-          toolbarTitle: 'Crop Image',
+          toolbarTitle: t.text.cropIluustration,
           toolbarColor: ColorTheme.primary,
           toolbarWidgetColor: ColorTheme.white,
           initAspectRatio: CropAspectRatioPreset.square,
           lockAspectRatio: true,
         ),
         IOSUiSettings(
-          title: 'イメージ',
+          title: t.text.cropIluustration,
           aspectRatioLockEnabled: true,
           aspectRatioPickerButtonHidden: true,
           resetAspectRatioEnabled: false,
