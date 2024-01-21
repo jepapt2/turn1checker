@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:turn1checker/components/ui/buttons/orange_floating_action_button.dart';
 import 'package:turn1checker/components/ui/buttons/primary_floating_action_button.dart';
 import 'package:turn1checker/theme/color.dart';
 import 'package:image/image.dart' as img;
@@ -129,7 +130,7 @@ class CameraScreen extends HookConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  PrimaryFloatingActionButton(
+                  OrangeFloatingActionButton(
                     onPressed: () async {
                       takePictureAndCrop();
                     },
