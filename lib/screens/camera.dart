@@ -11,12 +11,20 @@ import 'package:image/image.dart' as img;
 
 final cameraControllerProvider = FutureProvider<CameraController>((ref) async {
   final cameras = await availableCameras();
-  final camera = cameras.first;
-  if (camera == null) {
+  if (cameras.isEmpty) {
     throw Exception('No cameras available');
   }
-  return CameraController(camera, ResolutionPreset.medium,
+  final camera = cameras.first;
+  final cameraController = CameraController(camera, ResolutionPreset.medium,
       imageFormatGroup: ImageFormatGroup.jpeg);
+
+  await cameraController.initialize();
+
+  ref.onDispose(() {
+    cameraController.dispose();
+  });
+
+  return cameraController;
 });
 
 class CameraScreen extends HookConsumerWidget {
@@ -28,59 +36,27 @@ class CameraScreen extends HookConsumerWidget {
     if (cameraController == null) {
       return Container();
     }
-    final isCameraInitialized = useState(false);
-    final cardIllust = useState<XFile?>(null);
-    final cameraSizeContext =
-        useState<Map<String, Double?>>({"position": null, "size": null});
-    final ilustRexctSizeContext =
-        useState<Map<String, Double?>>({"position": null, "size": null});
 
     GlobalKey cameraKey = GlobalKey();
     GlobalKey illustRectKey = GlobalKey();
     final double mediaWidth = MediaQuery.of(context).size.width;
 
-    useEffect(() {
-      void initializeCamera() async {
-        await cameraController.initialize();
-
-        isCameraInitialized.value = true;
-      }
-
-      initializeCamera();
-
-      return () {
-        cameraController.dispose();
-      };
-    }, []);
-
-    if (!isCameraInitialized.value) {
-      return Container();
-    }
-
     takePictureAndCrop() async {
-      final XFile photo = await cameraController.takePicture();
-      final gwy = await img.decodeJpgFile(photo.path);
-      if (gwy == null) {
+      final XFile photoFile = await cameraController.takePicture();
+      final photo = await img.decodeJpgFile(photoFile.path);
+      if (photo == null) {
         return;
       }
 
-      RenderBox cameraObject =
-          cameraKey.currentContext!.findRenderObject() as RenderBox;
-      RenderBox illustObject =
-          illustRectKey.currentContext!.findRenderObject() as RenderBox;
-      // final cameraPosition = cameraObject.localToGlobal(Offset.zero);
-      // final illustSize = illustObject.size;
-      // final illustPosition = illustObject.localToGlobal(Offset.zero);
-
-      final imgWidth = gwy.data?.width;
-      final imgHeight = gwy.data?.height;
+      final imgWidth = photo.data?.width;
+      final imgHeight = photo.data?.height;
       if (imgWidth == null || imgHeight == null) {
         return;
       }
       final illustSize = imgWidth * 0.6;
       final illustPositionX = (imgWidth - illustSize) / 2;
       final illustPositionY = (imgHeight - illustSize) / 2;
-      final tes = img.copyCrop(gwy,
+      final cropImage = img.copyCrop(photo,
           x: illustPositionX.round(),
           y: illustPositionY.round(),
           width: illustSize.round(),
@@ -90,7 +66,7 @@ class CameraScreen extends HookConsumerWidget {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            content: Image.memory(img.encodeJpg(tes)),
+            content: Image.memory(img.encodeJpg(cropImage)),
             actions: <Widget>[
               TextButton(
                 child: const Text('Close'),
