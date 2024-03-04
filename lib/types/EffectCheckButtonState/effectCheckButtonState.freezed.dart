@@ -19,6 +19,7 @@ mixin _$EffectCheckButtonState {
   String get description => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
+  EffectLimitPeriod get limitPeriod => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EffectCheckButtonStateCopyWith<EffectCheckButtonState> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $EffectCheckButtonStateCopyWith<$Res> {
           $Res Function(EffectCheckButtonState) then) =
       _$EffectCheckButtonStateCopyWithImpl<$Res, EffectCheckButtonState>;
   @useResult
-  $Res call({String description, int count, int limit});
+  $Res call(
+      {String description,
+      int count,
+      int limit,
+      EffectLimitPeriod limitPeriod});
 }
 
 /// @nodoc
@@ -51,6 +56,7 @@ class _$EffectCheckButtonStateCopyWithImpl<$Res,
     Object? description = null,
     Object? count = null,
     Object? limit = null,
+    Object? limitPeriod = null,
   }) {
     return _then(_value.copyWith(
       description: null == description
@@ -65,6 +71,10 @@ class _$EffectCheckButtonStateCopyWithImpl<$Res,
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
+      limitPeriod: null == limitPeriod
+          ? _value.limitPeriod
+          : limitPeriod // ignore: cast_nullable_to_non_nullable
+              as EffectLimitPeriod,
     ) as $Val);
   }
 }
@@ -78,7 +88,11 @@ abstract class _$$EffectCheckButtonStateImplCopyWith<$Res>
       __$$EffectCheckButtonStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String description, int count, int limit});
+  $Res call(
+      {String description,
+      int count,
+      int limit,
+      EffectLimitPeriod limitPeriod});
 }
 
 /// @nodoc
@@ -97,6 +111,7 @@ class __$$EffectCheckButtonStateImplCopyWithImpl<$Res>
     Object? description = null,
     Object? count = null,
     Object? limit = null,
+    Object? limitPeriod = null,
   }) {
     return _then(_$EffectCheckButtonStateImpl(
       description: null == description
@@ -111,6 +126,10 @@ class __$$EffectCheckButtonStateImplCopyWithImpl<$Res>
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
               as int,
+      limitPeriod: null == limitPeriod
+          ? _value.limitPeriod
+          : limitPeriod // ignore: cast_nullable_to_non_nullable
+              as EffectLimitPeriod,
     ));
   }
 }
@@ -119,7 +138,10 @@ class __$$EffectCheckButtonStateImplCopyWithImpl<$Res>
 
 class _$EffectCheckButtonStateImpl implements _EffectCheckButtonState {
   const _$EffectCheckButtonStateImpl(
-      {required this.description, required this.count, required this.limit});
+      {required this.description,
+      required this.count,
+      required this.limit,
+      this.limitPeriod = EffectLimitPeriod.turn});
 
   @override
   final String description;
@@ -127,10 +149,13 @@ class _$EffectCheckButtonStateImpl implements _EffectCheckButtonState {
   final int count;
   @override
   final int limit;
+  @override
+  @JsonKey()
+  final EffectLimitPeriod limitPeriod;
 
   @override
   String toString() {
-    return 'EffectCheckButtonState(description: $description, count: $count, limit: $limit)';
+    return 'EffectCheckButtonState(description: $description, count: $count, limit: $limit, limitPeriod: $limitPeriod)';
   }
 
   @override
@@ -141,11 +166,14 @@ class _$EffectCheckButtonStateImpl implements _EffectCheckButtonState {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.count, count) || other.count == count) &&
-            (identical(other.limit, limit) || other.limit == limit));
+            (identical(other.limit, limit) || other.limit == limit) &&
+            (identical(other.limitPeriod, limitPeriod) ||
+                other.limitPeriod == limitPeriod));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, description, count, limit);
+  int get hashCode =>
+      Object.hash(runtimeType, description, count, limit, limitPeriod);
 
   @JsonKey(ignore: true)
   @override
@@ -159,7 +187,8 @@ abstract class _EffectCheckButtonState implements EffectCheckButtonState {
   const factory _EffectCheckButtonState(
       {required final String description,
       required final int count,
-      required final int limit}) = _$EffectCheckButtonStateImpl;
+      required final int limit,
+      final EffectLimitPeriod limitPeriod}) = _$EffectCheckButtonStateImpl;
 
   @override
   String get description;
@@ -167,6 +196,8 @@ abstract class _EffectCheckButtonState implements EffectCheckButtonState {
   int get count;
   @override
   int get limit;
+  @override
+  EffectLimitPeriod get limitPeriod;
   @override
   @JsonKey(ignore: true)
   _$$EffectCheckButtonStateImplCopyWith<_$EffectCheckButtonStateImpl>

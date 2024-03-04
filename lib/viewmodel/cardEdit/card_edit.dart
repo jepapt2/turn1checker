@@ -18,14 +18,14 @@ class CardEditNotifier extends _$CardEditNotifier {
 
   void initialCardState() {
     state = const CardButtonState(
-        name: '', image: '', color: Colors.white, buttonWithOrderState: []);
+        name: '', color: Colors.white, buttonWithOrderState: []);
   }
 
   void updateState(CardButtonState Function(CardButtonState) updatedCard) {
     state = updatedCard(state);
   }
 
-  void addEditEffectButton() {
+  void addEffectButton() {
     state = state.copyWith(buttonWithOrderState: [
       ...state.buttonWithOrderState,
       EffectCheckButtonWithOrderState(state.buttonWithOrderState.length + 1,
@@ -64,5 +64,12 @@ class CardEditNotifier extends _$CardEditNotifier {
         return e;
       }
     }).toList());
+  }
+
+  void removeButton(int order) {
+    state = state.copyWith(
+        buttonWithOrderState: state.buttonWithOrderState
+            .where((element) => element.order != order)
+            .toList());
   }
 }

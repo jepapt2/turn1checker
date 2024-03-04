@@ -9,6 +9,7 @@ class PrimaryDropDown<T> extends StatelessWidget {
     required this.items,
     this.onChanged,
     this.label,
+    this.initialValue,
   }) : super(
           key: key,
         );
@@ -16,7 +17,8 @@ class PrimaryDropDown<T> extends StatelessWidget {
   final String name;
   final List<DropdownMenuItem<T>> items;
   final String? label;
-  final void Function(T?)? onChanged;
+  final void Function(T)? onChanged;
+  final T? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +31,16 @@ class PrimaryDropDown<T> extends StatelessWidget {
         const SizedBox(height: 2),
       ],
       FormBuilderDropdown(
+          initialValue: initialValue,
           dropdownColor: ColorTheme.white,
           style: const TextStyle(color: ColorTheme.black),
           name: name,
           items: items,
-          onChanged: onChanged,
+          onChanged: (value) {
+            if (value != null && onChanged != null) {
+              onChanged!(value);
+            }
+          },
           icon: const Icon(
             Icons.arrow_drop_down,
             color: ColorTheme.black,

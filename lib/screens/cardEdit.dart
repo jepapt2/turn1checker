@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -75,7 +77,12 @@ class CardEditScreen extends HookConsumerWidget {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: Consumer(builder: (context, ref, w) {
                       final card = ref.watch(cardEditNotifierProvider);
-                      return Center(child: CardButtonsList(card: card));
+                      return Center(
+                          child: Stack(
+                        children: [
+                          CardButtonsList(card: card),
+                        ],
+                      ));
                     })),
               ),
             ),
@@ -86,7 +93,8 @@ class CardEditScreen extends HookConsumerWidget {
                   child: Column(
                     children: [
                       Container(
-                          padding: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.only(
+                              left: 16, right: 16, top: 16),
                           child: Column(
                             children: [
                               PrimaryTextField(
@@ -122,8 +130,17 @@ class CardEditScreen extends HookConsumerWidget {
                                     CyanGradientRectangleButton(
                                         text: 'カメラから選択',
                                         icon: Icons.check_box_outlined,
-                                        onPressed: () =>
-                                            context.push('/camera')),
+                                        onPressed: () async {
+                                          final result =
+                                              await context.push('/camera');
+                                          if (result is Uint8List) {
+                                            final image = result;
+                                            cardNotifier.updateState((prev) =>
+                                                prev.copyWith(
+                                                    image:
+                                                        Image.memory(image)));
+                                          }
+                                        }),
                                     const SizedBox(width: 10),
                                     CyanGradientRectangleButton(
                                         text: 'ギャラリーから選択',
@@ -132,26 +149,40 @@ class CardEditScreen extends HookConsumerWidget {
                                           final imagePath =
                                               await pickAndCropImage();
                                           if (imagePath != null) {
+                                            final image = imagePath;
                                             cardNotifier.updateState((prev) =>
                                                 prev.copyWith(
-                                                    image: imagePath));
+                                                    image: Image.file(
+                                                        File(image))));
                                           }
                                         }),
                                   ]),
                                 ],
                               ),
+                              const SizedBox(height: 16),
+                              const Divider(
+                                color: ColorTheme.primary,
+                                thickness: 0.4,
+                              ),
                               Consumer(builder: (context, ref, w) {
                                 var buttonList = ref
                                     .watch(cardEditNotifierProvider)
                                     .buttonWithOrderState;
-                                return ListView.builder(
+
+                                return ListView.separated(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
+                                  separatorBuilder: (context, index) =>
+                                      const Divider(
+                                    color: ColorTheme.primary,
+                                    thickness: 0.4,
+                                  ),
                                   itemCount: buttonList.length,
                                   itemBuilder: (context, index) {
                                     final editButtonInput = buttonList[index];
                                     if (editButtonInput
                                         is EffectCheckButtonWithOrderState) {
+                                      final button = editButtonInput;
                                       return EditEffectButtonBox(
                                           order: index + 1);
                                     }
@@ -161,6 +192,13 @@ class CardEditScreen extends HookConsumerWidget {
                               }),
                             ],
                           )),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Divider(
+                          color: ColorTheme.primary,
+                          thickness: 0.4,
+                        ),
+                      ),
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: const BoxDecoration(
@@ -176,7 +214,8 @@ class CardEditScreen extends HookConsumerWidget {
                             child: CyanGradientRectangleButton(
                                 text: 'ボタンを追加',
                                 icon: Icons.check_box_outlined,
-                                onPressed: () => context),
+                                onPressed: () =>
+                                    cardNotifier.addEffectButton()),
                           ),
                           const SizedBox(width: 10),
                           Expanded(

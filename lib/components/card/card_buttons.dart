@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:turn1checker/components/card/effect_check_button.dart';
 import 'package:turn1checker/model/cardButtons/cardButtons.dart';
 import 'package:turn1checker/theme/color.dart';
 import 'package:turn1checker/types/CardButtonState/cardButtonState.dart';
@@ -16,6 +17,16 @@ class CardButtonsList extends StatelessWidget {
     final double mediaWidth = MediaQuery.of(context).size.width;
     final double cardWidth =
         getCardWidth(mediaWidth: mediaWidth, crossAxisCount: 2);
+
+    Widget cardImage() {
+      final image = card.image;
+      if (image != null) {
+        return image;
+      } else {
+        return const SizedBox();
+      }
+    }
+
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: ColorTheme.cardBorderGray, width: 1),
@@ -47,29 +58,22 @@ class CardButtonsList extends StatelessWidget {
           ),
           Column(
             children: [
-              SizedBox(
+              Container(
+                color: ColorTheme.background,
                 width: cardWidth,
                 height: cardWidth,
                 child: Stack(
                   children: [
-                    if (card.image.isNotEmpty) Image.file(File(card.image)),
+                    cardImage(),
                     Column(
                       children: card.buttonWithOrderState.map((e) {
                         if (e is EffectCheckButtonWithOrderState) {
                           final button = e;
-                          return Expanded(
-                            child: Container(
-                              width: cardWidth,
-                              child: Column(
-                                children: [
-                                  Text(button.order.toString()),
-                                ],
-                              ),
-                            ),
-                          );
-                        } else if (e is CounterButtonWithOrderState) {
+                          return EffectCheckButtonWidget(state: button);
+                        }
+                        if (e is CounterButtonWithOrderState) {
                           final counter = e;
-                          return Container(
+                          return SizedBox(
                             width: cardWidth,
                             child: Column(
                               children: [
@@ -77,9 +81,8 @@ class CardButtonsList extends StatelessWidget {
                               ],
                             ),
                           );
-                        } else {
-                          return Container();
                         }
+                        return const SizedBox();
                       }).toList(),
                     ),
                   ],

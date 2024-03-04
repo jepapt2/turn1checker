@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 50 (25 per locale)
+/// Strings: 68 (34 per locale)
 ///
-/// Built on 2024-01-05 at 15:54 UTC
+/// Built on 2024-03-02 at 08:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -184,7 +184,16 @@ class _I18nTextJa {
 	String get cardType => 'カードの種類';
 	String get illustration => 'イラスト';
 	String get cropIluustration => 'イラストの切り抜き';
-	String get hello => 'こんちゃ';
+	String get cameraDescription => '枠内にイラストを収めて撮影してください';
+	String get camera => 'カメラ';
+	String get illustrationSetting => 'イラストの設定';
+	String get illustrationConfirm => 'この画像を登録しますか？';
+	String get yes => 'はい';
+	String get cancel => 'キャンセル';
+	String get turn => 'ターン';
+	String get duel => 'デュエル';
+	String get numberOfTimes => '回数';
+	String get effectDescription => '効果説明';
 }
 
 // Path: <root>
@@ -246,7 +255,16 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get cardType => 'CardType';
 	@override String get illustration => 'Illustration';
 	@override String get cropIluustration => 'CropIllustration';
-	@override String get hello => 'Heeey';
+	@override String get cameraDescription => 'Please take a picture of the illustration within the frame.';
+	@override String get camera => 'Camera';
+	@override String get illustrationSetting => 'IllustrationSetting';
+	@override String get illustrationConfirm => 'register this image?';
+	@override String get yes => 'Yes';
+	@override String get cancel => 'Cancel';
+	@override String get turn => 'Turn';
+	@override String get duel => 'duel';
+	@override String get numberOfTimes => 'NumberOfTimes';
+	@override String get effectDescription => 'EffectDescription';
 }
 
 /// Flat map(s) containing all translations.
@@ -279,7 +297,16 @@ extension on _I18nJa {
 			case 'text.cardType': return 'カードの種類';
 			case 'text.illustration': return 'イラスト';
 			case 'text.cropIluustration': return 'イラストの切り抜き';
-			case 'text.hello': return 'こんちゃ';
+			case 'text.cameraDescription': return '枠内にイラストを収めて撮影してください';
+			case 'text.camera': return 'カメラ';
+			case 'text.illustrationSetting': return 'イラストの設定';
+			case 'text.illustrationConfirm': return 'この画像を登録しますか？';
+			case 'text.yes': return 'はい';
+			case 'text.cancel': return 'キャンセル';
+			case 'text.turn': return 'ターン';
+			case 'text.duel': return 'デュエル';
+			case 'text.numberOfTimes': return '回数';
+			case 'text.effectDescription': return '効果説明';
 			default: return null;
 		}
 	}
@@ -312,7 +339,16 @@ extension on _I18nEn {
 			case 'text.cardType': return 'CardType';
 			case 'text.illustration': return 'Illustration';
 			case 'text.cropIluustration': return 'CropIllustration';
-			case 'text.hello': return 'Heeey';
+			case 'text.cameraDescription': return 'Please take a picture of the illustration within the frame.';
+			case 'text.camera': return 'Camera';
+			case 'text.illustrationSetting': return 'IllustrationSetting';
+			case 'text.illustrationConfirm': return 'register this image?';
+			case 'text.yes': return 'Yes';
+			case 'text.cancel': return 'Cancel';
+			case 'text.turn': return 'Turn';
+			case 'text.duel': return 'duel';
+			case 'text.numberOfTimes': return 'NumberOfTimes';
+			case 'text.effectDescription': return 'EffectDescription';
 			default: return null;
 		}
 	}

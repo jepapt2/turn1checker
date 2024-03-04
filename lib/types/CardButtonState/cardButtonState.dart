@@ -9,7 +9,7 @@ part 'cardButtonState.freezed.dart';
 abstract class CardButtonState with _$CardButtonState {
   const factory CardButtonState({
     required String name,
-    required String image,
+    Image? image,
     required Color color,
     required List<ButtonWithOrderState> buttonWithOrderState,
   }) = _CardButtonState;
