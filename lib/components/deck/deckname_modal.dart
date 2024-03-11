@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:turn1checker/components/ui/buttons/cyan_gradient_button.dart';
+import 'package:turn1checker/components/ui/buttons/gradient_button.dart';
 import 'package:turn1checker/components/ui/dialogs/primary_simple_dialog.dart';
 import 'package:turn1checker/components/ui/inputs/primary_text_field.dart';
 import 'package:turn1checker/viewmodel/deckList/deckList.dart';
@@ -16,7 +16,7 @@ class DeckNameModal extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = GlobalKey<FormBuilderState>();
     final decksNotifier = ref.watch(deckListNotifierProvider.notifier);
-    return PrimarySimpleModal(
+    return PrimarySimpleDialog(
       title: Text(t.text.registerDeckName),
       child: Column(
         children: [
@@ -29,7 +29,7 @@ class DeckNameModal extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 16),
-          CyanGradientButton(
+          GradientButton(
               onPressed: () async {
                 if (formKey.currentState!.saveAndValidate()) {
                   Navigator.pop(context);

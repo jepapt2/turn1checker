@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CardButtonState {
   String get name => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  Image? get image => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
   List<ButtonWithOrderState> get buttonWithOrderState =>
       throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $CardButtonStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String image,
+      Image? image,
       Color color,
       List<ButtonWithOrderState> buttonWithOrderState});
 }
@@ -54,7 +54,7 @@ class _$CardButtonStateCopyWithImpl<$Res, $Val extends CardButtonState>
   @override
   $Res call({
     Object? name = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? color = null,
     Object? buttonWithOrderState = null,
   }) {
@@ -63,10 +63,10 @@ class _$CardButtonStateCopyWithImpl<$Res, $Val extends CardButtonState>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Image?,
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -89,7 +89,7 @@ abstract class _$$CardButtonStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String name,
-      String image,
+      Image? image,
       Color color,
       List<ButtonWithOrderState> buttonWithOrderState});
 }
@@ -106,7 +106,7 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? color = null,
     Object? buttonWithOrderState = null,
   }) {
@@ -115,10 +115,10 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Image?,
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
 class _$CardButtonStateImpl implements _CardButtonState {
   const _$CardButtonStateImpl(
       {required this.name,
-      required this.image,
+      this.image,
       required this.color,
       required final List<ButtonWithOrderState> buttonWithOrderState})
       : _buttonWithOrderState = buttonWithOrderState;
@@ -144,7 +144,7 @@ class _$CardButtonStateImpl implements _CardButtonState {
   @override
   final String name;
   @override
-  final String image;
+  final Image? image;
   @override
   final Color color;
   final List<ButtonWithOrderState> _buttonWithOrderState;
@@ -188,7 +188,7 @@ class _$CardButtonStateImpl implements _CardButtonState {
 abstract class _CardButtonState implements CardButtonState {
   const factory _CardButtonState(
           {required final String name,
-          required final String image,
+          final Image? image,
           required final Color color,
           required final List<ButtonWithOrderState> buttonWithOrderState}) =
       _$CardButtonStateImpl;
@@ -196,7 +196,7 @@ abstract class _CardButtonState implements CardButtonState {
   @override
   String get name;
   @override
-  String get image;
+  Image? get image;
   @override
   Color get color;
   @override

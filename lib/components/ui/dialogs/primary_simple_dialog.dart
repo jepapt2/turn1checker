@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:turn1checker/theme/color.dart';
 
-class PrimarySimpleModal extends StatelessWidget {
-  const PrimarySimpleModal({Key? key, required this.title, required this.child})
+class PrimarySimpleDialog extends StatelessWidget {
+  const PrimarySimpleDialog(
+      {Key? key, required this.title, required this.child})
       : super(key: key);
 
   final Widget title;
@@ -13,7 +14,7 @@ class PrimarySimpleModal extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double dialogWidth = screenWidth * 0.8;
     return SimpleDialog(
-      titlePadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+      titlePadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       contentPadding: const EdgeInsets.all(0),
       title: Center(child: title),
       children: [

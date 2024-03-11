@@ -10,6 +10,7 @@ class $EffectCheckButton {
   late ObjectId id;
   late String description;
   late int limit;
+  late String period;
   late DateTime createdAt;
   late DateTime updatedAt;
   late $ButtonsOrder? order;

@@ -14,7 +14,7 @@ class OrangeFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: onPressed,
       backgroundColor: Colors.transparent,
-      foregroundColor: ColorTheme.white,
+      foregroundColor: ColorTheme.primary,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(100))),
       child: Container(
@@ -26,8 +26,8 @@ class OrangeFloatingActionButton extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  ColorTheme.secondaryGradientStart,
-                  ColorTheme.secondaryGradientEnd,
+                  ColorTheme.orangeGradientStart,
+                  ColorTheme.orangeGradientEnd,
                 ])),
         child: child,
       ),

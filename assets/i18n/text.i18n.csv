@@ -23,4 +23,13 @@ trap,Trap,罠
 cardType,CardType,カードの種類
 illustration,Illustration,イラスト
 cropIluustration,CropIllustration,イラストの切り抜き
-hello,Heeey,こんちゃ
+cameraDescription,Please take a picture of the illustration within the frame.,枠内にイラストを収めて撮影してください
+camera,Camera,カメラ
+illustrationSetting,IllustrationSetting,イラストの設定
+illustrationConfirm,register this image?,この画像を登録しますか？
+yes,Yes,はい
+cancel,Cancel,キャンセル
+turn,Turn,ターン
+duel,duel,デュエル
+numberOfTimes,NumberOfTimes,回数
+effectDescription,EffectDescription,効果説明
