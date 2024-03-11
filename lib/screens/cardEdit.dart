@@ -168,64 +168,69 @@ class CardEditScreen extends HookConsumerWidget {
                                 var buttonList = ref
                                     .watch(cardEditNotifierProvider)
                                     .buttonWithOrderState;
-
-                                return ListView.separated(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  separatorBuilder: (context, index) =>
-                                      const Divider(
-                                    color: ColorTheme.primary,
-                                    thickness: 0.4,
-                                  ),
-                                  itemCount: buttonList.length,
-                                  itemBuilder: (context, index) {
-                                    final editButtonInput = buttonList[index];
-                                    if (editButtonInput
-                                        is EffectCheckButtonWithOrderState) {
-                                      final button = editButtonInput;
-                                      return EditEffectButtonBox(
-                                          order: index + 1);
-                                    }
-                                    return EditCounterBox(order: index + 1);
-                                  },
+                                return Column(
+                                  children: [
+                                    ListView.separated(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      separatorBuilder: (context, index) =>
+                                          const Divider(
+                                        color: ColorTheme.primary,
+                                        thickness: 0.4,
+                                      ),
+                                      itemCount: buttonList.length,
+                                      itemBuilder: (context, index) {
+                                        final editButtonInput =
+                                            buttonList[index];
+                                        if (editButtonInput
+                                            is EffectCheckButtonWithOrderState) {
+                                          final button = editButtonInput;
+                                          return EditEffectButtonBox(
+                                              order: index + 1);
+                                        }
+                                        return EditCounterBox(order: index + 1);
+                                      },
+                                    ),
+                                    if (buttonList.length < 3)
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          top: 16,
+                                        ),
+                                        decoration: const BoxDecoration(
+                                          border: Border(
+                                            top: BorderSide(
+                                              color: ColorTheme.primary,
+                                              width: 0.4,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Row(children: [
+                                          Expanded(
+                                            child: CyanGradientRectangleButton(
+                                                text: 'ボタンを追加',
+                                                icon: Icons.check_box_outlined,
+                                                onPressed: () => cardNotifier
+                                                    .addEffectButton()),
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Expanded(
+                                            child: CyanGradientRectangleButton(
+                                                text: 'カウンターを追加',
+                                                icon: Icons.check_box_outlined,
+                                                onPressed: () =>
+                                                    cardNotifier.addCounter()),
+                                          ),
+                                        ]),
+                                      ),
+                                    const SizedBox(
+                                      height: 40,
+                                    ),
+                                  ],
                                 );
                               }),
                             ],
                           )),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Divider(
-                          color: ColorTheme.primary,
-                          thickness: 0.4,
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: ColorTheme.primary,
-                              width: 0.4,
-                            ),
-                          ),
-                        ),
-                        child: Row(children: [
-                          Expanded(
-                            child: CyanGradientRectangleButton(
-                                text: 'ボタンを追加',
-                                icon: Icons.check_box_outlined,
-                                onPressed: () =>
-                                    cardNotifier.addEffectButton()),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: CyanGradientRectangleButton(
-                                text: 'カウンターを追加',
-                                icon: Icons.check_box_outlined,
-                                onPressed: () => cardNotifier.addCounter()),
-                          ),
-                        ]),
-                      ),
                     ],
                   ),
                 ),
