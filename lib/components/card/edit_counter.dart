@@ -46,11 +46,11 @@ class EditCounterBox extends HookConsumerWidget {
                         label: '${t.text.button}1',
                         items: const [
                           DropdownMenuItem(
-                            value: CounterButtonIncrimentType.add,
+                            value: CounterButtonIncrementType.add,
                             child: Text('+'),
                           ),
                           DropdownMenuItem(
-                            value: CounterButtonIncrimentType.remove,
+                            value: CounterButtonIncrementType.remove,
                             child: Text('-'),
                           ),
                         ],
@@ -83,11 +83,11 @@ class EditCounterBox extends HookConsumerWidget {
                         label: '${t.text.button}2',
                         items: const [
                           DropdownMenuItem(
-                            value: CounterButtonIncrimentType.add,
+                            value: CounterButtonIncrementType.add,
                             child: Text('+'),
                           ),
                           DropdownMenuItem(
-                            value: CounterButtonIncrimentType.remove,
+                            value: CounterButtonIncrementType.remove,
                             child: Text('-'),
                           ),
                         ],

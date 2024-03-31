@@ -12,7 +12,7 @@ import 'package:turn1checker/utils/functions/list_find_function.dart';
 
 part 'card_edit.g.dart';
 
-enum CounterButtonIncrimentType { add, remove }
+enum CounterButtonIncrementType { add, remove }
 
 @riverpod
 class CardEditNotifier extends _$CardEditNotifier {
@@ -76,7 +76,7 @@ class CardEditNotifier extends _$CardEditNotifier {
     required int order,
     required int buttonIndex,
     int? value,
-    CounterButtonIncrimentType? incrimentType,
+    CounterButtonIncrementType? incrimentType,
   }) {
     updateCounter(order, (prev) {
       List<int> buttons = prev.buttons;
@@ -87,10 +87,10 @@ class CardEditNotifier extends _$CardEditNotifier {
 
       final isIncriment = incrimentType ??
           (prev.buttons[buttonIndex] > 0
-              ? CounterButtonIncrimentType.add
-              : CounterButtonIncrimentType.remove);
+              ? CounterButtonIncrementType.add
+              : CounterButtonIncrementType.remove);
 
-      final updateValue = isIncriment == CounterButtonIncrimentType.add
+      final updateValue = isIncriment == CounterButtonIncrementType.add
           ? buttons[buttonIndex].abs()
           : buttons[buttonIndex].abs() * -1;
       buttons =
