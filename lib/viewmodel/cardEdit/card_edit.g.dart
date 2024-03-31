@@ -6,7 +6,7 @@ part of 'card_edit.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cardEditNotifierHash() => r'538d5088e9fcd83f07d11e68ec04313dc57d5d81';
+String _$cardEditNotifierHash() => r'703d9570cd2445b45ec7d4db7b14ddfb14ea38a4';
 
 /// See also [CardEditNotifier].
 @ProviderFor(CardEditNotifier)

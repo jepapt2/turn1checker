@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:turn1checker/components/card/counter.dart';
 import 'package:turn1checker/components/card/effect_check_button.dart';
 import 'package:turn1checker/model/cardButtons/cardButtons.dart';
 import 'package:turn1checker/theme/color.dart';
@@ -14,9 +15,7 @@ class CardButtonsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double mediaWidth = MediaQuery.of(context).size.width;
-    final double cardWidth =
-        getCardWidth(mediaWidth: mediaWidth, crossAxisCount: 2);
+    final double cardWidth = getCardWidth(context: context, crossAxisCount: 2);
 
     Widget cardImage() {
       final image = card.image;
@@ -73,14 +72,9 @@ class CardButtonsList extends StatelessWidget {
                         }
                         if (e is CounterButtonWithOrderState) {
                           final counter = e;
-                          return SizedBox(
-                            width: cardWidth,
-                            child: Column(
-                              children: [
-                                Text(counter.order.toString()),
-                              ],
-                            ),
-                          );
+                          return CounterWidget(
+                              state: counter,
+                              buttonsLength: card.buttonWithOrderState.length);
                         }
                         return const SizedBox();
                       }).toList(),

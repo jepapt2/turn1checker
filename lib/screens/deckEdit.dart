@@ -45,7 +45,7 @@ class DeckEditScreen extends HookConsumerWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
-                childAspectRatio: cardAspectRatio(mediaWidth: mediaWidth)),
+                childAspectRatio: cardAspectRatio(context: context)),
             itemCount: 6,
             itemBuilder: (BuildContext context, int index) {
               return Card(

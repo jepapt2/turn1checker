@@ -33,6 +33,11 @@ final ThemeData themedata = ThemeData(
     inputDecorationTheme: const InputDecorationTheme(
       filled: true,
       fillColor: ColorTheme.white,
+      hintStyle: TextStyle(
+        color: ColorTheme.lightGray,
+        fontSize: 16.0,
+        fontWeight: FontWeight.normal,
+      ),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       border: OutlineInputBorder(
           borderSide: BorderSide.none,
@@ -56,7 +61,7 @@ final ThemeData themedata = ThemeData(
       labelStyle: TextStyle(color: ColorTheme.white, fontSize: 16.0),
       floatingLabelStyle: TextStyle(color: ColorTheme.white, fontSize: 16.0),
     ),
-    dropdownMenuTheme: DropdownMenuThemeData(
+    dropdownMenuTheme: const DropdownMenuThemeData(
         inputDecorationTheme: InputDecorationTheme(),
         textStyle: TextStyle(color: ColorTheme.black, fontSize: 16.0),
         menuStyle: MenuStyle(

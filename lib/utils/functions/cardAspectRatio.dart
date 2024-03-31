@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-double getCardWidth({required double mediaWidth, int crossAxisCount = 2}) {
+double getCardWidth({required BuildContext context, int crossAxisCount = 3}) {
+  final double mediaWidth = MediaQuery.of(context).size.width;
   const horizonPadding = 16;
   final horizonTotalPadding = horizonPadding * crossAxisCount;
 
@@ -8,9 +9,10 @@ double getCardWidth({required double mediaWidth, int crossAxisCount = 2}) {
   return cardWidth;
 }
 
-double cardAspectRatio({required double mediaWidth, int crossAxisCount = 2}) {
+double cardAspectRatio(
+    {required BuildContext context, int crossAxisCount = 3}) {
   final cardWidth =
-      getCardWidth(mediaWidth: mediaWidth, crossAxisCount: crossAxisCount);
+      getCardWidth(context: context, crossAxisCount: crossAxisCount);
   const cardNameHeight = 20;
 
   return cardWidth / (cardWidth + cardNameHeight);

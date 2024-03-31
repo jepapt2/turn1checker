@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 68 (34 per locale)
+/// Strings: 72 (36 per locale)
 ///
-/// Built on 2024-03-02 at 08:52 UTC
+/// Built on 2024-03-11 at 11:20 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -194,6 +194,8 @@ class _I18nTextJa {
 	String get duel => 'デュエル';
 	String get numberOfTimes => '回数';
 	String get effectDescription => '効果説明';
+	String get initialValue => '初期値';
+	String get button => 'ボタン';
 }
 
 // Path: <root>
@@ -265,6 +267,8 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get duel => 'duel';
 	@override String get numberOfTimes => 'NumberOfTimes';
 	@override String get effectDescription => 'EffectDescription';
+	@override String get initialValue => 'InitialValue';
+	@override String get button => 'Button';
 }
 
 /// Flat map(s) containing all translations.
@@ -307,6 +311,8 @@ extension on _I18nJa {
 			case 'text.duel': return 'デュエル';
 			case 'text.numberOfTimes': return '回数';
 			case 'text.effectDescription': return '効果説明';
+			case 'text.initialValue': return '初期値';
+			case 'text.button': return 'ボタン';
 			default: return null;
 		}
 	}
@@ -349,6 +355,8 @@ extension on _I18nEn {
 			case 'text.duel': return 'duel';
 			case 'text.numberOfTimes': return 'NumberOfTimes';
 			case 'text.effectDescription': return 'EffectDescription';
+			case 'text.initialValue': return 'InitialValue';
+			case 'text.button': return 'Button';
 			default: return null;
 		}
 	}
