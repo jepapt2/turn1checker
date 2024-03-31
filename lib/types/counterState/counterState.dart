@@ -7,14 +7,6 @@ abstract class CounterState with _$CounterState {
   const factory CounterState({
     required int value,
     required int initialValue,
-    required List<CounterButtonState> buttons,
+    required List<int> buttons,
   }) = _CounterState;
-}
-
-@freezed
-abstract class CounterButtonState with _$CounterButtonState {
-  const factory CounterButtonState({
-    required int value,
-    required bool isIncrement,
-  }) = _CounterButtonState;
 }
