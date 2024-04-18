@@ -57,7 +57,9 @@ class GradientButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              color: ColorTheme.white,
+              color: theme == GradientButtonTheme.cyan
+                  ? ColorTheme.white
+                  : ColorTheme.primary,
               fontSize: fontSize ?? 16,
               fontWeight: FontWeight.bold,
             ),

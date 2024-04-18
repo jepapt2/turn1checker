@@ -1,10 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:turn1checker/i18n/i18n.g.dart';
 import 'package:turn1checker/theme/color.dart';
 
-Future<String?> pickAndCropImage() async {
+Future<Uint8List?> pickAndCropImage() async {
   final picker = ImagePicker();
   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
   final cropper = ImageCropper();
@@ -32,7 +33,7 @@ Future<String?> pickAndCropImage() async {
     );
 
     if (croppedFile != null) {
-      return croppedFile.path;
+      return croppedFile.readAsBytes();
     }
   }
   return null;

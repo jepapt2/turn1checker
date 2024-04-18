@@ -1,6 +1,6 @@
 import 'package:realm/realm.dart';
 
-import '../cardButtons/cardButtons.dart';
+import '../cardButtons/card_buttons.dart';
 part 'deck.g.dart';
 
 @RealmModel()

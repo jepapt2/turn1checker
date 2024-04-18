@@ -1,8 +1,8 @@
 import 'package:realm/realm.dart';
-import 'package:turn1checker/model/cardButtons/cardButtons.dart';
+import 'package:turn1checker/model/cardButtons/card_buttons.dart';
 import 'package:turn1checker/model/counter/counter.dart';
 
-part 'effectCheckButton.g.dart';
+part 'effect_check_button.g.dart';
 
 @RealmModel()
 class $EffectCheckButton {
@@ -11,7 +11,5 @@ class $EffectCheckButton {
   late String description;
   late int limit;
   late String period;
-  late DateTime createdAt;
-  late DateTime updatedAt;
-  late $ButtonsOrder? order;
+  late int order;
 }

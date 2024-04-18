@@ -3,6 +3,11 @@ List<T> listFindUpdate<T>({
   required int index,
   required T value,
 }) {
-  list[index] = value;
-  return List<T>.from(list);
+  return list.map((e) {
+    if (e == list[index]) {
+      return value;
+    } else {
+      return e;
+    }
+  }).toList();
 }

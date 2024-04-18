@@ -1,6 +1,10 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:turn1checker/types/EffectCheckButtonState/effectCheckButtonState.dart';
+import 'package:turn1checker/types/card_type.dart';
 import 'package:turn1checker/types/counterState/counterState.dart';
 
 part 'cardButtonState.freezed.dart';
@@ -9,8 +13,9 @@ part 'cardButtonState.freezed.dart';
 abstract class CardButtonState with _$CardButtonState {
   const factory CardButtonState({
     required String name,
-    Image? image,
-    required Color color,
+    File? image,
+    Uint8List? editImage,
+    required CardType type,
     required List<ButtonWithOrderState> buttonWithOrderState,
   }) = _CardButtonState;
 }

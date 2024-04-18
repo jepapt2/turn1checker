@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'effectCheckButton.dart';
+part of 'effect_check_button.dart';
 
 // **************************************************************************
 // RealmObjectGenerator
@@ -13,16 +13,12 @@ class EffectCheckButton extends $EffectCheckButton
     String description,
     int limit,
     String period,
-    DateTime createdAt,
-    DateTime updatedAt, {
-    ButtonsOrder? order,
-  }) {
+    int order,
+  ) {
     RealmObjectBase.set(this, 'id', id);
     RealmObjectBase.set(this, 'description', description);
     RealmObjectBase.set(this, 'limit', limit);
     RealmObjectBase.set(this, 'period', period);
-    RealmObjectBase.set(this, 'createdAt', createdAt);
-    RealmObjectBase.set(this, 'updatedAt', updatedAt);
     RealmObjectBase.set(this, 'order', order);
   }
 
@@ -51,25 +47,9 @@ class EffectCheckButton extends $EffectCheckButton
   set period(String value) => RealmObjectBase.set(this, 'period', value);
 
   @override
-  DateTime get createdAt =>
-      RealmObjectBase.get<DateTime>(this, 'createdAt') as DateTime;
+  int get order => RealmObjectBase.get<int>(this, 'order') as int;
   @override
-  set createdAt(DateTime value) =>
-      RealmObjectBase.set(this, 'createdAt', value);
-
-  @override
-  DateTime get updatedAt =>
-      RealmObjectBase.get<DateTime>(this, 'updatedAt') as DateTime;
-  @override
-  set updatedAt(DateTime value) =>
-      RealmObjectBase.set(this, 'updatedAt', value);
-
-  @override
-  ButtonsOrder? get order =>
-      RealmObjectBase.get<ButtonsOrder>(this, 'order') as ButtonsOrder?;
-  @override
-  set order(covariant ButtonsOrder? value) =>
-      RealmObjectBase.set(this, 'order', value);
+  set order(int value) => RealmObjectBase.set(this, 'order', value);
 
   @override
   Stream<RealmObjectChanges<EffectCheckButton>> get changes =>
@@ -89,10 +69,7 @@ class EffectCheckButton extends $EffectCheckButton
       SchemaProperty('description', RealmPropertyType.string),
       SchemaProperty('limit', RealmPropertyType.int),
       SchemaProperty('period', RealmPropertyType.string),
-      SchemaProperty('createdAt', RealmPropertyType.timestamp),
-      SchemaProperty('updatedAt', RealmPropertyType.timestamp),
-      SchemaProperty('order', RealmPropertyType.object,
-          optional: true, linkTarget: 'ButtonsOrder'),
+      SchemaProperty('order', RealmPropertyType.int),
     ]);
   }
 }

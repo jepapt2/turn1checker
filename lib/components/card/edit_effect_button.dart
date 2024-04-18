@@ -10,14 +10,16 @@ import 'package:turn1checker/types/EffectCheckButtonState/effectCheckButtonState
 import 'package:turn1checker/viewmodel/cardEdit/card_edit.dart';
 
 class EditEffectButtonBox extends HookConsumerWidget {
-  const EditEffectButtonBox({Key? key, required this.order}) : super(key: key);
+  const EditEffectButtonBox(
+      {Key? key, required this.order, required this.cardEditNotifier})
+      : super(key: key);
 
   final int order;
+  final CardEditNotifier cardEditNotifier;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cardNotifier = ref.watch(cardEditNotifierProvider.notifier);
     return Container(
-      padding: const EdgeInsets.only(top: 8, bottom: 20),
+      padding: const EdgeInsets.only(top: 8, bottom: 12),
       child: Row(
         children: [
           Expanded(
@@ -40,7 +42,7 @@ class EditEffectButtonBox extends HookConsumerWidget {
                           ),
                         ],
                         onChanged: (value) =>
-                            cardNotifier.updateEffectCheckButton(order,
+                            cardEditNotifier.updateEffectCheckButton(order,
                                 (prev) => prev.copyWith(limitPeriod: value)),
                       ),
                     ),
@@ -50,7 +52,7 @@ class EditEffectButtonBox extends HookConsumerWidget {
                         label: t.text.numberOfTimes,
                         name: 'limit',
                         onChanged: (value) =>
-                            cardNotifier.updateEffectCheckButton(order,
+                            cardEditNotifier.updateEffectCheckButton(order,
                                 (prev) => prev.copyWith(limit: value ?? 1)),
                         items: const [
                           DropdownMenuItem(
@@ -78,14 +80,15 @@ class EditEffectButtonBox extends HookConsumerWidget {
                 PrimaryTextField(
                   label: t.text.effectDescription,
                   name: 'effectCheckButton$order',
-                  onChanged: (value) => cardNotifier.updateEffectCheckButton(
-                      order, (prev) => prev.copyWith(description: value ?? '')),
+                  onChanged: (value) =>
+                      cardEditNotifier.updateEffectCheckButton(order,
+                          (prev) => prev.copyWith(description: value ?? '')),
                 ),
               ],
             ),
           ),
           IconButton(
-              onPressed: () => cardNotifier.removeButton(order),
+              onPressed: () => cardEditNotifier.removeButton(order),
               icon: const Icon(
                 Icons.delete_outline,
                 color: ColorTheme.white,

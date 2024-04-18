@@ -41,6 +41,7 @@ class CounterButtonWidget extends StatelessWidget {
                     color: ColorTheme.white, fontWeight: FontWeight.bold),
               ),
             ),
+            const SizedBox(width: 2),
             FittedBox(
               child: Text(
                 value.abs().toString(),
