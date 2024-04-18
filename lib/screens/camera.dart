@@ -72,7 +72,7 @@ class CameraScreen extends HookConsumerWidget {
             y: illustPositionY.round(),
             width: illustSize.round(),
             height: illustSize.round());
-        return img.encodeJpg(cropImage);
+        return img.encodePng(cropImage);
       } finally {
         isLoading.value = false;
       }

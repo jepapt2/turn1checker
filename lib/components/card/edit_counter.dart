@@ -13,14 +13,16 @@ import 'package:turn1checker/types/EffectCheckButtonState/effectCheckButtonState
 import 'package:turn1checker/viewmodel/cardEdit/card_edit.dart';
 
 class EditCounterBox extends HookConsumerWidget {
-  const EditCounterBox({Key? key, required this.order}) : super(key: key);
+  const EditCounterBox(
+      {Key? key, required this.order, required this.cardEditNotifier})
+      : super(key: key);
 
   final int order;
+  final CardEditNotifier cardEditNotifier;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cardNotifier = ref.watch(cardEditNotifierProvider.notifier);
     return Container(
-      padding: const EdgeInsets.only(top: 8, bottom: 20),
+      padding: const EdgeInsets.only(top: 8, bottom: 12),
       child: Row(
         children: [
           Expanded(
@@ -31,10 +33,11 @@ class EditCounterBox extends HookConsumerWidget {
                   label: t.text.initialValue,
                   name: 'initialValue',
                   placeholder: '0',
-                  onChanged: (value) => cardNotifier.updateCounter(
-                      order,
-                      (prev) =>
-                          prev.copyWith(initialValue: value, value: value)),
+                  onChanged: (value) => cardEditNotifier.cardButtonsNotifier
+                      .updateCounter(
+                          order,
+                          (prev) =>
+                              prev.copyWith(initialValue: value, value: value)),
                 ),
                 const SizedBox(height: 8),
                 Row(
@@ -55,7 +58,7 @@ class EditCounterBox extends HookConsumerWidget {
                           ),
                         ],
                         onChanged: (value) {
-                          cardNotifier.updateCounterButton(
+                          cardEditNotifier.updateCounterButton(
                               order: order,
                               buttonIndex: 0,
                               incrimentType: value);
@@ -68,7 +71,7 @@ class EditCounterBox extends HookConsumerWidget {
                             maxLength: 4,
                             name: 'counterButton1',
                             onChanged: (value) {
-                              cardNotifier.updateCounterButton(
+                              cardEditNotifier.updateCounterButton(
                                   order: order, value: value, buttonIndex: 0);
                             }))
                   ],
@@ -92,7 +95,7 @@ class EditCounterBox extends HookConsumerWidget {
                           ),
                         ],
                         onChanged: (value) {
-                          cardNotifier.updateCounterButton(
+                          cardEditNotifier.updateCounterButton(
                               order: order,
                               buttonIndex: 1,
                               incrimentType: value);
@@ -105,7 +108,7 @@ class EditCounterBox extends HookConsumerWidget {
                           maxLength: 4,
                           name: 'counterButton1',
                           onChanged: (value) =>
-                              cardNotifier.updateCounterButton(
+                              cardEditNotifier.updateCounterButton(
                                   order: order, buttonIndex: 1, value: value)),
                     )
                   ],
@@ -114,7 +117,7 @@ class EditCounterBox extends HookConsumerWidget {
             ),
           ),
           IconButton(
-              onPressed: () => cardNotifier.removeButton(order),
+              onPressed: () => cardEditNotifier.removeButton(order),
               icon: const Icon(
                 Icons.delete_outline,
                 color: ColorTheme.white,

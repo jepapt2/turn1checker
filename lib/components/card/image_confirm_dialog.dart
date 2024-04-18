@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:turn1checker/components/ui/buttons/gradient_button.dart';
@@ -5,8 +6,8 @@ import 'package:turn1checker/components/ui/buttons/primary_button.dart';
 import 'package:turn1checker/components/ui/dialogs/primary_simple_dialog.dart';
 import 'package:turn1checker/i18n/i18n.g.dart';
 
-class ImageConfirmModal extends StatelessWidget {
-  const ImageConfirmModal(
+class ImageConfirmDialog extends StatelessWidget {
+  const ImageConfirmDialog(
       {Key? key, required this.image, required this.onConfirm})
       : super(key: key);
 
@@ -61,7 +62,7 @@ void showImageConfirmDialog({
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return ImageConfirmModal(image: image, onConfirm: onConfirm);
+      return ImageConfirmDialog(image: image, onConfirm: onConfirm);
     },
   );
 }

@@ -12,7 +12,7 @@ import 'package:turn1checker/model/deck/deck.dart';
 import 'package:turn1checker/utils/functions/cardAspectRatio.dart';
 
 import 'package:turn1checker/utils/validations/decks.dart';
-import 'package:turn1checker/viewmodel/deckEdit/deckEdit.dart';
+import 'package:turn1checker/viewmodel/deck_edit/deck_edit.dart';
 import '../i18n/i18n.g.dart';
 
 class DeckEditScreen extends HookConsumerWidget {
@@ -31,8 +31,6 @@ class DeckEditScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final Deck deck = ref.watch(deckEditNotifierProvider(getObjectId()));
-    final double mediaWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(deck.name),

@@ -17,8 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CardButtonState {
   String get name => throw _privateConstructorUsedError;
-  Image? get image => throw _privateConstructorUsedError;
-  Color get color => throw _privateConstructorUsedError;
+  File? get image => throw _privateConstructorUsedError;
+  Uint8List? get editImage => throw _privateConstructorUsedError;
+  CardType get type => throw _privateConstructorUsedError;
   List<ButtonWithOrderState> get buttonWithOrderState =>
       throw _privateConstructorUsedError;
 
@@ -35,8 +36,9 @@ abstract class $CardButtonStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      Image? image,
-      Color color,
+      File? image,
+      Uint8List? editImage,
+      CardType type,
       List<ButtonWithOrderState> buttonWithOrderState});
 }
 
@@ -55,7 +57,8 @@ class _$CardButtonStateCopyWithImpl<$Res, $Val extends CardButtonState>
   $Res call({
     Object? name = null,
     Object? image = freezed,
-    Object? color = null,
+    Object? editImage = freezed,
+    Object? type = null,
     Object? buttonWithOrderState = null,
   }) {
     return _then(_value.copyWith(
@@ -66,11 +69,15 @@ class _$CardButtonStateCopyWithImpl<$Res, $Val extends CardButtonState>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image?,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color,
+              as File?,
+      editImage: freezed == editImage
+          ? _value.editImage
+          : editImage // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CardType,
       buttonWithOrderState: null == buttonWithOrderState
           ? _value.buttonWithOrderState
           : buttonWithOrderState // ignore: cast_nullable_to_non_nullable
@@ -89,8 +96,9 @@ abstract class _$$CardButtonStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String name,
-      Image? image,
-      Color color,
+      File? image,
+      Uint8List? editImage,
+      CardType type,
       List<ButtonWithOrderState> buttonWithOrderState});
 }
 
@@ -107,7 +115,8 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? image = freezed,
-    Object? color = null,
+    Object? editImage = freezed,
+    Object? type = null,
     Object? buttonWithOrderState = null,
   }) {
     return _then(_$CardButtonStateImpl(
@@ -118,11 +127,15 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image?,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color,
+              as File?,
+      editImage: freezed == editImage
+          ? _value.editImage
+          : editImage // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CardType,
       buttonWithOrderState: null == buttonWithOrderState
           ? _value._buttonWithOrderState
           : buttonWithOrderState // ignore: cast_nullable_to_non_nullable
@@ -137,16 +150,19 @@ class _$CardButtonStateImpl implements _CardButtonState {
   const _$CardButtonStateImpl(
       {required this.name,
       this.image,
-      required this.color,
+      this.editImage,
+      required this.type,
       required final List<ButtonWithOrderState> buttonWithOrderState})
       : _buttonWithOrderState = buttonWithOrderState;
 
   @override
   final String name;
   @override
-  final Image? image;
+  final File? image;
   @override
-  final Color color;
+  final Uint8List? editImage;
+  @override
+  final CardType type;
   final List<ButtonWithOrderState> _buttonWithOrderState;
   @override
   List<ButtonWithOrderState> get buttonWithOrderState {
@@ -158,7 +174,7 @@ class _$CardButtonStateImpl implements _CardButtonState {
 
   @override
   String toString() {
-    return 'CardButtonState(name: $name, image: $image, color: $color, buttonWithOrderState: $buttonWithOrderState)';
+    return 'CardButtonState(name: $name, image: $image, editImage: $editImage, type: $type, buttonWithOrderState: $buttonWithOrderState)';
   }
 
   @override
@@ -168,13 +184,19 @@ class _$CardButtonStateImpl implements _CardButtonState {
             other is _$CardButtonStateImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.color, color) || other.color == color) &&
+            const DeepCollectionEquality().equals(other.editImage, editImage) &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality()
                 .equals(other._buttonWithOrderState, _buttonWithOrderState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, image, color,
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      image,
+      const DeepCollectionEquality().hash(editImage),
+      type,
       const DeepCollectionEquality().hash(_buttonWithOrderState));
 
   @JsonKey(ignore: true)
@@ -188,17 +210,20 @@ class _$CardButtonStateImpl implements _CardButtonState {
 abstract class _CardButtonState implements CardButtonState {
   const factory _CardButtonState(
           {required final String name,
-          final Image? image,
-          required final Color color,
+          final File? image,
+          final Uint8List? editImage,
+          required final CardType type,
           required final List<ButtonWithOrderState> buttonWithOrderState}) =
       _$CardButtonStateImpl;
 
   @override
   String get name;
   @override
-  Image? get image;
+  File? get image;
   @override
-  Color get color;
+  Uint8List? get editImage;
+  @override
+  CardType get type;
   @override
   List<ButtonWithOrderState> get buttonWithOrderState;
   @override

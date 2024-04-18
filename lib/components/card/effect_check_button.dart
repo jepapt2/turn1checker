@@ -6,25 +6,25 @@ import 'package:turn1checker/types/EffectCheckButtonState/effectCheckButtonState
 import 'package:turn1checker/viewmodel/cardEdit/card_edit.dart';
 
 class EffectCheckButtonWidget extends HookConsumerWidget {
-  const EffectCheckButtonWidget({Key? key, required this.state})
+  const EffectCheckButtonWidget(
+      {Key? key,
+      required this.state,
+      required this.onPress,
+      required this.onReset})
       : super(key: key);
 
   final EffectCheckButtonWithOrderState state;
+  final void Function() onPress;
+  final void Function() onReset;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final EffectCheckButtonState button = state.effectButton;
-    final cardNotifier = ref.watch(cardEditNotifierProvider.notifier);
+
     return Expanded(
       child: GestureDetector(
-        onTap: () => cardNotifier.updateEffectCheckButton(state.order, (prev) {
-          if (prev.count >= prev.limit) {
-            return prev;
-          }
-          return prev.copyWith(count: prev.count + 1);
-        }),
-        onLongPress: () => cardNotifier.updateEffectCheckButton(
-            state.order, (prev) => prev.copyWith(count: 0)),
+        onTap: () => onPress(),
+        onLongPress: () => onReset(),
         child: Stack(
           children: [
             Container(

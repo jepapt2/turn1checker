@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:turn1checker/hooks/deck.dart';
 import 'package:turn1checker/model/deck/deck.dart';
 
-part 'deckEdit.g.dart';
+part 'deck_edit.g.dart';
 
 @riverpod
 class DeckEditNotifier extends _$DeckEditNotifier {

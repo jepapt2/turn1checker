@@ -3,24 +3,31 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:turn1checker/components/card/counter.dart';
 import 'package:turn1checker/components/card/effect_check_button.dart';
-import 'package:turn1checker/model/cardButtons/cardButtons.dart';
+import 'package:turn1checker/model/cardButtons/card_buttons.dart';
 import 'package:turn1checker/theme/color.dart';
 import 'package:turn1checker/types/CardButtonState/cardButtonState.dart';
 import 'package:turn1checker/utils/functions/cardAspectRatio.dart';
+import 'package:turn1checker/viewmodel/card_buttons/card_buttons.dart';
 
 class CardButtonsList extends StatelessWidget {
-  const CardButtonsList({Key? key, required this.card}) : super(key: key);
+  const CardButtonsList(
+      {Key? key, required this.card, this.cardButtonsNotifier})
+      : super(key: key);
 
   final CardButtonState card;
+  final CardButtonsNotifier? cardButtonsNotifier;
 
   @override
   Widget build(BuildContext context) {
     final double cardWidth = getCardWidth(context: context, crossAxisCount: 2);
 
     Widget cardImage() {
+      final editImage = card.editImage;
       final image = card.image;
-      if (image != null) {
-        return image;
+      if (editImage != null) {
+        return Image.memory(editImage);
+      } else if (image != null) {
+        return Image.file(image);
       } else {
         return const SizedBox();
       }
@@ -41,7 +48,7 @@ class CardButtonsList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  color: card.color,
+                  color: Color(card.type.color),
                   width: 6,
                   height: double.infinity,
                 ),
@@ -68,13 +75,24 @@ class CardButtonsList extends StatelessWidget {
                       children: card.buttonWithOrderState.map((e) {
                         if (e is EffectCheckButtonWithOrderState) {
                           final button = e;
-                          return EffectCheckButtonWidget(state: button);
+                          return EffectCheckButtonWidget(
+                            state: button,
+                            onPress: () => cardButtonsNotifier
+                                ?.pressEffectCheckButton(button.order),
+                            onReset: () => cardButtonsNotifier
+                                ?.resetEffectCheckButton(button.order),
+                          );
                         }
                         if (e is CounterButtonWithOrderState) {
                           final counter = e;
                           return CounterWidget(
-                              state: counter,
-                              buttonsLength: card.buttonWithOrderState.length);
+                            state: counter,
+                            buttonsLength: card.buttonWithOrderState.length,
+                            onCount: (value) => cardButtonsNotifier
+                                ?.pressCounterButton(counter.order, value),
+                            onReset: () => cardButtonsNotifier
+                                ?.resetCounterButton(counter.order),
+                          );
                         }
                         return const SizedBox();
                       }).toList(),

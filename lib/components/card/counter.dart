@@ -12,16 +12,21 @@ import 'package:turn1checker/viewmodel/cardEdit/card_edit.dart';
 
 class CounterWidget extends HookConsumerWidget {
   const CounterWidget(
-      {Key? key, required this.state, required this.buttonsLength})
+      {Key? key,
+      required this.state,
+      required this.buttonsLength,
+      required this.onCount,
+      required this.onReset})
       : super(key: key);
 
   final CounterButtonWithOrderState state;
   final int buttonsLength;
+  final void Function(int value) onCount;
+  final void Function() onReset;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final CounterState counter = state.counterButton;
-    final cardNotifier = ref.watch(cardEditNotifierProvider.notifier);
     final double cardWidth = getCardWidth(context: context, crossAxisCount: 2);
     final minWidgetHeight = cardWidth / 3;
     final bool isMinSize = buttonsLength >= 3;
@@ -46,7 +51,7 @@ class CounterWidget extends HookConsumerWidget {
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Visibility(
-            visible: isMinSize,
+            visible: buttonsLength != 1,
             child: SizedBox(
               height: minWidgetHeight * 0.05,
             ),
@@ -54,7 +59,10 @@ class CounterWidget extends HookConsumerWidget {
           Flexible(
             child: Stack(
               children: [
-                Center(
+                Align(
+                  alignment: buttonsLength == 1
+                      ? Alignment.center
+                      : Alignment.topCenter,
                   child: Container(
                     constraints: BoxConstraints(
                       minWidth: valueHeight * 1.75,
@@ -77,7 +85,9 @@ class CounterWidget extends HookConsumerWidget {
                 Align(
                   alignment: Alignment.topRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.only(
+                      right: 8,
+                    ),
                     child: SizedBox(
                       width: isMinSize ? 20 : 24,
                       height: isMinSize ? 20 : 24,
@@ -91,9 +101,7 @@ class CounterWidget extends HookConsumerWidget {
                                       borderRadius: BorderRadius.circular(
                                           0)))), // Set the size to be a square with a side length of 40
                           padding: const EdgeInsets.all(0),
-                          onPressed: () => cardNotifier.updateCounter(
-                              state.order,
-                              (p0) => p0.copyWith(value: p0.initialValue)),
+                          onPressed: () => onReset(),
                           icon: Icon(
                             Icons.refresh,
                             size: isMinSize ? 16 : 20,
@@ -116,8 +124,7 @@ class CounterWidget extends HookConsumerWidget {
               children: state.counterButton.buttons
                   .map((e) => CounterButtonWidget(
                       height: buttonHeight,
-                      onPressed: () =>
-                          cardNotifier.pressCounterButton(state.order, e),
+                      onPressed: () => onCount(e),
                       value: e))
                   .toList(),
             ),

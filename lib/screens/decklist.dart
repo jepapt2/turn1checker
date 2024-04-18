@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:turn1checker/components/deck/decklist_tile.dart';
 import 'package:turn1checker/components/deck/deckname_modal.dart';
+import 'package:turn1checker/hooks/card.dart';
 import 'package:turn1checker/hooks/deck.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/model/deck/deck.dart';
@@ -17,6 +18,7 @@ class DeckListScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<Deck> decks = ref.watch(deckListNotifierProvider);
+    final cards = CardHooks().getCardList();
 
     return SafeArea(
       child: Scaffold(

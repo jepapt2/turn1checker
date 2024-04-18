@@ -35,3 +35,6 @@ numberOfTimes,NumberOfTimes,回数
 effectDescription,EffectDescription,効果説明
 initialValue,InitialValue,初期値
 button,Button,ボタン
+save,Save,保存
+imageSaveError,Failed to save the image.,画像の保存に失敗しました
+cardSaveError,Failed to save the card.,カードの保存に失敗しました

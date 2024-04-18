@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 72 (36 per locale)
+/// Strings: 78 (39 per locale)
 ///
-/// Built on 2024-03-11 at 11:20 UTC
+/// Built on 2024-04-18 at 14:45 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -196,6 +196,9 @@ class _I18nTextJa {
 	String get effectDescription => '効果説明';
 	String get initialValue => '初期値';
 	String get button => 'ボタン';
+	String get save => '保存';
+	String get imageSaveError => '画像の保存に失敗しました';
+	String get cardSaveError => 'カードの保存に失敗しました';
 }
 
 // Path: <root>
@@ -269,6 +272,9 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get effectDescription => 'EffectDescription';
 	@override String get initialValue => 'InitialValue';
 	@override String get button => 'Button';
+	@override String get save => 'Save';
+	@override String get imageSaveError => 'Failed to save the image.';
+	@override String get cardSaveError => 'Failed to save the card.';
 }
 
 /// Flat map(s) containing all translations.
@@ -313,6 +319,9 @@ extension on _I18nJa {
 			case 'text.effectDescription': return '効果説明';
 			case 'text.initialValue': return '初期値';
 			case 'text.button': return 'ボタン';
+			case 'text.save': return '保存';
+			case 'text.imageSaveError': return '画像の保存に失敗しました';
+			case 'text.cardSaveError': return 'カードの保存に失敗しました';
 			default: return null;
 		}
 	}
@@ -357,6 +366,9 @@ extension on _I18nEn {
 			case 'text.effectDescription': return 'EffectDescription';
 			case 'text.initialValue': return 'InitialValue';
 			case 'text.button': return 'Button';
+			case 'text.save': return 'Save';
+			case 'text.imageSaveError': return 'Failed to save the image.';
+			case 'text.cardSaveError': return 'Failed to save the card.';
 			default: return null;
 		}
 	}

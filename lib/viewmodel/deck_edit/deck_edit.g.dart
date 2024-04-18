@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'deckEdit.dart';
+part of 'deck_edit.dart';
 
 // **************************************************************************
 // RiverpodGenerator
