@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 import 'package:realm/realm.dart';
+import 'package:turn1checker/components/card/card_buttons.dart';
 import 'package:turn1checker/components/deck/decklist_tile.dart';
 import 'package:turn1checker/components/deck/deckname_modal.dart';
 import 'package:turn1checker/components/ui/buttons/primary_floating_action_button.dart';
@@ -10,9 +11,11 @@ import 'package:turn1checker/components/ui/buttons/primary_floating_action_butto
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/model/deck/deck.dart';
 import 'package:turn1checker/utils/functions/cardAspectRatio.dart';
+import 'package:turn1checker/utils/functions/card_class_convert.dart';
 
 import 'package:turn1checker/utils/validations/decks.dart';
 import 'package:turn1checker/viewmodel/deck_edit/deck_edit.dart';
+import 'package:turn1checker/viewmodel/local_path/local_path.dart';
 import '../i18n/i18n.g.dart';
 
 class DeckEditScreen extends HookConsumerWidget {
@@ -44,11 +47,17 @@ class DeckEditScreen extends HookConsumerWidget {
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
                 childAspectRatio: cardAspectRatio(context: context)),
-            itemCount: 6,
+            itemCount: deck.cards.length,
             itemBuilder: (BuildContext context, int index) {
-              return Card(
-                color: Colors.blue,
-                //正方形にするために高さを横幅と同じにする
+              final card = deck.cards[index];
+              return GestureDetector(
+                onTap: () => context.push('/edit/${deck.id}/card/${card.id}'),
+                child: AbsorbPointer(
+                  absorbing: true,
+                  child: CardButtonsList(
+                    card: cardButtonsConvertDbToState(card),
+                  ),
+                ),
               );
             }),
       ),

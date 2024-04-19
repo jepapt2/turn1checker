@@ -6,7 +6,7 @@ part of 'card_edit.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cardEditNotifierHash() => r'1e2dcaa3d3e1b0722c03719759aed1b4c8740c67';
+String _$cardEditNotifierHash() => r'26c2d220d4fc5d81946b9e163bd9687fcbdbd559';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,10 +34,10 @@ abstract class _$CardEditNotifier
   late final ObjectId deckId;
   late final ObjectId? cardId;
 
-  CardButtonState build({
-    required ObjectId deckId,
+  CardButtonState build(
+    ObjectId deckId,
     ObjectId? cardId,
-  });
+  );
 }
 
 /// See also [CardEditNotifier].
@@ -50,13 +50,13 @@ class CardEditNotifierFamily extends Family<CardButtonState> {
   const CardEditNotifierFamily();
 
   /// See also [CardEditNotifier].
-  CardEditNotifierProvider call({
-    required ObjectId deckId,
+  CardEditNotifierProvider call(
+    ObjectId deckId,
     ObjectId? cardId,
-  }) {
+  ) {
     return CardEditNotifierProvider(
-      deckId: deckId,
-      cardId: cardId,
+      deckId,
+      cardId,
     );
   }
 
@@ -65,8 +65,8 @@ class CardEditNotifierFamily extends Family<CardButtonState> {
     covariant CardEditNotifierProvider provider,
   ) {
     return call(
-      deckId: provider.deckId,
-      cardId: provider.cardId,
+      provider.deckId,
+      provider.cardId,
     );
   }
 
@@ -89,10 +89,10 @@ class CardEditNotifierFamily extends Family<CardButtonState> {
 class CardEditNotifierProvider
     extends AutoDisposeNotifierProviderImpl<CardEditNotifier, CardButtonState> {
   /// See also [CardEditNotifier].
-  CardEditNotifierProvider({
-    required ObjectId deckId,
+  CardEditNotifierProvider(
+    ObjectId deckId,
     ObjectId? cardId,
-  }) : this._internal(
+  ) : this._internal(
           () => CardEditNotifier()
             ..deckId = deckId
             ..cardId = cardId,
@@ -128,8 +128,8 @@ class CardEditNotifierProvider
     covariant CardEditNotifier notifier,
   ) {
     return notifier.build(
-      deckId: deckId,
-      cardId: cardId,
+      deckId,
+      cardId,
     );
   }
 
