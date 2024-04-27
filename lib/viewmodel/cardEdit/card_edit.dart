@@ -32,7 +32,7 @@ class CardEditNotifier extends _$CardEditNotifier {
   late Deck deckState;
 
   @override
-  CardButtonState build(ObjectId deckId, ObjectId? cardId) {
+  CardButtonState build({required ObjectId deckId, ObjectId? cardId}) {
     cardState = ref.watch(cardButtonsNotifierProvider());
     cardButtonsNotifier = ref.read(cardButtonsNotifierProvider().notifier);
     deckState = ref.watch(deckEditNotifierProvider(deckId));

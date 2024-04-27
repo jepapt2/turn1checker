@@ -29,9 +29,9 @@ class CardEditScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cardState =
-        ref.watch(cardEditNotifierProvider(getObjectId(deckId), null));
-    final cardNotifier =
-        ref.read(cardEditNotifierProvider(getObjectId(deckId), null).notifier);
+        ref.watch(cardEditNotifierProvider(deckId: getObjectId(deckId)));
+    final cardNotifier = ref
+        .read(cardEditNotifierProvider(deckId: getObjectId(deckId)).notifier);
     final double mediaWidth = MediaQuery.of(context).size.width;
     final formKey = GlobalKey<FormBuilderState>();
 
