@@ -53,7 +53,9 @@ class DeckListTile extends StatelessWidget {
               ),
             ),
             IconButton(
-                onPressed: () => context.push('/edit/${deck.id}'),
+                onPressed: () {
+                  context.push('/edit/${deck.id}');
+                },
                 icon: const Icon(
                   Icons.edit,
                   color: ColorTheme.white,

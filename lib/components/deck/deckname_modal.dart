@@ -1,23 +1,26 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/components/ui/buttons/gradient_button.dart';
 import 'package:turn1checker/components/ui/dialogs/primary_simple_dialog.dart';
 import 'package:turn1checker/components/ui/inputs/primary_text_field.dart';
-import 'package:turn1checker/viewmodel/deckList/deckList.dart';
 import '../../i18n/i18n.g.dart';
 import '../../utils/validations/decks.dart';
 
-class DeckNameModal extends ConsumerWidget {
-  const DeckNameModal({super.key});
+class DeckNameDialog extends ConsumerWidget {
+  const DeckNameDialog({Key? key, required this.onCompleted, this.initialName})
+      : super(key: key);
+  final void Function(String name) onCompleted;
+  final String? initialName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print(initialName);
     final formKey = GlobalKey<FormBuilderState>();
-    final decksNotifier = ref.watch(deckListNotifierProvider.notifier);
     return PrimarySimpleDialog(
-      title: Text(t.text.registerDeckName),
+      title: Text(initialName != null
+          ? t.text.changeDeckNameDialogTitle
+          : t.text.registerDeckNameDialogTitle),
       child: Column(
         children: [
           FormBuilder(
@@ -25,6 +28,7 @@ class DeckNameModal extends ConsumerWidget {
             child: PrimaryTextField(
               name: 'deckName',
               maxLength: 32,
+              initialValue: initialName,
               validator: createDeckValidation,
             ),
           ),
@@ -33,14 +37,25 @@ class DeckNameModal extends ConsumerWidget {
               onPressed: () async {
                 if (formKey.currentState!.saveAndValidate()) {
                   Navigator.pop(context);
-                  final deck = decksNotifier
-                      .createDeck(formKey.currentState!.value['deckName']);
-                  context.push('/edit/${deck.id}');
+                  onCompleted(formKey.currentState!.value['deckName']);
                 }
               },
-              text: t.text.register)
+              text: initialName != null ? t.text.save : t.text.register)
         ],
       ),
     );
   }
+}
+
+void showDeckNameDialog(
+    {required BuildContext context,
+    required void Function(String name) onCompleted,
+    String? initialName}) {
+  showDialog(
+    context: context,
+    builder: (BuildContext dialogContext) => DeckNameDialog(
+      onCompleted: onCompleted,
+      initialName: initialName,
+    ),
+  );
 }

@@ -3,13 +3,10 @@ import 'package:turn1checker/theme/color.dart';
 
 class CounterButtonWidget extends StatelessWidget {
   const CounterButtonWidget(
-      {super.key,
-      required this.height,
-      required this.onPressed,
-      required this.value});
+      {super.key, required this.height, this.onPressed, required this.value});
 
   final double height;
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final int value;
 
   @override
@@ -25,7 +22,9 @@ class CounterButtonWidget extends StatelessWidget {
           const TextStyle(fontSize: 16),
         ),
         backgroundColor:
-            MaterialStateProperty.all(const Color.fromARGB(50, 0, 0, 0)),
+            MaterialStateProperty.all(const Color.fromARGB(30, 0, 0, 0)),
+        overlayColor:
+            MaterialStateProperty.all(const Color.fromARGB(30, 0, 0, 0)),
       ),
       onPressed: onPressed,
       child: Container(

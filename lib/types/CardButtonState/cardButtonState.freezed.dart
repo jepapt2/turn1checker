@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CardButtonState {
   String get name => throw _privateConstructorUsedError;
-  File? get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   Uint8List? get editImage => throw _privateConstructorUsedError;
   CardType get type => throw _privateConstructorUsedError;
   List<ButtonWithOrderState> get buttonWithOrderState =>
@@ -36,7 +36,7 @@ abstract class $CardButtonStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      File? image,
+      String? image,
       Uint8List? editImage,
       CardType type,
       List<ButtonWithOrderState> buttonWithOrderState});
@@ -69,7 +69,7 @@ class _$CardButtonStateCopyWithImpl<$Res, $Val extends CardButtonState>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as String?,
       editImage: freezed == editImage
           ? _value.editImage
           : editImage // ignore: cast_nullable_to_non_nullable
@@ -96,7 +96,7 @@ abstract class _$$CardButtonStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String name,
-      File? image,
+      String? image,
       Uint8List? editImage,
       CardType type,
       List<ButtonWithOrderState> buttonWithOrderState});
@@ -127,7 +127,7 @@ class __$$CardButtonStateImplCopyWithImpl<$Res>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as String?,
       editImage: freezed == editImage
           ? _value.editImage
           : editImage // ignore: cast_nullable_to_non_nullable
@@ -158,7 +158,7 @@ class _$CardButtonStateImpl implements _CardButtonState {
   @override
   final String name;
   @override
-  final File? image;
+  final String? image;
   @override
   final Uint8List? editImage;
   @override
@@ -210,7 +210,7 @@ class _$CardButtonStateImpl implements _CardButtonState {
 abstract class _CardButtonState implements CardButtonState {
   const factory _CardButtonState(
           {required final String name,
-          final File? image,
+          final String? image,
           final Uint8List? editImage,
           required final CardType type,
           required final List<ButtonWithOrderState> buttonWithOrderState}) =
@@ -219,7 +219,7 @@ abstract class _CardButtonState implements CardButtonState {
   @override
   String get name;
   @override
-  File? get image;
+  String? get image;
   @override
   Uint8List? get editImage;
   @override

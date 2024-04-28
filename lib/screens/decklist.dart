@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:go_router/go_router.dart';
 import 'package:turn1checker/components/deck/decklist_tile.dart';
 import 'package:turn1checker/components/deck/deckname_modal.dart';
 import 'package:turn1checker/hooks/card.dart';
@@ -18,7 +19,7 @@ class DeckListScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<Deck> decks = ref.watch(deckListNotifierProvider);
-    final cards = CardHooks().getCardList();
+    final decksNotifier = ref.watch(deckListNotifierProvider.notifier);
 
     return SafeArea(
       child: Scaffold(
@@ -26,7 +27,12 @@ class DeckListScreen extends HookConsumerWidget {
           title: Text(t.text.deckList),
           actions: [
             IconButton(
-                onPressed: () => showDeckAddDialog(context: context),
+                onPressed: () => showDeckNameDialog(
+                    context: context,
+                    onCompleted: (name) async {
+                      final deck = decksNotifier.createDeck(name);
+                      context.push('/edit/${deck.id}');
+                    }),
                 icon: const Icon(
                   Icons.add,
                   size: 28,
@@ -34,29 +40,20 @@ class DeckListScreen extends HookConsumerWidget {
                 ))
           ],
         ),
-        body: Container(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-            child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
-                    child: DeckListTile(
-                      deck: decks[index],
-                    ),
-                  );
-                },
-                itemCount: decks.length),
-          ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+          child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: DeckListTile(
+                    deck: decks[index],
+                  ),
+                );
+              },
+              itemCount: decks.length),
         ),
       ),
     );
   }
-}
-
-showDeckAddDialog({required BuildContext context}) {
-  showDialog(
-    context: context,
-    builder: (BuildContext dialogContext) => const DeckNameModal(),
-  );
 }

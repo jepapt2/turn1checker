@@ -1,7 +1,6 @@
 key,en,ja
 deckList,DeckList,デッキリスト
 deckName,DeckName,デッキ名
-registerDeckName,Register Deckname,デッキ名の登録
 reload,Reload,再読み込み
 deckNameRequiredError,Please enter a deck name.,デッキ名を入力してください
 deckNameMinLengthError,Deck name must be at least $length characters.,デッキ名は$length文字以上で入力してください
@@ -38,3 +37,10 @@ button,Button,ボタン
 save,Save,保存
 imageSaveError,Failed to save the image.,画像の保存に失敗しました
 cardSaveError,Failed to save the card.,カードの保存に失敗しました
+sortCardType,Sort by card type,カードの種類で整列
+manualSort,Manual sorting,手動で並び替え
+registerDeckNameDialogTitle,Register Deckname,デッキ名の登録
+changeDeckNameDialogTitle,Change Deckname,デッキ名の変更
+changeDeckName,Change Deckname,デッキ名を変更
+deleteDeck,Delete Deck,デッキを削除
+deleteDeckConfirm,Do you want to remove this Deck?,このデッキを削除しますか?

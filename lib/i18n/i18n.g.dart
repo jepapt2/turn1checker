@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 78 (39 per locale)
+/// Strings: 90 (45 per locale)
 ///
-/// Built on 2024-04-18 at 14:45 UTC
+/// Built on 2024-04-25 at 17:59 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -162,7 +162,6 @@ class _I18nTextJa {
 	// Translations
 	String get deckList => 'デッキリスト';
 	String get deckName => 'デッキ名';
-	String get registerDeckName => 'デッキ名の登録';
 	String get reload => '再読み込み';
 	String get deckNameRequiredError => 'デッキ名を入力してください';
 	String deckNameMinLengthError({required Object length}) => 'デッキ名は${length}文字以上で入力してください';
@@ -199,6 +198,13 @@ class _I18nTextJa {
 	String get save => '保存';
 	String get imageSaveError => '画像の保存に失敗しました';
 	String get cardSaveError => 'カードの保存に失敗しました';
+	String get sortCardType => 'カードの種類で整列';
+	String get manualSort => '手動で並び替え';
+	String get registerDeckNameDialogTitle => 'デッキ名の登録';
+	String get changeDeckNameDialogTitle => 'デッキ名の変更';
+	String get changeDeckName => 'デッキ名を変更';
+	String get deleteDeck => 'デッキを削除';
+	String get deleteDeckConfirm => 'このデッキを削除しますか?';
 }
 
 // Path: <root>
@@ -238,7 +244,6 @@ class _I18nTextEn implements _I18nTextJa {
 	// Translations
 	@override String get deckList => 'DeckList';
 	@override String get deckName => 'DeckName';
-	@override String get registerDeckName => 'Register Deckname';
 	@override String get reload => 'Reload';
 	@override String get deckNameRequiredError => 'Please enter a deck name.';
 	@override String deckNameMinLengthError({required Object length}) => 'Deck name must be at least ${length} characters.';
@@ -275,6 +280,13 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get save => 'Save';
 	@override String get imageSaveError => 'Failed to save the image.';
 	@override String get cardSaveError => 'Failed to save the card.';
+	@override String get sortCardType => 'Sort by card type';
+	@override String get manualSort => 'Manual sorting';
+	@override String get registerDeckNameDialogTitle => 'Register Deckname';
+	@override String get changeDeckNameDialogTitle => 'Change Deckname';
+	@override String get changeDeckName => 'Change Deckname';
+	@override String get deleteDeck => 'Delete Deck';
+	@override String get deleteDeckConfirm => 'Do you want to remove this Deck?';
 }
 
 /// Flat map(s) containing all translations.
@@ -285,7 +297,6 @@ extension on _I18nJa {
 		switch (path) {
 			case 'text.deckList': return 'デッキリスト';
 			case 'text.deckName': return 'デッキ名';
-			case 'text.registerDeckName': return 'デッキ名の登録';
 			case 'text.reload': return '再読み込み';
 			case 'text.deckNameRequiredError': return 'デッキ名を入力してください';
 			case 'text.deckNameMinLengthError': return ({required Object length}) => 'デッキ名は${length}文字以上で入力してください';
@@ -322,6 +333,13 @@ extension on _I18nJa {
 			case 'text.save': return '保存';
 			case 'text.imageSaveError': return '画像の保存に失敗しました';
 			case 'text.cardSaveError': return 'カードの保存に失敗しました';
+			case 'text.sortCardType': return 'カードの種類で整列';
+			case 'text.manualSort': return '手動で並び替え';
+			case 'text.registerDeckNameDialogTitle': return 'デッキ名の登録';
+			case 'text.changeDeckNameDialogTitle': return 'デッキ名の変更';
+			case 'text.changeDeckName': return 'デッキ名を変更';
+			case 'text.deleteDeck': return 'デッキを削除';
+			case 'text.deleteDeckConfirm': return 'このデッキを削除しますか?';
 			default: return null;
 		}
 	}
@@ -332,7 +350,6 @@ extension on _I18nEn {
 		switch (path) {
 			case 'text.deckList': return 'DeckList';
 			case 'text.deckName': return 'DeckName';
-			case 'text.registerDeckName': return 'Register Deckname';
 			case 'text.reload': return 'Reload';
 			case 'text.deckNameRequiredError': return 'Please enter a deck name.';
 			case 'text.deckNameMinLengthError': return ({required Object length}) => 'Deck name must be at least ${length} characters.';
@@ -369,6 +386,13 @@ extension on _I18nEn {
 			case 'text.save': return 'Save';
 			case 'text.imageSaveError': return 'Failed to save the image.';
 			case 'text.cardSaveError': return 'Failed to save the card.';
+			case 'text.sortCardType': return 'Sort by card type';
+			case 'text.manualSort': return 'Manual sorting';
+			case 'text.registerDeckNameDialogTitle': return 'Register Deckname';
+			case 'text.changeDeckNameDialogTitle': return 'Change Deckname';
+			case 'text.changeDeckName': return 'Change Deckname';
+			case 'text.deleteDeck': return 'Delete Deck';
+			case 'text.deleteDeckConfirm': return 'Do you want to remove this Deck?';
 			default: return null;
 		}
 	}

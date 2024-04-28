@@ -20,9 +20,9 @@ class FileController {
     });
   }
 
-  static Future<File> loadLocalImage() async {
+  static Future<File> loadLocalImage(String fileName) async {
     final path = await localPath;
-    final imagePath = '$path/image.png';
+    final imagePath = '$path/$fileName';
     return File(imagePath);
   }
 }
