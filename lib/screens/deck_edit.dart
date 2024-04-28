@@ -101,8 +101,6 @@ class DeckEditScreen extends HookConsumerWidget {
                                       {
                                         deckEditNotifier.deleteDeck(),
                                         Navigator.pop(context)
-                                        // Navigator.pop(context,
-                                        //     {'delete': deck.id.toString()})
                                       }
                                   });
                         },

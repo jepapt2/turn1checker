@@ -15,7 +15,6 @@ class DeckNameDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print(initialName);
     final formKey = GlobalKey<FormBuilderState>();
     return PrimarySimpleDialog(
       title: Text(initialName != null

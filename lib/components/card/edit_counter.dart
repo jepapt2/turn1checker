@@ -14,11 +14,16 @@ import 'package:turn1checker/viewmodel/cardEdit/card_edit.dart';
 
 class EditCounterBox extends HookConsumerWidget {
   const EditCounterBox(
-      {Key? key, required this.order, required this.cardEditNotifier})
+      {Key? key,
+      required this.order,
+      required this.state,
+      required this.cardEditNotifier})
       : super(key: key);
 
   final int order;
+  final CounterButtonWithOrderState state;
   final CardEditNotifier cardEditNotifier;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
@@ -33,6 +38,7 @@ class EditCounterBox extends HookConsumerWidget {
                   label: t.text.initialValue,
                   name: 'initialValue',
                   placeholder: '0',
+                  initialValue: state.counterButton.initialValue.toString(),
                   onChanged: (value) => cardEditNotifier.cardButtonsNotifier
                       .updateCounter(
                           order,
@@ -44,16 +50,22 @@ class EditCounterBox extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Flexible(
+                      flex: 1,
                       child: PrimaryDropDown(
                         name: 'button1',
                         label: '${t.text.button}1',
+                        initialValue: state.counterButton.buttons[0] > 0
+                            ? CounterButtonIncrementType.add
+                            : CounterButtonIncrementType.remove,
                         items: const [
                           DropdownMenuItem(
                             value: CounterButtonIncrementType.add,
+                            alignment: Alignment.center,
                             child: Text('+'),
                           ),
                           DropdownMenuItem(
                             value: CounterButtonIncrementType.remove,
+                            alignment: Alignment.center,
                             child: Text('-'),
                           ),
                         ],
@@ -67,9 +79,13 @@ class EditCounterBox extends HookConsumerWidget {
                     ),
                     const SizedBox(width: 8),
                     Flexible(
+                        flex: 3,
                         child: NumberTextField(
                             maxLength: 4,
                             name: 'counterButton1',
+                            placeholder: "1",
+                            initialValue:
+                                state.counterButton.buttons[0].abs().toString(),
                             onChanged: (value) {
                               cardEditNotifier.updateCounterButton(
                                   order: order, value: value, buttonIndex: 0);
@@ -81,16 +97,22 @@ class EditCounterBox extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Flexible(
+                      flex: 1,
                       child: PrimaryDropDown(
                         name: 'button2',
                         label: '${t.text.button}2',
+                        initialValue: state.counterButton.buttons[1] > 0
+                            ? CounterButtonIncrementType.add
+                            : CounterButtonIncrementType.remove,
                         items: const [
                           DropdownMenuItem(
                             value: CounterButtonIncrementType.add,
+                            alignment: Alignment.center,
                             child: Text('+'),
                           ),
                           DropdownMenuItem(
                             value: CounterButtonIncrementType.remove,
+                            alignment: Alignment.center,
                             child: Text('-'),
                           ),
                         ],
@@ -104,9 +126,13 @@ class EditCounterBox extends HookConsumerWidget {
                     ),
                     const SizedBox(width: 8),
                     Flexible(
+                      flex: 3,
                       child: NumberTextField(
                           maxLength: 4,
                           name: 'counterButton1',
+                          placeholder: "1",
+                          initialValue:
+                              state.counterButton.buttons[1].abs().toString(),
                           onChanged: (value) =>
                               cardEditNotifier.updateCounterButton(
                                   order: order, buttonIndex: 1, value: value)),

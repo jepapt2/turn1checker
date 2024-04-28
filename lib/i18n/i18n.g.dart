@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 90 (45 per locale)
+/// Strings: 92 (46 per locale)
 ///
-/// Built on 2024-04-25 at 17:59 UTC
+/// Built on 2024-04-28 at 15:50 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -205,6 +205,7 @@ class _I18nTextJa {
 	String get changeDeckName => 'デッキ名を変更';
 	String get deleteDeck => 'デッキを削除';
 	String get deleteDeckConfirm => 'このデッキを削除しますか?';
+	String get buttonsLengthVaridateError => 'ボタンまたはカウンターを1つ以上登録してください';
 }
 
 // Path: <root>
@@ -287,6 +288,7 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get changeDeckName => 'Change Deckname';
 	@override String get deleteDeck => 'Delete Deck';
 	@override String get deleteDeckConfirm => 'Do you want to remove this Deck?';
+	@override String get buttonsLengthVaridateError => 'Register one or more buttons or counters.';
 }
 
 /// Flat map(s) containing all translations.
@@ -340,6 +342,7 @@ extension on _I18nJa {
 			case 'text.changeDeckName': return 'デッキ名を変更';
 			case 'text.deleteDeck': return 'デッキを削除';
 			case 'text.deleteDeckConfirm': return 'このデッキを削除しますか?';
+			case 'text.buttonsLengthVaridateError': return 'ボタンまたはカウンターを1つ以上登録してください';
 			default: return null;
 		}
 	}
@@ -393,6 +396,7 @@ extension on _I18nEn {
 			case 'text.changeDeckName': return 'Change Deckname';
 			case 'text.deleteDeck': return 'Delete Deck';
 			case 'text.deleteDeckConfirm': return 'Do you want to remove this Deck?';
+			case 'text.buttonsLengthVaridateError': return 'Register one or more buttons or counters.';
 			default: return null;
 		}
 	}

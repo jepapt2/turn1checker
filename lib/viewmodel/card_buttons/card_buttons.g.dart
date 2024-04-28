@@ -7,7 +7,7 @@ part of 'card_buttons.dart';
 // **************************************************************************
 
 String _$cardButtonsNotifierHash() =>
-    r'a0d0ab5a4939942b1eb5e5d870c1b2a4e52e07fa';
+    r'40045f3d5e6cd5bdcc5a7c76c8c9d15a9f04d618';
 
 /// Copied from Dart SDK
 class _SystemHash {

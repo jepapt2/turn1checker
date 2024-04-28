@@ -11,7 +11,7 @@ import 'package:turn1checker/types/counterState/counterState.dart';
 import 'package:turn1checker/utils/functions/file_controller.dart';
 
 CardButtons cardButtonsConvertStateToDb(
-    {required CardButtonState state, required ObjectId id, String? imageName}) {
+    {required CardButtonState state, String? imageName}) {
   final effectCheckButtons = state.buttonWithOrderState
       .map((e) {
         if (e is EffectCheckButtonWithOrderState) {
@@ -33,7 +33,7 @@ CardButtons cardButtonsConvertStateToDb(
       .whereType<Counter>()
       .toList();
   return CardButtons(
-    id,
+    state.id,
     state.type.name,
     state.name,
     image: imageName,
@@ -60,7 +60,7 @@ CardButtonState cardButtonsConvertDbToState(CardButtons cardButtons) {
     return CounterButtonWithOrderState(
         e.order,
         CounterState(
-          value: 0,
+          value: e.initialValue,
           initialValue: e.initialValue,
           buttons: e.buttonsValue,
         ));
@@ -74,6 +74,7 @@ CardButtonState cardButtonsConvertDbToState(CardButtons cardButtons) {
   buttonWithOrderState.sort((a, b) => a.order.compareTo(b.order));
 
   return CardButtonState(
+    id: cardButtons.id,
     name: cardButtons.name,
     image: cardButtons.image,
     type: CardType.values

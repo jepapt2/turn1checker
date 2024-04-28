@@ -3,21 +3,64 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:path/path.dart';
+import 'package:realm/realm.dart';
 import 'package:turn1checker/types/EffectCheckButtonState/effectCheckButtonState.dart';
 import 'package:turn1checker/types/card_type.dart';
 import 'package:turn1checker/types/counterState/counterState.dart';
 
-part 'cardButtonState.freezed.dart';
+class CardButtonState {
+  final ObjectId id;
+  final String name;
+  final String? image;
+  final Uint8List? editImage;
+  final CardType type;
+  final List<ButtonWithOrderState> buttonWithOrderState;
+  const CardButtonState(
+      {required ObjectId id,
+      required String name,
+      String? image,
+      this.editImage,
+      required CardType type,
+      required List<ButtonWithOrderState> buttonWithOrderState})
+      : id = id,
+        name = name,
+        image = image,
+        type = type,
+        buttonWithOrderState = buttonWithOrderState;
 
-@freezed
-abstract class CardButtonState with _$CardButtonState {
-  const factory CardButtonState({
-    required String name,
+  CardButtonState copyWith({
+    ObjectId? id,
+    String? name,
     String? image,
     Uint8List? editImage,
-    required CardType type,
-    required List<ButtonWithOrderState> buttonWithOrderState,
-  }) = _CardButtonState;
+    CardType? type,
+    List<ButtonWithOrderState>? buttonWithOrderState,
+  }) {
+    return CardButtonState(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      image: image ?? this.image,
+      editImage: editImage ?? this.editImage,
+      type: type ?? this.type,
+      buttonWithOrderState: buttonWithOrderState ?? this.buttonWithOrderState,
+    );
+  }
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is CardButtonState) {
+      return runtimeType == other.runtimeType && id == other.id;
+    } else {
+      return false;
+    }
+  }
 }
 
 sealed class ButtonWithOrderState {

@@ -41,6 +41,7 @@ class CyanGradientRectangleButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(icon, color: ColorTheme.white),
+              const SizedBox(width: 4),
               Text(
                 text,
                 style: const TextStyle(

@@ -32,8 +32,6 @@ abstract class $EditCardStateCopyWith<$Res> {
   @useResult
   $Res call(
       {CardButtonState cardButtonState, List<Widget> editButtonInputList});
-
-  $CardButtonStateCopyWith<$Res> get cardButtonState;
 }
 
 /// @nodoc
@@ -63,14 +61,6 @@ class _$EditCardStateCopyWithImpl<$Res, $Val extends EditCardState>
               as List<Widget>,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CardButtonStateCopyWith<$Res> get cardButtonState {
-    return $CardButtonStateCopyWith<$Res>(_value.cardButtonState, (value) {
-      return _then(_value.copyWith(cardButtonState: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -83,9 +73,6 @@ abstract class _$$EditCardStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {CardButtonState cardButtonState, List<Widget> editButtonInputList});
-
-  @override
-  $CardButtonStateCopyWith<$Res> get cardButtonState;
 }
 
 /// @nodoc

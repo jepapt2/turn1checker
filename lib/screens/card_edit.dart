@@ -5,9 +5,11 @@ import 'package:go_router/go_router.dart';
 import 'package:turn1checker/components/card/card_buttons.dart';
 import 'package:turn1checker/components/card/edit_counter.dart';
 import 'package:turn1checker/components/card/edit_effect_button.dart';
-import 'package:turn1checker/components/ui/buttons/CyanGradientRectangleButton.dart';
+import 'package:turn1checker/components/ui/buttons/gradient_rectangle_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/components/ui/buttons/gradient_button.dart';
+import 'package:turn1checker/components/ui/buttons/primary_rectangle_button.dart';
+import 'package:turn1checker/components/ui/dialogs/confirm_dialog.dart';
 import 'package:turn1checker/components/ui/inputs/primary_dropdown.dart';
 import 'package:turn1checker/components/ui/inputs/primary_text_field.dart';
 import 'package:turn1checker/model/deck/deck.dart';
@@ -28,12 +30,13 @@ class CardEditScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cardState =
-        ref.watch(cardEditNotifierProvider(deckId: getObjectId(deckId)));
-    final cardNotifier = ref
-        .read(cardEditNotifierProvider(deckId: getObjectId(deckId)).notifier);
-    final double mediaWidth = MediaQuery.of(context).size.width;
-    final formKey = GlobalKey<FormBuilderState>();
+    final cardState = ref.watch(cardEditNotifierProvider(
+      deckId: getDeckObjectId(deckId),
+      cardId: getCardObjectId(cardId),
+    ));
+    final cardNotifier = ref.read(cardEditNotifierProvider(
+            deckId: getDeckObjectId(deckId), cardId: getCardObjectId(cardId))
+        .notifier);
 
     final cardTypeItems = CardType.values
         .map((e) => DropdownMenuItem(
@@ -61,6 +64,24 @@ class CardEditScreen extends HookConsumerWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(t.text.cardEdit),
+          actions: [
+            Visibility(
+              visible: cardId != null,
+              child: IconButton(
+                icon: const Icon(Icons.delete_outline),
+                onPressed: () async {
+                  await showConfirmDialog(context, t.text.deleteDeckConfirm)
+                      .then((result) => {
+                            if (result)
+                              {
+                                cardNotifier.isDeleteCard = true,
+                                Navigator.pop(context)
+                              }
+                          });
+                },
+              ),
+            )
+          ],
         ),
         body: Column(
           children: [
@@ -122,34 +143,75 @@ class CardEditScreen extends HookConsumerWidget {
                                           fontSize: 16)),
                                   const SizedBox(height: 4),
                                   Row(children: [
-                                    CyanGradientRectangleButton(
-                                        text: 'カメラから選択',
-                                        icon: Icons.check_box_outlined,
-                                        onPressed: () async {
-                                          final result =
-                                              await context.push('/camera');
-                                          if (result is Uint8List) {
-                                            final image = result;
-                                            cardNotifier.cardButtonsNotifier
-                                                .update((prev) => prev.copyWith(
-                                                    editImage: image));
-                                          }
-                                        }),
+                                    Expanded(
+                                      child: PrimaryRectangleButton(
+                                          text: 'カメラから選択',
+                                          icon: Icons.camera_alt_outlined,
+                                          onPressed: () async {
+                                            final result =
+                                                await context.push('/camera');
+                                            if (result is Uint8List) {
+                                              final image = result;
+                                              cardNotifier.cardButtonsNotifier
+                                                  .update((prev) =>
+                                                      prev.copyWith(
+                                                          editImage: image));
+                                            }
+                                          }),
+                                    ),
                                     const SizedBox(width: 10),
-                                    CyanGradientRectangleButton(
-                                        text: 'ギャラリーから選択',
-                                        icon: Icons.image,
-                                        onPressed: () async {
-                                          final imagePath =
-                                              await pickAndCropImage();
-                                          if (imagePath != null) {
-                                            final image = imagePath;
-                                            cardNotifier.cardButtonsNotifier
-                                                .update((prev) => prev.copyWith(
-                                                    editImage: image));
-                                          }
-                                        }),
+                                    Expanded(
+                                      child: PrimaryRectangleButton(
+                                          text: 'ギャラリーから選択',
+                                          icon: Icons.image,
+                                          onPressed: () async {
+                                            final imagePath =
+                                                await pickAndCropImage();
+                                            if (imagePath != null) {
+                                              final image = imagePath;
+                                              cardNotifier.cardButtonsNotifier
+                                                  .update((prev) =>
+                                                      prev.copyWith(
+                                                          editImage: image));
+                                            }
+                                          }),
+                                    ),
                                   ]),
+                                  const SizedBox(height: 16),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          cardNotifier.deleteAndResetImage();
+                                        },
+                                        child: Container(
+                                            padding: const EdgeInsets.all(8),
+                                            child: const Icon(
+                                              Icons.refresh,
+                                              size: 24,
+                                            )),
+                                      ),
+                                      const SizedBox(
+                                        width: 24,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          cardNotifier.deleteAndResetImage(
+                                              delete: true);
+                                        },
+                                        child: Container(
+                                            padding: const EdgeInsets.all(8),
+                                            child: const Icon(
+                                              Icons.delete_outline_outlined,
+                                              size: 24,
+                                            )),
+                                      ),
+                                      const SizedBox(
+                                        width: 4,
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
                               const SizedBox(height: 16),
@@ -182,13 +244,18 @@ class CardEditScreen extends HookConsumerWidget {
                                         is EffectCheckButtonWithOrderState) {
                                       return EditEffectButtonBox(
                                         order: index + 1,
+                                        state: editButtonInput,
                                         cardEditNotifier: cardNotifier,
                                       );
                                     }
-                                    return EditCounterBox(
-                                      order: index + 1,
-                                      cardEditNotifier: cardNotifier,
-                                    );
+                                    if (editButtonInput
+                                        is CounterButtonWithOrderState) {
+                                      return EditCounterBox(
+                                        order: index + 1,
+                                        state: editButtonInput,
+                                        cardEditNotifier: cardNotifier,
+                                      );
+                                    }
                                   },
                                 ),
                               ),
@@ -227,7 +294,10 @@ class CardEditScreen extends HookConsumerWidget {
                                 height: 40,
                               ),
                               GradientButton(
-                                onPressed: () => cardNotifier.saveCard(),
+                                onPressed: () {
+                                  cardNotifier.saveCard(context);
+                                  Navigator.of(context).pop();
+                                },
                                 text: '保存',
                                 height: 52,
                                 fontSize: 18,
