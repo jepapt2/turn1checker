@@ -31,6 +31,7 @@ class NumberTextField extends HookWidget {
       label: label,
       validator: validator,
       maxLength: maxLength,
+      initialValue: initialValue,
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
       ],

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:realm/realm.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:turn1checker/types/CardButtonState/cardButtonState.dart';
 import 'package:turn1checker/types/EffectCheckButtonState/effectCheckButtonState.dart';
@@ -15,8 +16,12 @@ class CardButtonsNotifier extends _$CardButtonsNotifier {
   @override
   CardButtonState build({CardButtonState? initialCardState}) {
     state = initialCardState ??
-        const CardButtonState(
-            name: '', type: CardType.monster, buttonWithOrderState: []);
+        CardButtonState(
+          id: ObjectId(),
+          name: '',
+          type: CardType.monster,
+          buttonWithOrderState: [],
+        );
     return state;
   }
 

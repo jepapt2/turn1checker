@@ -11,11 +11,16 @@ import 'package:turn1checker/viewmodel/cardEdit/card_edit.dart';
 
 class EditEffectButtonBox extends HookConsumerWidget {
   const EditEffectButtonBox(
-      {Key? key, required this.order, required this.cardEditNotifier})
+      {Key? key,
+      required this.order,
+      required this.state,
+      required this.cardEditNotifier})
       : super(key: key);
 
   final int order;
+  final EffectCheckButtonWithOrderState state;
   final CardEditNotifier cardEditNotifier;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
@@ -31,6 +36,7 @@ class EditEffectButtonBox extends HookConsumerWidget {
                       child: PrimaryDropDown(
                         name: 'preliod',
                         label: '${t.text.turn}/${t.text.duel}',
+                        initialValue: state.effectButton.limitPeriod,
                         items: [
                           DropdownMenuItem(
                             value: EffectLimitPeriod.turn,
@@ -51,6 +57,7 @@ class EditEffectButtonBox extends HookConsumerWidget {
                       child: PrimaryDropDown(
                         label: t.text.numberOfTimes,
                         name: 'limit',
+                        initialValue: state.effectButton.limit,
                         onChanged: (value) =>
                             cardEditNotifier.updateEffectCheckButton(order,
                                 (prev) => prev.copyWith(limit: value ?? 1)),
@@ -80,6 +87,7 @@ class EditEffectButtonBox extends HookConsumerWidget {
                 PrimaryTextField(
                   label: t.text.effectDescription,
                   name: 'effectCheckButton$order',
+                  initialValue: state.effectButton.description,
                   onChanged: (value) =>
                       cardEditNotifier.updateEffectCheckButton(order,
                           (prev) => prev.copyWith(description: value ?? '')),

@@ -6,7 +6,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:realm/realm.dart';
 import 'package:riverpod/src/framework.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:turn1checker/components/ui/primary_snackbar.dart';
 import 'package:turn1checker/hooks/card.dart';
+import 'package:turn1checker/i18n/i18n.g.dart';
+import 'package:turn1checker/model/cardButtons/card_buttons.dart';
 import 'package:turn1checker/model/deck/deck.dart';
 import 'package:turn1checker/model/realm.dart';
 import 'package:turn1checker/types/CardButtonState/cardButtonState.dart';
@@ -30,12 +33,32 @@ class CardEditNotifier extends _$CardEditNotifier {
   late CardButtonsNotifier cardButtonsNotifier;
   late CardButtonState cardState;
   late Deck deckState;
+  late DeckEditNotifier deckEditNotifier;
+  CardButtons? existCard;
+
+  bool isDeleteCard = false;
 
   @override
   CardButtonState build({required ObjectId deckId, ObjectId? cardId}) {
-    cardState = ref.watch(cardButtonsNotifierProvider());
-    cardButtonsNotifier = ref.read(cardButtonsNotifierProvider().notifier);
+    CardButtonState? initialCard;
+    if (cardId != null) {
+      existCard = CardHooks().getCard(cardId);
+      if (existCard != null) {
+        initialCard = cardButtonsConvertDbToState(existCard!);
+      }
+    }
+    cardState =
+        ref.watch(cardButtonsNotifierProvider(initialCardState: initialCard));
+    cardButtonsNotifier = ref.read(
+        cardButtonsNotifierProvider(initialCardState: initialCard).notifier);
     deckState = ref.watch(deckEditNotifierProvider(deckId));
+    deckEditNotifier = ref.read(deckEditNotifierProvider(deckId).notifier);
+    ref.onDispose(() {
+      if (isDeleteCard && existCard is CardButtons) {
+        CardHooks().deleteCard(existCard!);
+        deckEditNotifier.fetchDecks(deckId);
+      }
+    });
     return cardState;
   }
 
@@ -44,8 +67,15 @@ class CardEditNotifier extends _$CardEditNotifier {
           ...state.buttonWithOrderState,
           EffectCheckButtonWithOrderState(
               state.buttonWithOrderState.length + 1,
-              const EffectCheckButtonState(
-                  description: '', count: 0, limit: 1)),
+              EffectCheckButtonState(
+                  description: switch (state.buttonWithOrderState.length + 1) {
+                    1 => '①',
+                    2 => '②',
+                    3 => '③',
+                    _ => '',
+                  },
+                  count: 0,
+                  limit: 1)),
         ]));
   }
 
@@ -88,9 +118,11 @@ class CardEditNotifier extends _$CardEditNotifier {
               ? CounterButtonIncrementType.add
               : CounterButtonIncrementType.remove);
 
+      final buttonValue = buttons[buttonIndex] == 0 ? 1 : buttons[buttonIndex];
+
       final updateValue = isIncriment == CounterButtonIncrementType.add
-          ? buttons[buttonIndex].abs()
-          : buttons[buttonIndex].abs() * -1;
+          ? buttonValue.abs()
+          : buttonValue.abs() * -1;
       final updateButtons =
           listFindUpdate(list: buttons, index: buttonIndex, value: updateValue);
 
@@ -120,7 +152,22 @@ class CardEditNotifier extends _$CardEditNotifier {
         }).toList()));
   }
 
-  Future<void> saveCard() async {
+  void deleteAndResetImage({bool delete = false}) {
+    cardButtonsNotifier.update((prev) => CardButtonState(
+        id: prev.id,
+        editImage: null,
+        image: delete ? null : prev.image,
+        name: prev.name,
+        type: prev.type,
+        buttonWithOrderState: prev.buttonWithOrderState));
+  }
+
+  Future<void> saveCard(BuildContext context) async {
+    if (state.buttonWithOrderState.isEmpty) {
+      showPrimarySnackbar(
+          context, t.text.buttonsLengthVaridateError, SnackBarType.error);
+      return;
+    }
     final editImage = state.editImage;
     final id = ObjectId();
     String? updateImage;
@@ -128,10 +175,17 @@ class CardEditNotifier extends _$CardEditNotifier {
       updateImage = await FileController.saveLocalImage(editImage, id)
           .then((_) => '$id.png');
     }
-    final card = cardButtonsConvertStateToDb(
-        state: state, id: id, imageName: updateImage);
+    final card =
+        cardButtonsConvertStateToDb(state: state, imageName: updateImage);
     realm.write(() {
-      deckState.cards.add(card);
+      if (existCard == null) {
+        deckState.cards.add(card);
+        return;
+      }
+      final CardButtons updateCard = existCard!;
+      realm.deleteMany(updateCard.effectCheckButtons);
+      realm.deleteMany(updateCard.counters);
+      realm.add(card, update: true);
     });
   }
 }

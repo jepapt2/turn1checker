@@ -33,7 +33,10 @@ class PrimaryDropDown<T> extends StatelessWidget {
       FormBuilderDropdown(
           initialValue: initialValue,
           dropdownColor: ColorTheme.white,
-          style: const TextStyle(color: ColorTheme.black),
+          style: const TextStyle(
+            color: ColorTheme.black,
+            fontSize: 16,
+          ),
           name: name,
           items: items,
           onChanged: (value) {
