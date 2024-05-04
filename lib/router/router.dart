@@ -1,6 +1,7 @@
 //ルーター
 import 'package:go_router/go_router.dart';
 import 'package:turn1checker/screens/camera.dart';
+import 'package:turn1checker/screens/deck.dart';
 import 'package:turn1checker/screens/deck_edit.dart';
 import 'package:turn1checker/screens/deckList.dart';
 import 'package:turn1checker/screens/card_edit.dart';
@@ -10,6 +11,10 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
       path: '/',
       builder: (context, state) => const DeckListScreen(),
       routes: [
+        GoRoute(
+          path: 'deck/:id',
+          builder: (context, state) => DeckScreen(id: state.params['id']),
+        ),
         GoRoute(
           path: 'edit/:id',
           builder: (context, state) => DeckEditScreen(id: state.params['id']),

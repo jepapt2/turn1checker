@@ -36,7 +36,7 @@ CardButtons cardButtonsConvertStateToDb(
     state.id,
     state.type.name,
     state.name,
-    image: imageName,
+    image: imageName ?? state.image,
     effectCheckButtons: effectCheckButtons,
     counters: counters,
     DateTime.now(),
