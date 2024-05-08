@@ -45,3 +45,4 @@ changeDeckName,Change Deckname,デッキ名を変更
 deleteDeck,Delete Deck,デッキを削除
 deleteDeckConfirm,Do you want to remove this Deck?,このデッキを削除しますか?
 buttonsLengthVaridateError,Register one or more buttons or counters.,ボタンまたはカウンターを1つ以上登録してください
+closeDeckScreenConfirm,Do you want to end the duel?,デュエルを終了しますか？

@@ -18,7 +18,8 @@ class DeckHooks {
   }
 
   Deck createDeck(String deckName) {
-    final deck = Deck(ObjectId(), deckName, DateTime.now(), DateTime.now());
+    final deck = Deck(
+        ObjectId(), deckName, DateTime.now().toUtc(), DateTime.now().toUtc());
     realm.write(() {
       realm.add<Deck>(deck);
     });
@@ -30,7 +31,7 @@ class DeckHooks {
     void Function() update,
   ) {
     realm.write(() {
-      deck.updatedAt = DateTime.now();
+      deck.updatedAt = DateTime.now().toUtc();
       update();
     });
   }
@@ -42,7 +43,7 @@ class DeckHooks {
         final bType = CardType.values.byName(b.type);
         return aType.order.compareTo(bType.order);
       });
-      deck.updatedAt = DateTime.now();
+      deck.updatedAt = DateTime.now().toUtc();
     });
   }
 
@@ -57,13 +58,19 @@ class DeckHooks {
     realm.write(() {
       final card = deck.cards.removeAt(oldIndex);
       deck.cards.insert(newIndex, card);
-      deck.updatedAt = DateTime.now();
+      deck.updatedAt = DateTime.now().toUtc();
     });
   }
 
   void deleteDeck(Deck deck) {
     realm.write(() {
       realm.delete(deck);
+    });
+  }
+
+  void saveUpdatedDeck(Deck deck) {
+    realm.write(() {
+      deck.updatedAt = DateTime.now().toUtc();
     });
   }
 }

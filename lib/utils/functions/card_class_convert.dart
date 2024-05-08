@@ -11,7 +11,9 @@ import 'package:turn1checker/types/counterState/counterState.dart';
 import 'package:turn1checker/utils/functions/file_controller.dart';
 
 CardButtons cardButtonsConvertStateToDb(
-    {required CardButtonState state, String? imageName}) {
+    {required CardButtonState state,
+    CardButtons? prevData,
+    String? imageName}) {
   final effectCheckButtons = state.buttonWithOrderState
       .map((e) {
         if (e is EffectCheckButtonWithOrderState) {
@@ -39,8 +41,8 @@ CardButtons cardButtonsConvertStateToDb(
     image: imageName ?? state.image,
     effectCheckButtons: effectCheckButtons,
     counters: counters,
-    DateTime.now(),
-    DateTime.now(),
+    prevData?.createdAt ?? DateTime.now().toUtc(),
+    DateTime.now().toUtc(),
   );
 }
 

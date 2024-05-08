@@ -37,7 +37,10 @@ class DeckListTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(DateFormat('yyyy/MM/dd HH:mm').format(deck.updatedAt),
+                    Text(
+                        DateFormat(
+                          'yyyy/MM/dd HH:mm',
+                        ).format(deck.updatedAt.toLocal()),
                         style: const TextStyle(
                             fontSize: 10,
                             height: 1,

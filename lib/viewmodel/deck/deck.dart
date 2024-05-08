@@ -20,8 +20,8 @@ class DeckNotifier extends _$DeckNotifier {
   late DeckListNotifier deckListNotifier =
       ref.watch(deckListNotifierProvider.notifier);
   late List<CardButtonState> initialCardButtonStateList;
-
   late List<CardButtonsNotifier> cardButtonsNotifierList;
+  late Deck deck;
   @override
   DeckState build(id) {
     stateInitialization(id);
@@ -30,8 +30,10 @@ class DeckNotifier extends _$DeckNotifier {
   }
 
   void stateInitialization(ObjectId id) {
-    final deck = DeckHooks().getDeck(id);
-    if (deck == null) {
+    final deckData = DeckHooks().getDeck(id);
+    if (deckData != null) {
+      deck = deckData;
+    } else {
       throw Exception('Deck not found');
     }
 
@@ -56,7 +58,7 @@ class DeckNotifier extends _$DeckNotifier {
     return state.cardButtonStateListRecord.length <= state.turn;
   }
 
-  void nextTurn(int changeTurn) {
+  void changeTurn(int changeTurn) {
     final currentTurnIndex = state.turn - 1;
     final changeTurnIndex = changeTurn - 1;
     final currentTurnList = initialCardButtonStateList
@@ -64,6 +66,7 @@ class DeckNotifier extends _$DeckNotifier {
         .toList();
     List<List<CardButtonState>> cardButtonStateListRecord =
         state.cardButtonStateListRecord;
+
     //現在ターンが最新の場合
     if (cardButtonStateListRecord.length <= currentTurnIndex) {
       cardButtonStateListRecord = [
@@ -73,6 +76,7 @@ class DeckNotifier extends _$DeckNotifier {
     } else {
       cardButtonStateListRecord[currentTurnIndex] = currentTurnList;
     }
+
     if (cardButtonStateListRecord.length < changeTurn) {
       for (var element in initialCardButtonStateList) {
         ref
@@ -105,5 +109,8 @@ class DeckNotifier extends _$DeckNotifier {
         turn: changeTurn, cardButtonStateListRecord: cardButtonStateListRecord);
   }
 
-  void previousTurn() {}
+  void onCloseDeck() {
+    DeckHooks().saveUpdatedDeck(deck);
+    deckListNotifier.fetchDecks();
+  }
 }

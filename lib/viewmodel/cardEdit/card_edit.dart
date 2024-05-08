@@ -175,8 +175,8 @@ class CardEditNotifier extends _$CardEditNotifier {
       updateImage = await FileController.saveLocalImage(editImage, id)
           .then((_) => '$id.png');
     }
-    final card =
-        cardButtonsConvertStateToDb(state: state, imageName: updateImage);
+    final card = cardButtonsConvertStateToDb(
+        state: state, prevData: existCard, imageName: updateImage);
     realm.write(() {
       if (existCard == null) {
         deckState.cards.add(card);
@@ -187,5 +187,6 @@ class CardEditNotifier extends _$CardEditNotifier {
       realm.deleteMany(updateCard.counters);
       realm.add(card, update: true);
     });
+    deckEditNotifier.fetchDecks(deckState.id);
   }
 }
