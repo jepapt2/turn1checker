@@ -39,7 +39,7 @@ class CardEditNotifier extends _$CardEditNotifier {
   bool isDeleteCard = false;
 
   @override
-  CardButtonState build({required ObjectId deckId, ObjectId? cardId}) {
+  CardButtonState build(ObjectId deckId, ObjectId? cardId) {
     CardButtonState? initialCard;
     if (cardId != null) {
       existCard = CardHooks().getCard(cardId);
