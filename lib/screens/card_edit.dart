@@ -31,11 +31,11 @@ class CardEditScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cardState = ref.watch(cardEditNotifierProvider(
-      deckId: getDeckObjectId(deckId),
-      cardId: getCardObjectId(cardId),
+      getDeckObjectId(deckId),
+      getCardObjectId(cardId),
     ));
     final cardNotifier = ref.read(cardEditNotifierProvider(
-            deckId: getDeckObjectId(deckId), cardId: getCardObjectId(cardId))
+            getDeckObjectId(deckId), getCardObjectId(cardId))
         .notifier);
 
     final cardTypeItems = CardType.values

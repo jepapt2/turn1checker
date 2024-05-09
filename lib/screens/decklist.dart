@@ -40,19 +40,17 @@ class DeckListScreen extends HookConsumerWidget {
                 ))
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-          child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0),
-                  child: DeckListTile(
-                    deck: decks[index],
-                  ),
-                );
-              },
-              itemCount: decks.length),
-        ),
+        body: ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: DeckListTile(
+                  deck: decks[index],
+                ),
+              );
+            },
+            itemCount: decks.length),
       ),
     );
   }

@@ -12,35 +12,23 @@ import 'package:turn1checker/components/ui/buttons/primary_floating_action_butto
 import 'package:turn1checker/i18n/i18n.g.dart';
 import 'package:turn1checker/theme/color.dart';
 import 'package:image/image.dart' as img;
-
-final cameraControllerProvider = FutureProvider<CameraController>((ref) async {
-  final cameras = await availableCameras();
-  if (cameras.isEmpty) {
-    throw Exception('No cameras available');
-  }
-  final camera = cameras.first;
-  final cameraController = CameraController(camera, ResolutionPreset.medium,
-      imageFormatGroup: ImageFormatGroup.jpeg);
-
-  await cameraController.initialize();
-  await cameraController.setFlashMode(FlashMode.off);
-
-  ref.onDispose(() {
-    cameraController.dispose();
-  });
-
-  return cameraController;
-});
+import 'package:turn1checker/viewmodel/camera/camera.dart';
 
 class CameraScreen extends HookConsumerWidget {
   const CameraScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cameraController = ref.watch(cameraControllerProvider).value;
+    final cameraController =
+        ref.watch(cameraNotifierProvider).value?.cameraController;
+    final cameraOption = ref.watch(cameraNotifierProvider).value?.cameraOption;
+    final cameraControllerNotifier = ref.watch(cameraNotifierProvider.notifier);
     if (cameraController == null) {
       return Container();
     }
+
+    print(cameraOption?.maxZoomLevel);
+    print(cameraOption?.minZoomLevel);
 
     GlobalKey cameraKey = GlobalKey();
     GlobalKey illustRectKey = GlobalKey();
@@ -87,32 +75,29 @@ class CameraScreen extends HookConsumerWidget {
           body: Column(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onScaleUpdate: (details) => print(details.scale),
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        key: cameraKey,
-                        width: double.infinity,
-                        child: CameraPreview(
-                          cameraController,
-                        ),
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      key: cameraKey,
+                      width: double.infinity,
+                      child: CameraPreview(
+                        cameraController,
                       ),
-                      Center(
-                        child: Container(
-                          key: illustRectKey,
-                          width: mediaWidth * 0.6,
-                          height: mediaWidth * 0.6,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 1,
-                            ),
+                    ),
+                    Center(
+                      child: Container(
+                        key: illustRectKey,
+                        width: mediaWidth * 0.6,
+                        height: mediaWidth * 0.6,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 1,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               Container(
@@ -129,21 +114,42 @@ class CameraScreen extends HookConsumerWidget {
               shape: const CircularNotchedRectangle(),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Stack(
+                    alignment: Alignment.center,
                     children: <Widget>[
-                      OrangeFloatingActionButton(
-                        onPressed: () async {
-                          takePictureAndCrop()
-                              .then((image) => showImageConfirmDialog(
-                                  context: context,
-                                  image: image,
-                                  onConfirm: () {
-                                    Navigator.pop(context, image);
-                                  }));
-                        },
-                        child: const Icon(
-                            Icons.camera_alt_outlined), // Your child widget
+                      Center(
+                        child: OrangeFloatingActionButton(
+                          onPressed: () async {
+                            takePictureAndCrop()
+                                .then((image) => showImageConfirmDialog(
+                                    context: context,
+                                    image: image,
+                                    onConfirm: () {
+                                      Navigator.pop(context, image);
+                                    }));
+                          },
+                          child: const Icon(
+                              Icons.camera_alt_outlined), // Your child widget
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                              style: IconButton.styleFrom(
+                                  backgroundColor: ColorTheme.primary),
+                              onPressed: () => cameraControllerNotifier.zoom(1),
+                              icon: const Icon(Icons.add)),
+                          SizedBox(
+                            width: 16,
+                          ),
+                          IconButton(
+                              style: IconButton.styleFrom(
+                                  backgroundColor: ColorTheme.primary),
+                              onPressed: () =>
+                                  cameraControllerNotifier.zoom(-1),
+                              icon: const Icon(Icons.remove))
+                        ],
                       ),
                     ],
                   ),
@@ -152,7 +158,7 @@ class CameraScreen extends HookConsumerWidget {
             ),
           ),
         ),
-        if (isLoading.value)
+        if (isLoading.value || ref.watch(cameraNotifierProvider).isLoading)
           Container(
             color: Colors.black.withOpacity(0.5),
             child: const Center(
