@@ -27,6 +27,7 @@ class App extends StatelessWidget {
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: themedata,
       routerConfig: router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
