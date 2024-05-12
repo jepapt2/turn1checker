@@ -2,7 +2,7 @@ import 'package:turn1checker/i18n/i18n.g.dart';
 
 enum CardType {
   monster(order: 1, color: 0xFFED8B31),
-  ritualMonster(order: 1, color: 0xFF65DED7),
+  ritualMonster(order: 2, color: 0xFF65DED7),
   spell(order: 3, color: 0xFF42C82C),
   trap(order: 4, color: 0xFFD650A8),
   fusionMonster(order: 5, color: 0xFF6F07AF),

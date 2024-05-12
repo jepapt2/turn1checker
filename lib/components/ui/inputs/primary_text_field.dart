@@ -48,6 +48,7 @@ class PrimaryTextField extends StatelessWidget {
           const SizedBox(height: 2)
         ],
         FormBuilderTextField(
+          key: key,
           textAlign: textAlign,
           textDirection: textDirection,
           controller: controller,

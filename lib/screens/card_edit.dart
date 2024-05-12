@@ -227,6 +227,8 @@ class CardEditScreen extends HookConsumerWidget {
                                 visible:
                                     cardState.buttonWithOrderState.isNotEmpty,
                                 child: ListView.separated(
+                                  key: Key(cardState.buttonWithOrderState.length
+                                      .toString()),
                                   padding: const EdgeInsets.all(0),
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
