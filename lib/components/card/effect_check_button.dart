@@ -39,7 +39,7 @@ class EffectCheckButtonWidget extends HookConsumerWidget {
                     flex: button.count,
                     child: Container(
                       decoration: const BoxDecoration(
-                          color: Color.fromARGB(166, 243, 177, 102)),
+                          color: Color.fromARGB(120, 243, 177, 102)),
                     ),
                   ),
                   Flexible(
@@ -48,8 +48,8 @@ class EffectCheckButtonWidget extends HookConsumerWidget {
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color.fromARGB(20, 56, 222, 169),
-                            Color.fromARGB(100, 52, 63, 90)
+                            Color.fromARGB(14, 56, 222, 169),
+                            Color.fromARGB(14, 52, 63, 90)
                           ],
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,

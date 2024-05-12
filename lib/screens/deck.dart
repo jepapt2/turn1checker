@@ -32,74 +32,70 @@ class DeckScreen extends HookConsumerWidget {
         }
         return isPop;
       },
-      child: SafeArea(
-        child: Scaffold(
-          body: CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                title: Text(deck.name),
-                floating: true,
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.only(
-                    top: 16, left: 8, right: 8, bottom: 80),
-                sliver: SliverGrid.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: cardAspectRatio(context: context),
-                  ),
-                  itemCount: deckNotifier.initialCardButtonStateList.length,
-                  itemBuilder: (context, index) {
-                    return CardButtonsList(
-                      card: ref.watch(cardButtonsNotifierProvider(
-                          initialCardState:
-                              deckNotifier.initialCardButtonStateList?[index])),
-                      cardButtonsNotifier: ref.watch(
-                          cardButtonsNotifierProvider(
-                                  initialCardState: deckNotifier
-                                      .initialCardButtonStateList?[index])
-                              .notifier),
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
-          bottomNavigationBar: BottomAppBar(
-            height: 60,
-            padding: EdgeInsets.zero,
-            elevation: 0.4,
-            child: Container(
-              color: ColorTheme.primary,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Visibility(
-                        visible: deck.turn > 1,
-                        maintainSize: true,
-                        maintainAnimation: true,
-                        maintainState: true,
-                        child: IconButton(
-                          icon: const Icon(Icons.skip_previous),
-                          onPressed: () =>
-                              deckNotifier.changeTurn(deck.turn - 1),
-                        )),
-                    Text(
-                      'Turn ${deck.turn}',
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.skip_next,
-                          color: deckNotifier.isLatestTurn()
-                              ? ColorTheme.orange
-                              : null),
-                      onPressed: () => deckNotifier.changeTurn(deck.turn + 1),
-                    ),
-                  ]),
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: Text(deck.name),
+              floating: true,
             ),
+            SliverPadding(
+              padding:
+                  const EdgeInsets.only(top: 16, left: 8, right: 8, bottom: 80),
+              sliver: SliverGrid.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: cardAspectRatio(context: context),
+                ),
+                itemCount: deckNotifier.initialCardButtonStateList.length,
+                itemBuilder: (context, index) {
+                  return CardButtonsList(
+                    card: ref.watch(cardButtonsNotifierProvider(
+                        initialCardState:
+                            deckNotifier.initialCardButtonStateList?[index])),
+                    cardButtonsNotifier: ref.watch(cardButtonsNotifierProvider(
+                            initialCardState:
+                                deckNotifier.initialCardButtonStateList?[index])
+                        .notifier),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+        bottomNavigationBar: BottomAppBar(
+          height: 60,
+          padding: EdgeInsets.zero,
+          elevation: 0.4,
+          child: Container(
+            color: ColorTheme.primary,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Visibility(
+                      visible: deck.turn > 1,
+                      maintainSize: true,
+                      maintainAnimation: true,
+                      maintainState: true,
+                      child: IconButton(
+                        icon: const Icon(Icons.skip_previous),
+                        onPressed: () => deckNotifier.changeTurn(deck.turn - 1),
+                      )),
+                  Text(
+                    'Turn ${deck.turn}',
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.skip_next,
+                        color: deckNotifier.isLatestTurn()
+                            ? ColorTheme.orange
+                            : null),
+                    onPressed: () => deckNotifier.changeTurn(deck.turn + 1),
+                  ),
+                ]),
           ),
         ),
       ),

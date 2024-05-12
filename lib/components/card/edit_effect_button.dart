@@ -23,7 +23,6 @@ class EditEffectButtonBox extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print(state.effectButton.description);
     return Container(
       padding: const EdgeInsets.only(top: 8, bottom: 12),
       child: Row(

@@ -41,8 +41,8 @@ class CounterWidget extends HookConsumerWidget {
           ),
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(20, 56, 222, 169),
-              Color.fromARGB(100, 52, 63, 90)
+              Color.fromARGB(14, 56, 222, 169),
+              Color.fromARGB(14, 52, 63, 90)
             ],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,

@@ -30,79 +30,79 @@ class DeckEditScreen extends HookConsumerWidget {
     final DeckListNotifier deckListNotifier =
         ref.watch(deckListNotifierProvider.notifier);
     final isManualSorting = useState(false);
-    return WillPopScope(
-      onWillPop: () async {
-        deckListNotifier.fetchDecks();
-        return true;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(deck.name),
-          actions: [
-            isManualSorting.value
-                ? IconButton(
-                    padding: const EdgeInsets.only(right: 8),
-                    onPressed: () => isManualSorting.value = false,
-                    icon: const Icon(
-                      Icons.sort,
-                      color: ColorTheme.orange,
-                      shadows: [
-                        Shadow(
-                          color: ColorTheme.orange,
-                          offset: Offset(0, 0),
-                          blurRadius: 12,
-                        ),
-                      ],
-                    ),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: PopupMenuButton(
-                        padding: EdgeInsets.zero,
-                        child: const Icon(Icons.sort),
-                        itemBuilder: (context) => [
-                              PopupMenuItem(
-                                child: Text(t.text.sortCardType),
-                                onTap: () => deckEditNotifier.cardTypeSort(),
-                              ),
-                              PopupMenuItem(
-                                child: Text(t.text.manualSort),
-                                onTap: () => isManualSorting.value = true,
-                              ),
-                            ]),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(deck.name),
+        actions: [
+          isManualSorting.value
+              ? IconButton(
+                  padding: const EdgeInsets.only(right: 8),
+                  onPressed: () => isManualSorting.value = false,
+                  icon: const Icon(
+                    Icons.sort,
+                    color: ColorTheme.orange,
+                    shadows: [
+                      Shadow(
+                        color: ColorTheme.orange,
+                        offset: Offset(0, 0),
+                        blurRadius: 12,
+                      ),
+                    ],
                   ),
-            Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: PopupMenuButton(
-                  child: const Icon(Icons.more_vert),
-                  itemBuilder: (context) => [
-                        PopupMenuItem(
-                          child: Text(t.text.changeDeckName),
-                          onTap: () => showDeckNameDialog(
-                              context: context,
-                              initialName: deck.name,
-                              onCompleted: (name) =>
-                                  deckEditNotifier.updateDeckName(name)),
-                        ),
-                        PopupMenuItem(
-                          child: Text(t.text.deleteDeck),
-                          onTap: () async {
-                            await showConfirmDialog(
-                                    context, t.text.deleteDeckConfirm)
-                                .then((result) => {
-                                      if (result)
-                                        {
-                                          deckEditNotifier.deleteDeck(),
-                                          Navigator.pop(context)
-                                        }
-                                    });
-                          },
-                        ),
-                      ]),
-            )
-          ],
-        ),
-        body: ReorderableGridView.count(
+                )
+              : Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: PopupMenuButton(
+                      padding: EdgeInsets.zero,
+                      child: const Icon(Icons.sort),
+                      itemBuilder: (context) => [
+                            PopupMenuItem(
+                              child: Text(t.text.sortCardType),
+                              onTap: () => deckEditNotifier.cardTypeSort(),
+                            ),
+                            PopupMenuItem(
+                              child: Text(t.text.manualSort),
+                              onTap: () => isManualSorting.value = true,
+                            ),
+                          ]),
+                ),
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: PopupMenuButton(
+                child: const Icon(Icons.more_vert),
+                itemBuilder: (context) => [
+                      PopupMenuItem(
+                        child: Text(t.text.changeDeckName),
+                        onTap: () => showDeckNameDialog(
+                            context: context,
+                            initialName: deck.name,
+                            onCompleted: (name) =>
+                                deckEditNotifier.updateDeckName(name)),
+                      ),
+                      PopupMenuItem(
+                        child: Text(t.text.deleteDeck),
+                        onTap: () async {
+                          await showConfirmDialog(
+                                  context, t.text.deleteDeckConfirm)
+                              .then((result) => {
+                                    if (result)
+                                      {
+                                        deckEditNotifier.deleteDeck(),
+                                        Navigator.pop(context)
+                                      }
+                                  });
+                        },
+                      ),
+                    ]),
+          )
+        ],
+      ),
+      body: WillPopScope(
+        onWillPop: () async {
+          deckListNotifier.fetchDecks();
+          return true;
+        },
+        child: ReorderableGridView.count(
           padding:
               const EdgeInsets.only(top: 16, left: 8, right: 8, bottom: 80),
           dragStartDelay: const Duration(milliseconds: 100),
@@ -129,12 +129,12 @@ class DeckEditScreen extends HookConsumerWidget {
             );
           }).toList(),
         ),
-        floatingActionButton: PrimaryFloatingActionButton(
-          onPressed: () => context.push('/edit/${deck.id}/card/new'),
-          child: const Icon(
-            Icons.add,
-            size: 32,
-          ),
+      ),
+      floatingActionButton: PrimaryFloatingActionButton(
+        onPressed: () => context.push('/edit/${deck.id}/card/new'),
+        child: const Icon(
+          Icons.add,
+          size: 32,
         ),
       ),
     );

@@ -21,37 +21,35 @@ class DeckListScreen extends HookConsumerWidget {
     final List<Deck> decks = ref.watch(deckListNotifierProvider);
     final decksNotifier = ref.watch(deckListNotifierProvider.notifier);
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(t.text.deckList),
-          actions: [
-            IconButton(
-                onPressed: () => showDeckNameDialog(
-                    context: context,
-                    onCompleted: (name) async {
-                      final deck = decksNotifier.createDeck(name);
-                      context.push('/edit/${deck.id}');
-                    }),
-                icon: const Icon(
-                  Icons.add,
-                  size: 28,
-                  color: Colors.white,
-                ))
-          ],
-        ),
-        body: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 12.0),
-                child: DeckListTile(
-                  deck: decks[index],
-                ),
-              );
-            },
-            itemCount: decks.length),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(t.text.deckList),
+        actions: [
+          IconButton(
+              onPressed: () => showDeckNameDialog(
+                  context: context,
+                  onCompleted: (name) async {
+                    final deck = decksNotifier.createDeck(name);
+                    context.push('/edit/${deck.id}');
+                  }),
+              icon: const Icon(
+                Icons.add,
+                size: 28,
+                color: Colors.white,
+              ))
+        ],
       ),
+      body: ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: DeckListTile(
+                deck: decks[index],
+              ),
+            );
+          },
+          itemCount: decks.length),
     );
   }
 }
