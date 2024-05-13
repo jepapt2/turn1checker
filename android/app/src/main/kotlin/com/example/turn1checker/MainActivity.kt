@@ -1,4 +1,4 @@
-package com.example.turn1checker
+package com.dairi.turn1checker
 
 import io.flutter.embedding.android.FlutterActivity
 

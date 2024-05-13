@@ -168,6 +168,7 @@ class CardEditNotifier extends _$CardEditNotifier {
           context, t.text.buttonsLengthVaridateError, SnackBarType.error);
       return;
     }
+
     final editImage = state.editImage;
     final id = ObjectId();
     String? updateImage;
@@ -188,5 +189,6 @@ class CardEditNotifier extends _$CardEditNotifier {
       realm.add(card, update: true);
     });
     deckEditNotifier.fetchDecks(deckState.id);
+    Navigator.of(context).pop();
   }
 }

@@ -23,25 +23,31 @@ class ConfirmDialog extends StatelessWidget {
               const SizedBox(height: 20),
               Text(
                 description,
-                style: const TextStyle(fontSize: 16),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PrimaryButton(
-                    onPressed: () {
-                      Navigator.pop(context, false);
-                    },
-                    width: 150,
-                    text: t.text.cancel,
+                  Flexible(
+                    child: PrimaryButton(
+                      onPressed: () {
+                        Navigator.pop(context, false);
+                      },
+                      text: t.text.cancel,
+                      fontSize: 14,
+                    ),
                   ),
-                  GradientButton(
-                    onPressed: () {
-                      Navigator.pop(context, true);
-                    },
-                    width: 150,
-                    text: t.text.yes,
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: GradientButton(
+                      onPressed: () {
+                        Navigator.pop(context, true);
+                      },
+                      text: t.text.yes,
+                      fontSize: 14,
+                    ),
                   ),
                 ],
               ),

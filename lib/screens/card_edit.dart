@@ -298,7 +298,6 @@ class CardEditScreen extends HookConsumerWidget {
                               GradientButton(
                                 onPressed: () {
                                   cardNotifier.saveCard(context);
-                                  Navigator.of(context).pop();
                                 },
                                 text: '保存',
                                 height: 52,
