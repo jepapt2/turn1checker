@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 94 (47 per locale)
+/// Strings: 102 (51 per locale)
 ///
-/// Built on 2024-05-04 at 13:22 UTC
+/// Built on 2024-05-13 at 13:08 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -207,6 +207,10 @@ class _I18nTextJa {
 	String get deleteDeckConfirm => 'このデッキを削除しますか?';
 	String get buttonsLengthVaridateError => 'ボタンまたはカウンターを1つ以上登録してください';
 	String get closeDeckScreenConfirm => 'デュエルを終了しますか？';
+	String get selectFromCamera => 'カメラから選択';
+	String get selectFromGallery => 'ギャラリーから選択';
+	String get addButton => 'ボタンを追加';
+	String get addCounter => 'カウンターを追加';
 }
 
 // Path: <root>
@@ -291,6 +295,10 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get deleteDeckConfirm => 'Do you want to remove this Deck?';
 	@override String get buttonsLengthVaridateError => 'Register one or more buttons or counters.';
 	@override String get closeDeckScreenConfirm => 'Do you want to end the duel?';
+	@override String get selectFromCamera => 'Select from camera';
+	@override String get selectFromGallery => 'Select from gallery';
+	@override String get addButton => 'Add button';
+	@override String get addCounter => 'Add counter';
 }
 
 /// Flat map(s) containing all translations.
@@ -346,6 +354,10 @@ extension on _I18nJa {
 			case 'text.deleteDeckConfirm': return 'このデッキを削除しますか?';
 			case 'text.buttonsLengthVaridateError': return 'ボタンまたはカウンターを1つ以上登録してください';
 			case 'text.closeDeckScreenConfirm': return 'デュエルを終了しますか？';
+			case 'text.selectFromCamera': return 'カメラから選択';
+			case 'text.selectFromGallery': return 'ギャラリーから選択';
+			case 'text.addButton': return 'ボタンを追加';
+			case 'text.addCounter': return 'カウンターを追加';
 			default: return null;
 		}
 	}
@@ -401,6 +413,10 @@ extension on _I18nEn {
 			case 'text.deleteDeckConfirm': return 'Do you want to remove this Deck?';
 			case 'text.buttonsLengthVaridateError': return 'Register one or more buttons or counters.';
 			case 'text.closeDeckScreenConfirm': return 'Do you want to end the duel?';
+			case 'text.selectFromCamera': return 'Select from camera';
+			case 'text.selectFromGallery': return 'Select from gallery';
+			case 'text.addButton': return 'Add button';
+			case 'text.addCounter': return 'Add counter';
 			default: return null;
 		}
 	}

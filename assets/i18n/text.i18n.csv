@@ -46,3 +46,7 @@ deleteDeck,Delete Deck,デッキを削除
 deleteDeckConfirm,Do you want to remove this Deck?,このデッキを削除しますか?
 buttonsLengthVaridateError,Register one or more buttons or counters.,ボタンまたはカウンターを1つ以上登録してください
 closeDeckScreenConfirm,Do you want to end the duel?,デュエルを終了しますか？
+selectFromCamera,Select from camera,カメラから選択
+selectFromGallery,Select from gallery,ギャラリーから選択
+addButton,Add button,ボタンを追加
+addCounter,Add counter,カウンターを追加

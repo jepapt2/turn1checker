@@ -15,6 +15,8 @@ Future<Uint8List?> pickAndCropImage() async {
       sourcePath: pickedFile.path,
       aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
       cropStyle: CropStyle.rectangle,
+      compressFormat: ImageCompressFormat.png,
+      compressQuality: 100,
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: t.text.cropIluustration,

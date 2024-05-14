@@ -20,6 +20,7 @@ class PrimaryRectangleButton extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         height: 48,
+        width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 8),
         decoration: const BoxDecoration(
           color: ColorTheme.primary,
@@ -29,17 +30,18 @@ class PrimaryRectangleButton extends StatelessWidget {
             width: 0.4,
           )),
         ),
-        child: Center(
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, color: ColorTheme.white),
-              const SizedBox(width: 4),
+              Icon(icon, color: ColorTheme.white, size: 20),
+              const SizedBox(width: 2),
               Text(
                 text,
                 style: const TextStyle(
                   color: ColorTheme.white,
-                  fontSize: 14,
+                  // fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
               ),

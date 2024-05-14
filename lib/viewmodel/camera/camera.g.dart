@@ -6,7 +6,7 @@ part of 'camera.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cameraNotifierHash() => r'643356f26e54fcdb6c196a014f78d9deea3029c4';
+String _$cameraNotifierHash() => r'86e7d15ed0a684af7c9fb9572662227e7b27cb93';
 
 /// See also [CameraNotifier].
 @ProviderFor(CameraNotifier)

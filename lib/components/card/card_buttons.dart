@@ -29,14 +29,25 @@ class CardButtonsList extends StatelessWidget {
       final editImage = card.editImage;
       final image = card.image;
       if (editImage != null) {
-        return Image.memory(editImage);
+        return Image.memory(
+          editImage,
+          fit: BoxFit.cover,
+          width: cardWidth,
+          height: cardWidth,
+        );
       }
       if (image != null) {
         return Consumer(builder: (context, ref, child) {
           final filePath = ref.watch(localPathProvider).value;
           if (filePath == null) return const SizedBox();
           final imagePath = '$filePath/$image';
-          return Image.file(File(imagePath));
+
+          return Image.file(
+            File(imagePath),
+            fit: BoxFit.fitHeight,
+            width: cardWidth,
+            height: cardWidth,
+          );
         });
       }
       return const SizedBox();

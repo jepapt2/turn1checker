@@ -24,25 +24,34 @@ class ImageConfirmDialog extends StatelessWidget {
             children: [
               Image.memory(image),
               const SizedBox(height: 16),
-              Text(t.text.illustrationConfirm),
+              Text(
+                t.text.illustrationConfirm,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PrimaryButton(
-                    onPressed: () {
-                      Navigator.pop(context, true);
-                    },
-                    width: 150,
-                    text: t.text.cancel,
+                  Flexible(
+                    child: PrimaryButton(
+                      onPressed: () {
+                        Navigator.pop(context, true);
+                      },
+                      text: t.text.cancel,
+                      fontSize: 14,
+                    ),
                   ),
-                  GradientButton(
-                    onPressed: () {
-                      Navigator.pop(context, true);
-                      onConfirm();
-                    },
-                    width: 150,
-                    text: t.text.yes,
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: GradientButton(
+                      onPressed: () {
+                        Navigator.pop(context, true);
+                        onConfirm();
+                      },
+                      text: t.text.yes,
+                      fontSize: 14,
+                    ),
                   ),
                 ],
               ),

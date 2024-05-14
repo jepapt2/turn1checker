@@ -143,9 +143,9 @@ class CardEditScreen extends HookConsumerWidget {
                                           fontSize: 16)),
                                   const SizedBox(height: 4),
                                   Row(children: [
-                                    Expanded(
+                                    Flexible(
                                       child: PrimaryRectangleButton(
-                                          text: 'カメラから選択',
+                                          text: t.text.selectFromCamera,
                                           icon: Icons.camera_alt_outlined,
                                           onPressed: () async {
                                             final result =
@@ -159,10 +159,10 @@ class CardEditScreen extends HookConsumerWidget {
                                             }
                                           }),
                                     ),
-                                    const SizedBox(width: 10),
-                                    Expanded(
+                                    const SizedBox(width: 8),
+                                    Flexible(
                                       child: PrimaryRectangleButton(
-                                          text: 'ギャラリーから選択',
+                                          text: t.text.selectFromGallery,
                                           icon: Icons.image,
                                           onPressed: () async {
                                             final imagePath =
@@ -277,15 +277,15 @@ class CardEditScreen extends HookConsumerWidget {
                                   child: Row(children: [
                                     Expanded(
                                       child: CyanGradientRectangleButton(
-                                          text: 'ボタンを追加',
+                                          text: t.text.addButton,
                                           icon: Icons.check_box_outlined,
                                           onPressed: () =>
                                               cardNotifier.addEffectButton()),
                                     ),
-                                    const SizedBox(width: 10),
+                                    const SizedBox(width: 8),
                                     Expanded(
                                       child: CyanGradientRectangleButton(
-                                          text: 'カウンターを追加',
+                                          text: t.text.addCounter,
                                           icon: Icons.check_box_outlined,
                                           onPressed: () =>
                                               cardNotifier.addCounter()),

@@ -20,6 +20,7 @@ class CyanGradientRectangleButton extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         height: 48,
+        width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 8),
         decoration: const BoxDecoration(
           //0.4のborderをつける
@@ -36,7 +37,8 @@ class CyanGradientRectangleButton extends StatelessWidget {
             ],
           ),
         ),
-        child: Center(
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -46,7 +48,6 @@ class CyanGradientRectangleButton extends StatelessWidget {
                 text,
                 style: const TextStyle(
                   color: ColorTheme.white,
-                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),

@@ -6,7 +6,7 @@ part of 'card_edit.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cardEditNotifierHash() => r'59970d5c8d9ad454b3373802fc783f5f046370a0';
+String _$cardEditNotifierHash() => r'acaa51d3787227ba5cb31a1b3e451614a6f3b3ee';
 
 /// Copied from Dart SDK
 class _SystemHash {
