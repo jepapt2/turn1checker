@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/theme/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,7 +7,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'i18n/i18n.g.dart';
 import 'router/router.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
   runApp(TranslationProvider(child: const ProviderScope(child: App())));
 }
