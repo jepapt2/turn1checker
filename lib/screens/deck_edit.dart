@@ -83,7 +83,8 @@ class DeckEditScreen extends HookConsumerWidget {
                         child: Text(t.text.deleteDeck),
                         onTap: () async {
                           await showConfirmDialog(
-                                  context, t.text.deleteDeckConfirm)
+                                  context: context,
+                                  description: t.text.deleteDeckConfirm)
                               .then((result) => {
                                     if (result)
                                       {

@@ -70,7 +70,9 @@ class CardEditScreen extends HookConsumerWidget {
               child: IconButton(
                 icon: const Icon(Icons.delete_outline),
                 onPressed: () async {
-                  await showConfirmDialog(context, t.text.deleteDeckConfirm)
+                  await showConfirmDialog(
+                          context: context,
+                          description: t.text.deleteDeckConfirm)
                       .then((result) => {
                             if (result)
                               {

@@ -5,6 +5,7 @@ import 'package:turn1checker/screens/deck.dart';
 import 'package:turn1checker/screens/deck_edit.dart';
 import 'package:turn1checker/screens/deckList.dart';
 import 'package:turn1checker/screens/card_edit.dart';
+import 'package:turn1checker/screens/upgrade.dart';
 
 final GoRouter router = GoRouter(routes: <RouteBase>[
   GoRoute(
@@ -35,6 +36,9 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
           ],
         ),
         GoRoute(
-            path: 'camera', builder: (context, state) => const CameraScreen())
+            path: 'camera', builder: (context, state) => const CameraScreen()),
+        GoRoute(
+            path: 'upgrade',
+            builder: (context, state) => const UpgradeScreen()),
       ]),
 ]);

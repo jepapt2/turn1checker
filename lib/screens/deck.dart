@@ -25,8 +25,10 @@ class DeckScreen extends HookConsumerWidget {
 
     return WillPopScope(
       onWillPop: () async {
-        final isPop =
-            await showConfirmDialog(context, t.text.closeDeckScreenConfirm);
+        final isPop = await showConfirmDialog(
+          context: context,
+          description: t.text.closeDeckScreenConfirm,
+        );
         if (isPop) {
           deckNotifier.onCloseDeck();
         }
