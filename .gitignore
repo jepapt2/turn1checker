@@ -31,7 +31,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-**/android/app/src/main/AndroidManifest.xml
+
 
 # Symbolication related
 app.*.symbols
@@ -43,6 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/app/src/main/AndroidManifest.xml
 
 # flutter_dotenv
 *.env
