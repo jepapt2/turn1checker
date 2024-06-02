@@ -47,4 +47,4 @@ app.*.map.json
 # flutter_dotenv
 *.env
 
-android/app/src/main/AndroidManifest.xml
+/android/app/src/main/AndroidManifest.xml
