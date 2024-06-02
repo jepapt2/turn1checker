@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 138 (69 per locale)
+/// Strings: 148 (74 per locale)
 ///
-/// Built on 2024-06-02 at 09:46 UTC
+/// Built on 2024-06-02 at 11:58 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -228,7 +228,12 @@ class _I18nTextJa {
 	String get existPurchase => '購入済み';
 	String get confirm => '確認';
 	String get multipleAdsPurchase => '広告非表示の複数購入が確認されました。\n購入金額分のデッキ枠、+10に変換されます。';
-	String get currentDeckSlot => '現在のデッキ枠';
+	String get currentDeckSlot => '現在のデッキ作成枠';
+	String get numberOfDeck => 'デッキ数';
+	String get removeAdsAndDeckSlot => '広告削除・デッキ枠の購入';
+	String get deckSlotDescription => 'デッキ作成枠は購入することで増やすことができます。';
+	String get limitOfDeckSlot => 'デッキ数が上限に達しました。';
+	String get goToPurchase => '購入画面へ';
 }
 
 // Path: <root>
@@ -335,6 +340,11 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get confirm => 'Confirm';
 	@override String get multipleAdsPurchase => 'Multiple ad-free purchases were identified.\nDeck slots for the amount purchased converted to +10.';
 	@override String get currentDeckSlot => 'Current deck slot';
+	@override String get numberOfDeck => 'NumberOfDeck';
+	@override String get removeAdsAndDeckSlot => 'Delete ads and purchase deck space';
+	@override String get deckSlotDescription => 'Deck creation slots can be increased by purchasing them.';
+	@override String get limitOfDeckSlot => 'The maximum number of decks has been reached.';
+	@override String get goToPurchase => 'Go to purchase';
 }
 
 /// Flat map(s) containing all translations.
@@ -411,7 +421,12 @@ extension on _I18nJa {
 			case 'text.existPurchase': return '購入済み';
 			case 'text.confirm': return '確認';
 			case 'text.multipleAdsPurchase': return '広告非表示の複数購入が確認されました。\n購入金額分のデッキ枠、+10に変換されます。';
-			case 'text.currentDeckSlot': return '現在のデッキ枠';
+			case 'text.currentDeckSlot': return '現在のデッキ作成枠';
+			case 'text.numberOfDeck': return 'デッキ数';
+			case 'text.removeAdsAndDeckSlot': return '広告削除・デッキ枠の購入';
+			case 'text.deckSlotDescription': return 'デッキ作成枠は購入することで増やすことができます。';
+			case 'text.limitOfDeckSlot': return 'デッキ数が上限に達しました。';
+			case 'text.goToPurchase': return '購入画面へ';
 			default: return null;
 		}
 	}
@@ -489,6 +504,11 @@ extension on _I18nEn {
 			case 'text.confirm': return 'Confirm';
 			case 'text.multipleAdsPurchase': return 'Multiple ad-free purchases were identified.\nDeck slots for the amount purchased converted to +10.';
 			case 'text.currentDeckSlot': return 'Current deck slot';
+			case 'text.numberOfDeck': return 'NumberOfDeck';
+			case 'text.removeAdsAndDeckSlot': return 'Delete ads and purchase deck space';
+			case 'text.deckSlotDescription': return 'Deck creation slots can be increased by purchasing them.';
+			case 'text.limitOfDeckSlot': return 'The maximum number of decks has been reached.';
+			case 'text.goToPurchase': return 'Go to purchase';
 			default: return null;
 		}
 	}
