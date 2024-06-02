@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 148 (74 per locale)
+/// Strings: 150 (75 per locale)
 ///
-/// Built on 2024-06-02 at 11:58 UTC
+/// Built on 2024-06-02 at 14:39 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -234,6 +234,7 @@ class _I18nTextJa {
 	String get deckSlotDescription => 'デッキ作成枠は購入することで増やすことができます。';
 	String get limitOfDeckSlot => 'デッキ数が上限に達しました。';
 	String get goToPurchase => '購入画面へ';
+	String get privacyPolicy => 'プライバシーポリシー';
 }
 
 // Path: <root>
@@ -345,6 +346,7 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get deckSlotDescription => 'Deck creation slots can be increased by purchasing them.';
 	@override String get limitOfDeckSlot => 'The maximum number of decks has been reached.';
 	@override String get goToPurchase => 'Go to purchase';
+	@override String get privacyPolicy => 'Privacy Policy';
 }
 
 /// Flat map(s) containing all translations.
@@ -427,6 +429,7 @@ extension on _I18nJa {
 			case 'text.deckSlotDescription': return 'デッキ作成枠は購入することで増やすことができます。';
 			case 'text.limitOfDeckSlot': return 'デッキ数が上限に達しました。';
 			case 'text.goToPurchase': return '購入画面へ';
+			case 'text.privacyPolicy': return 'プライバシーポリシー';
 			default: return null;
 		}
 	}
@@ -509,6 +512,7 @@ extension on _I18nEn {
 			case 'text.deckSlotDescription': return 'Deck creation slots can be increased by purchasing them.';
 			case 'text.limitOfDeckSlot': return 'The maximum number of decks has been reached.';
 			case 'text.goToPurchase': return 'Go to purchase';
+			case 'text.privacyPolicy': return 'Privacy Policy';
 			default: return null;
 		}
 	}

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:reorderable_grid_view/reorderable_grid_view.dart';
 import 'package:turn1checker/components/card/card_buttons.dart';
 import 'package:turn1checker/components/deck/deckname_modal.dart';
+import 'package:turn1checker/components/ui/ad_banner.dart';
 import 'package:turn1checker/components/ui/buttons/primary_floating_action_button.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -138,6 +139,7 @@ class DeckEditScreen extends HookConsumerWidget {
           size: 32,
         ),
       ),
+      bottomNavigationBar: const AdBanner(),
     );
   }
 }

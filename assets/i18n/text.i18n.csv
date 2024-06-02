@@ -73,3 +73,4 @@ removeAdsAndDeckSlot,Delete ads and purchase deck space,広告削除・デッキ
 deckSlotDescription,Deck creation slots can be increased by purchasing them.,デッキ作成枠は購入することで増やすことができます。
 limitOfDeckSlot,The maximum number of decks has been reached.,デッキ数が上限に達しました。
 goToPurchase,Go to purchase,購入画面へ
+privacyPolicy,Privacy Policy,プライバシーポリシー
