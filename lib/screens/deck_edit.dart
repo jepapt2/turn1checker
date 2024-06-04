@@ -132,11 +132,14 @@ class DeckEditScreen extends HookConsumerWidget {
           }).toList(),
         ),
       ),
-      floatingActionButton: PrimaryFloatingActionButton(
-        onPressed: () => context.push('/edit/${deck.id}/card/new'),
-        child: const Icon(
-          Icons.add,
-          size: 32,
+      floatingActionButton: Visibility(
+        visible: deck.cards.length < 100,
+        child: PrimaryFloatingActionButton(
+          onPressed: () => context.push('/edit/${deck.id}/card/new'),
+          child: const Icon(
+            Icons.add,
+            size: 32,
+          ),
         ),
       ),
       bottomNavigationBar: const AdBanner(),

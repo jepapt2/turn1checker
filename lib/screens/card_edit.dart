@@ -289,7 +289,7 @@ class CardEditScreen extends HookConsumerWidget {
                                     Expanded(
                                       child: CyanGradientRectangleButton(
                                           text: t.text.addCounter,
-                                          icon: Icons.check_box_outlined,
+                                          icon: Icons.looks_one_outlined,
                                           onPressed: () =>
                                               cardNotifier.addCounter()),
                                     ),
