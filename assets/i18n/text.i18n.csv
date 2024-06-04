@@ -50,3 +50,27 @@ selectFromCamera,Select from camera,カメラから選択
 selectFromGallery,Select from gallery,ギャラリーから選択
 addButton,Add button,ボタンを追加
 addCounter,Add counter,カウンターを追加
+deckSlot5,Deck Slot +5,デッキ作成枠+5
+removeAds,Remove Ads,広告を非表示
+deckSlot3,Deck Slot +3,デッキ作成枠+3
+faildGetPurchaseItem,Failed to get purchase item.,購入アイテムの取得に失敗しました。
+faildPurchase,Failed to purchase.,購入に失敗しました
+upgrade,Upgrade,アップグレード
+thankYou,Thank you!,ありがとうございます！
+deckSlot5PurchaseSuccess,Deck Slot +5 purchase completed.,デッキ作成枠+5の購入が完了しました。
+removeAdsPurchaseSuccess,Remove Ads purchase completed.,広告非表示の購入が完了しました。
+canceledPurchase,The purchase was canceled.,購入がキャンセルされました。
+restore,Restore purchases infomation.,購入情報の復元
+restoreSuccess,Restore purchases infomation completed.,購入情報の復元が完了しました。
+restoreFailed,Failed to restore purchases infomation.,購入情報の復元に失敗しました。
+withDeckSlot3,With Deck Slot +3,デッキ作成枠+3付き
+existPurchase,Already purchased.,購入済み
+confirm,Confirm,確認
+multipleAdsPurchase,Multiple ad-free purchases were identified.\nDeck slots for the amount purchased converted to +10.,広告非表示の複数購入が確認されました。\n購入金額分のデッキ枠、+10に変換されます。
+currentDeckSlot,Current deck slot,現在のデッキ作成枠
+numberOfDeck,NumberOfDeck,デッキ数
+removeAdsAndDeckSlot,Delete ads and purchase deck space,広告削除・デッキ枠の購入
+deckSlotDescription,Deck creation slots can be increased by purchasing them.,デッキ作成枠は購入することで増やすことができます。
+limitOfDeckSlot,The maximum number of decks has been reached.,デッキ数が上限に達しました。
+goToPurchase,Go to purchase,購入画面へ
+privacyPolicy,Privacy Policy,プライバシーポリシー

@@ -1,4 +1,6 @@
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:turn1checker/components/ui/ad_banner.dart';
 import 'package:turn1checker/components/ui/dialogs/confirm_dialog.dart';
 import 'package:turn1checker/hooks/deck.dart';
 import 'package:turn1checker/i18n/i18n.g.dart';
@@ -25,8 +27,10 @@ class DeckScreen extends HookConsumerWidget {
 
     return WillPopScope(
       onWillPop: () async {
-        final isPop =
-            await showConfirmDialog(context, t.text.closeDeckScreenConfirm);
+        final isPop = await showConfirmDialog(
+          context: context,
+          description: t.text.closeDeckScreenConfirm,
+        );
         if (isPop) {
           deckNotifier.onCloseDeck();
         }
@@ -65,38 +69,45 @@ class DeckScreen extends HookConsumerWidget {
             )
           ],
         ),
-        bottomNavigationBar: BottomAppBar(
-          height: 60,
-          padding: EdgeInsets.zero,
-          elevation: 0.4,
-          child: Container(
-            color: ColorTheme.primary,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Visibility(
-                      visible: deck.turn > 1,
-                      maintainSize: true,
-                      maintainAnimation: true,
-                      maintainState: true,
-                      child: IconButton(
-                        icon: const Icon(Icons.skip_previous),
-                        onPressed: () => deckNotifier.changeTurn(deck.turn - 1),
-                      )),
-                  Text(
-                    'Turn ${deck.turn}',
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.skip_next,
-                        color: deckNotifier.isLatestTurn()
-                            ? ColorTheme.orange
-                            : null),
-                    onPressed: () => deckNotifier.changeTurn(deck.turn + 1),
-                  ),
-                ]),
-          ),
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const AdBanner(),
+            BottomAppBar(
+              height: 60,
+              padding: EdgeInsets.zero,
+              elevation: 0.4,
+              child: Container(
+                color: ColorTheme.primary,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Visibility(
+                          visible: deck.turn > 1,
+                          maintainSize: true,
+                          maintainAnimation: true,
+                          maintainState: true,
+                          child: IconButton(
+                            icon: const Icon(Icons.skip_previous),
+                            onPressed: () =>
+                                deckNotifier.changeTurn(deck.turn - 1),
+                          )),
+                      Text(
+                        'Turn ${deck.turn}',
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.skip_next,
+                            color: deckNotifier.isLatestTurn()
+                                ? ColorTheme.orange
+                                : null),
+                        onPressed: () => deckNotifier.changeTurn(deck.turn + 1),
+                      ),
+                    ]),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -12,7 +12,6 @@ abstract class CameraControllerWithOption with _$CameraControllerWithOption {
 }
 
 @freezed
-@freezed
 abstract class CameraOption with _$CameraOption {
   const factory CameraOption({
     required double maxZoomLevel,

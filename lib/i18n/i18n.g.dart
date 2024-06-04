@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 102 (51 per locale)
+/// Strings: 150 (75 per locale)
 ///
-/// Built on 2024-05-13 at 13:08 UTC
+/// Built on 2024-06-02 at 14:39 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -211,6 +211,30 @@ class _I18nTextJa {
 	String get selectFromGallery => 'ギャラリーから選択';
 	String get addButton => 'ボタンを追加';
 	String get addCounter => 'カウンターを追加';
+	String get deckSlot5 => 'デッキ作成枠+5';
+	String get removeAds => '広告を非表示';
+	String get deckSlot3 => 'デッキ作成枠+3';
+	String get faildGetPurchaseItem => '購入アイテムの取得に失敗しました。';
+	String get faildPurchase => '購入に失敗しました';
+	String get upgrade => 'アップグレード';
+	String get thankYou => 'ありがとうございます！';
+	String get deckSlot5PurchaseSuccess => 'デッキ作成枠+5の購入が完了しました。';
+	String get removeAdsPurchaseSuccess => '広告非表示の購入が完了しました。';
+	String get canceledPurchase => '購入がキャンセルされました。';
+	String get restore => '購入情報の復元';
+	String get restoreSuccess => '購入情報の復元が完了しました。';
+	String get restoreFailed => '購入情報の復元に失敗しました。';
+	String get withDeckSlot3 => 'デッキ作成枠+3付き';
+	String get existPurchase => '購入済み';
+	String get confirm => '確認';
+	String get multipleAdsPurchase => '広告非表示の複数購入が確認されました。\n購入金額分のデッキ枠、+10に変換されます。';
+	String get currentDeckSlot => '現在のデッキ作成枠';
+	String get numberOfDeck => 'デッキ数';
+	String get removeAdsAndDeckSlot => '広告削除・デッキ枠の購入';
+	String get deckSlotDescription => 'デッキ作成枠は購入することで増やすことができます。';
+	String get limitOfDeckSlot => 'デッキ数が上限に達しました。';
+	String get goToPurchase => '購入画面へ';
+	String get privacyPolicy => 'プライバシーポリシー';
 }
 
 // Path: <root>
@@ -299,6 +323,30 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get selectFromGallery => 'Select from gallery';
 	@override String get addButton => 'Add button';
 	@override String get addCounter => 'Add counter';
+	@override String get deckSlot5 => 'Deck Slot +5';
+	@override String get removeAds => 'Remove Ads';
+	@override String get deckSlot3 => 'Deck Slot +3';
+	@override String get faildGetPurchaseItem => 'Failed to get purchase item.';
+	@override String get faildPurchase => 'Failed to purchase.';
+	@override String get upgrade => 'Upgrade';
+	@override String get thankYou => 'Thank you!';
+	@override String get deckSlot5PurchaseSuccess => 'Deck Slot +5 purchase completed.';
+	@override String get removeAdsPurchaseSuccess => 'Remove Ads purchase completed.';
+	@override String get canceledPurchase => 'The purchase was canceled.';
+	@override String get restore => 'Restore purchases infomation.';
+	@override String get restoreSuccess => 'Restore purchases infomation completed.';
+	@override String get restoreFailed => 'Failed to restore purchases infomation.';
+	@override String get withDeckSlot3 => 'With Deck Slot +3';
+	@override String get existPurchase => 'Already purchased.';
+	@override String get confirm => 'Confirm';
+	@override String get multipleAdsPurchase => 'Multiple ad-free purchases were identified.\nDeck slots for the amount purchased converted to +10.';
+	@override String get currentDeckSlot => 'Current deck slot';
+	@override String get numberOfDeck => 'NumberOfDeck';
+	@override String get removeAdsAndDeckSlot => 'Delete ads and purchase deck space';
+	@override String get deckSlotDescription => 'Deck creation slots can be increased by purchasing them.';
+	@override String get limitOfDeckSlot => 'The maximum number of decks has been reached.';
+	@override String get goToPurchase => 'Go to purchase';
+	@override String get privacyPolicy => 'Privacy Policy';
 }
 
 /// Flat map(s) containing all translations.
@@ -358,6 +406,30 @@ extension on _I18nJa {
 			case 'text.selectFromGallery': return 'ギャラリーから選択';
 			case 'text.addButton': return 'ボタンを追加';
 			case 'text.addCounter': return 'カウンターを追加';
+			case 'text.deckSlot5': return 'デッキ作成枠+5';
+			case 'text.removeAds': return '広告を非表示';
+			case 'text.deckSlot3': return 'デッキ作成枠+3';
+			case 'text.faildGetPurchaseItem': return '購入アイテムの取得に失敗しました。';
+			case 'text.faildPurchase': return '購入に失敗しました';
+			case 'text.upgrade': return 'アップグレード';
+			case 'text.thankYou': return 'ありがとうございます！';
+			case 'text.deckSlot5PurchaseSuccess': return 'デッキ作成枠+5の購入が完了しました。';
+			case 'text.removeAdsPurchaseSuccess': return '広告非表示の購入が完了しました。';
+			case 'text.canceledPurchase': return '購入がキャンセルされました。';
+			case 'text.restore': return '購入情報の復元';
+			case 'text.restoreSuccess': return '購入情報の復元が完了しました。';
+			case 'text.restoreFailed': return '購入情報の復元に失敗しました。';
+			case 'text.withDeckSlot3': return 'デッキ作成枠+3付き';
+			case 'text.existPurchase': return '購入済み';
+			case 'text.confirm': return '確認';
+			case 'text.multipleAdsPurchase': return '広告非表示の複数購入が確認されました。\n購入金額分のデッキ枠、+10に変換されます。';
+			case 'text.currentDeckSlot': return '現在のデッキ作成枠';
+			case 'text.numberOfDeck': return 'デッキ数';
+			case 'text.removeAdsAndDeckSlot': return '広告削除・デッキ枠の購入';
+			case 'text.deckSlotDescription': return 'デッキ作成枠は購入することで増やすことができます。';
+			case 'text.limitOfDeckSlot': return 'デッキ数が上限に達しました。';
+			case 'text.goToPurchase': return '購入画面へ';
+			case 'text.privacyPolicy': return 'プライバシーポリシー';
 			default: return null;
 		}
 	}
@@ -417,6 +489,30 @@ extension on _I18nEn {
 			case 'text.selectFromGallery': return 'Select from gallery';
 			case 'text.addButton': return 'Add button';
 			case 'text.addCounter': return 'Add counter';
+			case 'text.deckSlot5': return 'Deck Slot +5';
+			case 'text.removeAds': return 'Remove Ads';
+			case 'text.deckSlot3': return 'Deck Slot +3';
+			case 'text.faildGetPurchaseItem': return 'Failed to get purchase item.';
+			case 'text.faildPurchase': return 'Failed to purchase.';
+			case 'text.upgrade': return 'Upgrade';
+			case 'text.thankYou': return 'Thank you!';
+			case 'text.deckSlot5PurchaseSuccess': return 'Deck Slot +5 purchase completed.';
+			case 'text.removeAdsPurchaseSuccess': return 'Remove Ads purchase completed.';
+			case 'text.canceledPurchase': return 'The purchase was canceled.';
+			case 'text.restore': return 'Restore purchases infomation.';
+			case 'text.restoreSuccess': return 'Restore purchases infomation completed.';
+			case 'text.restoreFailed': return 'Failed to restore purchases infomation.';
+			case 'text.withDeckSlot3': return 'With Deck Slot +3';
+			case 'text.existPurchase': return 'Already purchased.';
+			case 'text.confirm': return 'Confirm';
+			case 'text.multipleAdsPurchase': return 'Multiple ad-free purchases were identified.\nDeck slots for the amount purchased converted to +10.';
+			case 'text.currentDeckSlot': return 'Current deck slot';
+			case 'text.numberOfDeck': return 'NumberOfDeck';
+			case 'text.removeAdsAndDeckSlot': return 'Delete ads and purchase deck space';
+			case 'text.deckSlotDescription': return 'Deck creation slots can be increased by purchasing them.';
+			case 'text.limitOfDeckSlot': return 'The maximum number of decks has been reached.';
+			case 'text.goToPurchase': return 'Go to purchase';
+			case 'text.privacyPolicy': return 'Privacy Policy';
 			default: return null;
 		}
 	}

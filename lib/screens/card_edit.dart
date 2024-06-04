@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:turn1checker/components/card/card_buttons.dart';
 import 'package:turn1checker/components/card/edit_counter.dart';
 import 'package:turn1checker/components/card/edit_effect_button.dart';
+import 'package:turn1checker/components/ui/ad_banner.dart';
 import 'package:turn1checker/components/ui/buttons/gradient_rectangle_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:turn1checker/components/ui/buttons/gradient_button.dart';
@@ -70,7 +71,9 @@ class CardEditScreen extends HookConsumerWidget {
               child: IconButton(
                 icon: const Icon(Icons.delete_outline),
                 onPressed: () async {
-                  await showConfirmDialog(context, t.text.deleteDeckConfirm)
+                  await showConfirmDialog(
+                          context: context,
+                          description: t.text.deleteDeckConfirm)
                       .then((result) => {
                             if (result)
                               {
@@ -292,23 +295,30 @@ class CardEditScreen extends HookConsumerWidget {
                                     ),
                                   ]),
                                 ),
-                              const SizedBox(
-                                height: 40,
-                              ),
-                              GradientButton(
-                                onPressed: () {
-                                  cardNotifier.saveCard(context);
-                                },
-                                text: '保存',
-                                height: 52,
-                                fontSize: 18,
-                                theme: GradientButtonTheme.orange,
-                              ),
-                              const SizedBox(
-                                height: 40,
-                              )
                             ],
                           )),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const AdBanner(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: GradientButton(
+                          onPressed: () {
+                            cardNotifier.saveCard(context);
+                          },
+                          text: '保存',
+                          height: 52,
+                          fontSize: 18,
+                          theme: GradientButtonTheme.orange,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      )
                     ],
                   ),
                 ),
