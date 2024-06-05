@@ -9,14 +9,15 @@ import 'package:turn1checker/model/realm.dart';
 import 'package:turn1checker/theme/color.dart';
 
 class DeckListTile extends StatelessWidget {
-  const DeckListTile({super.key, required this.deck});
+  const DeckListTile({super.key, required this.deck, required this.startDuel});
 
   final Deck deck;
+  final Function() startDuel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push('/deck/${deck.id}'),
+      onTap: startDuel,
       child: Container(
         height: 52,
         decoration: BoxDecoration(

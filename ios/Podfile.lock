@@ -66,6 +66,8 @@ PODS:
     - PurchasesHybridCommon (= 10.6.2)
   - PurchasesHybridCommon (10.6.2):
     - RevenueCat (= 4.41.2)
+  - rate_my_app (2.0.0):
+    - Flutter
   - realm (1.5.0):
     - Flutter
   - RevenueCat (4.41.2)
@@ -86,6 +88,7 @@ DEPENDENCIES:
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - purchases_flutter (from `.symlinks/plugins/purchases_flutter/ios`)
+  - rate_my_app (from `.symlinks/plugins/rate_my_app/ios`)
   - realm (from `.symlinks/plugins/realm/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
@@ -118,6 +121,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   purchases_flutter:
     :path: ".symlinks/plugins/purchases_flutter/ios"
+  rate_my_app:
+    :path: ".symlinks/plugins/rate_my_app/ios"
   realm:
     :path: ".symlinks/plugins/realm/ios"
   shared_preferences_foundation:
@@ -142,6 +147,7 @@ SPEC CHECKSUMS:
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   purchases_flutter: f39265ff8a8411d73d6dbe16bb3eb95097d0d5cf
   PurchasesHybridCommon: 120cdca2b40fb5947a51b75e121da4f2cde0a137
+  rate_my_app: 80fba94c4885cd31738231b7b1f51c1ad726f5c7
   realm: fbf242513ae05b12bb13d53654d0c7367ec46c97
   RevenueCat: 0250867579677899de94f96ad9be342be865560f
   shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695

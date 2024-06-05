@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rate_my_app/rate_my_app.dart';
 import 'package:turn1checker/components/deck/decklist_tile.dart';
 import 'package:turn1checker/components/deck/deckname_modal.dart';
 import 'package:turn1checker/components/ui/ad_banner.dart';
@@ -18,6 +20,7 @@ import 'package:turn1checker/utils/validations/decks.dart';
 import 'package:turn1checker/viewmodel/deckList/deckList.dart';
 import 'package:turn1checker/viewmodel/local_data/local_data.dart';
 import 'package:turn1checker/viewmodel/purchase/purchase.dart';
+import 'package:turn1checker/viewmodel/rateMyApp/rate_my_app.dart';
 
 import '../i18n/i18n.g.dart';
 
@@ -29,6 +32,13 @@ class DeckListScreen extends HookConsumerWidget {
     final List<Deck> decks = ref.watch(deckListNotifierProvider);
     final decksNotifier = ref.watch(deckListNotifierProvider.notifier);
     final localData = ref.watch(localDataNotifierProvider);
+    ref.watch(rateMyAppNotifierProvider);
+    startDuel(Deck deck) async {
+      final endDuel = await context.push('/deck/${deck.id}');
+      if (endDuel == 'popDuel' && context.mounted) {
+        ref.read(rateMyAppNotifierProvider.notifier).openRateDialog(context);
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -153,6 +163,7 @@ class DeckListScreen extends HookConsumerWidget {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 12.0),
                         child: DeckListTile(
+                          startDuel: () => startDuel(decks[index]),
                           deck: decks[index],
                         ),
                       );

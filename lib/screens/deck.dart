@@ -13,6 +13,7 @@ import 'package:turn1checker/viewmodel/deck/deck.dart';
 import 'package:flutter/material.dart';
 import 'package:realm/realm.dart';
 import 'package:turn1checker/components/card/card_buttons.dart';
+import 'package:turn1checker/viewmodel/rateMyApp/rate_my_app.dart';
 
 class DeckScreen extends HookConsumerWidget {
   const DeckScreen({Key? key, this.id}) : super(key: key);
@@ -31,10 +32,12 @@ class DeckScreen extends HookConsumerWidget {
           context: context,
           description: t.text.closeDeckScreenConfirm,
         );
-        if (isPop) {
+
+        if (isPop && context.mounted) {
           deckNotifier.onCloseDeck();
+          Navigator.of(context).pop('popDuel');
         }
-        return isPop;
+        return Future.value(false);
       },
       child: Scaffold(
         body: CustomScrollView(

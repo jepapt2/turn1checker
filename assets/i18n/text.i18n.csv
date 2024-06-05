@@ -74,3 +74,8 @@ deckSlotDescription,Deck creation slots can be increased by purchasing them.,デ
 limitOfDeckSlot,The maximum number of decks has been reached.,デッキ数が上限に達しました。
 goToPurchase,Go to purchase,購入画面へ
 privacyPolicy,Privacy Policy,プライバシーポリシー
+rate,Rate,評価する
+mabyLater,Maybe later,後で書く
+noThanks,No thanks,いいえ
+reviewDialogTitle,Thank you for your interest!,ご利用ありがとうございます！
+reviewDialogContent,Did you like turn1checker? Please let us know what you think in your review. It will encourage us to improve it in the future.,turn1checkerを気に入っていただけましたか？ぜひ、レビューであなたのご意見をお聞かせください。今後の改善の励みになります。

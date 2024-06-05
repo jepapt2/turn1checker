@@ -31,7 +31,7 @@ class _SystemHash {
 
 abstract class _$CardEditNotifier
     extends BuildlessAutoDisposeNotifier<CardButtonState> {
-  late final ObjectId deckId;
+  late final ObjectId? deckId;
   late final ObjectId? cardId;
 
   CardButtonState build(
@@ -177,7 +177,7 @@ class CardEditNotifierProvider
 
 mixin CardEditNotifierRef on AutoDisposeNotifierProviderRef<CardButtonState> {
   /// The parameter `deckId` of this provider.
-  ObjectId get deckId;
+  ObjectId? get deckId;
 
   /// The parameter `cardId` of this provider.
   ObjectId? get cardId;
@@ -189,7 +189,7 @@ class _CardEditNotifierProviderElement
   _CardEditNotifierProviderElement(super.provider);
 
   @override
-  ObjectId get deckId => (origin as CardEditNotifierProvider).deckId;
+  ObjectId? get deckId => (origin as CardEditNotifierProvider).deckId;
   @override
   ObjectId? get cardId => (origin as CardEditNotifierProvider).cardId;
 }

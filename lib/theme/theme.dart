@@ -30,6 +30,13 @@ final ThemeData themedata = ThemeData(
   cupertinoOverrideTheme: CupertinoThemeData(
     primaryColor: Colors.grey[600],
   ),
+  textButtonTheme: const TextButtonThemeData(
+    style: ButtonStyle(
+      foregroundColor: MaterialStatePropertyAll(ColorTheme.white),
+      textStyle: MaterialStatePropertyAll(
+          TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+    ),
+  ),
   inputDecorationTheme: const InputDecorationTheme(
     filled: true,
     fillColor: ColorTheme.white,

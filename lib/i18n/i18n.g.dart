@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 150 (75 per locale)
+/// Strings: 160 (80 per locale)
 ///
-/// Built on 2024-06-02 at 14:39 UTC
+/// Built on 2024-06-04 at 17:40 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -235,6 +235,11 @@ class _I18nTextJa {
 	String get limitOfDeckSlot => 'デッキ数が上限に達しました。';
 	String get goToPurchase => '購入画面へ';
 	String get privacyPolicy => 'プライバシーポリシー';
+	String get rate => '評価する';
+	String get mabyLater => '後で書く';
+	String get noThanks => 'いいえ';
+	String get reviewDialogTitle => 'ご利用ありがとうございます！';
+	String get reviewDialogContent => 'turn1checkerを気に入っていただけましたか？ぜひ、レビューであなたのご意見をお聞かせください。今後の改善の励みになります。';
 }
 
 // Path: <root>
@@ -347,6 +352,11 @@ class _I18nTextEn implements _I18nTextJa {
 	@override String get limitOfDeckSlot => 'The maximum number of decks has been reached.';
 	@override String get goToPurchase => 'Go to purchase';
 	@override String get privacyPolicy => 'Privacy Policy';
+	@override String get rate => 'Rate';
+	@override String get mabyLater => 'Maybe later';
+	@override String get noThanks => 'No thanks';
+	@override String get reviewDialogTitle => 'Thank you for your interest!';
+	@override String get reviewDialogContent => 'Did you like turn1checker? Please let us know what you think in your review. It will encourage us to improve it in the future.';
 }
 
 /// Flat map(s) containing all translations.
@@ -430,6 +440,11 @@ extension on _I18nJa {
 			case 'text.limitOfDeckSlot': return 'デッキ数が上限に達しました。';
 			case 'text.goToPurchase': return '購入画面へ';
 			case 'text.privacyPolicy': return 'プライバシーポリシー';
+			case 'text.rate': return '評価する';
+			case 'text.mabyLater': return '後で書く';
+			case 'text.noThanks': return 'いいえ';
+			case 'text.reviewDialogTitle': return 'ご利用ありがとうございます！';
+			case 'text.reviewDialogContent': return 'turn1checkerを気に入っていただけましたか？ぜひ、レビューであなたのご意見をお聞かせください。今後の改善の励みになります。';
 			default: return null;
 		}
 	}
@@ -513,6 +528,11 @@ extension on _I18nEn {
 			case 'text.limitOfDeckSlot': return 'The maximum number of decks has been reached.';
 			case 'text.goToPurchase': return 'Go to purchase';
 			case 'text.privacyPolicy': return 'Privacy Policy';
+			case 'text.rate': return 'Rate';
+			case 'text.mabyLater': return 'Maybe later';
+			case 'text.noThanks': return 'No thanks';
+			case 'text.reviewDialogTitle': return 'Thank you for your interest!';
+			case 'text.reviewDialogContent': return 'Did you like turn1checker? Please let us know what you think in your review. It will encourage us to improve it in the future.';
 			default: return null;
 		}
 	}
