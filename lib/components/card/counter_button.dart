@@ -22,9 +22,9 @@ class CounterButtonWidget extends StatelessWidget {
           const TextStyle(fontSize: 16),
         ),
         backgroundColor:
-            MaterialStateProperty.all(const Color.fromARGB(50, 0, 0, 0)),
+            MaterialStateProperty.all(const Color.fromARGB(100, 0, 0, 0)),
         overlayColor:
-            MaterialStateProperty.all(const Color.fromARGB(50, 0, 0, 0)),
+            MaterialStateProperty.all(const Color.fromARGB(100, 0, 0, 0)),
         elevation: MaterialStateProperty.all(0),
       ),
       onPressed: onPressed,

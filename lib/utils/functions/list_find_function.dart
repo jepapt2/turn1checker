@@ -6,11 +6,9 @@ List<T> listFindUpdate<T>({
   if (list[index] == null) {
     return list;
   }
-  return list.map((e) {
-    if (e == list[index]) {
-      return value;
-    } else {
-      return e;
-    }
-  }).toList();
+  return list
+      .asMap()
+      .entries
+      .map((e) => e.key == index ? value : e.value)
+      .toList();
 }

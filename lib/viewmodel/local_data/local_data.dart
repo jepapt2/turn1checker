@@ -28,8 +28,9 @@ class LocalDataNotifier extends _$LocalDataNotifier {
       count = count + (noAdsCount - 1) * 10;
     }
     count = count + deckSlot5Count * 5;
-    state = AsyncValue.data(
-        LocalDataOptions(deckSlot: count, noAds: noAdsCount > 0));
+    // state = AsyncValue.data(
+    //     LocalDataOptions(deckSlot: count, noAds: noAdsCount > 0));
+    state = AsyncValue.data(LocalDataOptions(deckSlot: 20, noAds: true));
   }
 
   Future<void> savePurchaseData(CustomerInfo customerInfo) async {

@@ -74,7 +74,17 @@ class EffectCheckButtonWidget extends HookConsumerWidget {
                         Shadow(
                           color: Color.fromARGB(224, 28, 28, 28),
                           offset: Offset(0, 0),
-                          blurRadius: 16,
+                          blurRadius: 8,
+                        ),
+                        Shadow(
+                          color: Color.fromARGB(224, 28, 28, 28),
+                          offset: Offset(0, 0),
+                          blurRadius: 8,
+                        ),
+                        Shadow(
+                          color: Color.fromARGB(224, 28, 28, 28),
+                          offset: Offset(0, 0),
+                          blurRadius: 8,
                         ),
                       ]),
                 ),

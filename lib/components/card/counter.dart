@@ -41,8 +41,8 @@ class CounterWidget extends HookConsumerWidget {
           ),
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(14, 56, 222, 169),
-              Color.fromARGB(14, 52, 63, 90)
+              Color.fromARGB(50, 56, 222, 169),
+              Color.fromARGB(50, 52, 63, 90)
             ],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
@@ -70,7 +70,7 @@ class CounterWidget extends HookConsumerWidget {
                     height: valueHeight,
                     padding:
                         const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                    color: const Color.fromARGB(50, 0, 0, 0),
+                    color: const Color.fromARGB(100, 0, 0, 0),
                     child: FittedBox(
                       fit: BoxFit.contain,
                       alignment: Alignment.centerRight,
