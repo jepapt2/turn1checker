@@ -50,3 +50,8 @@ app.*.map.json
 /android/app/src/main/AndroidManifest.xml
 android/app/src/main/AndroidManifest.xml
 ios/Runner/Info.plist
+.firebase.json
+.firebase_options.dart
+.google-services.json
+.GoogleService-Info.plist
+
