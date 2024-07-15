@@ -76,9 +76,16 @@ class CardButtonsList extends StatelessWidget {
                 const SizedBox(
                   width: 4,
                 ),
-                Text(
-                  card.name,
-                  style: const TextStyle(fontSize: 16, height: 1),
+                SizedBox(
+                  width: cardWidth - 12,
+                  child: Text(
+                    card.name,
+                    style: const TextStyle(
+                      height: 1,
+                      fontSize: 16,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 )
               ],
             ),

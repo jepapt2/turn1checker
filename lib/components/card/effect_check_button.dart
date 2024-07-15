@@ -65,7 +65,7 @@ class EffectCheckButtonWidget extends HookConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Text(
                   button.description,
-                  overflow: TextOverflow.visible,
+                  overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: const TextStyle(
                       fontSize: 18,

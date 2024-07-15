@@ -1,5 +1,6 @@
 "NSPhotoLibraryUsageDescription" = "Access to the photo library is required to save card illustrations.";
 "NSCameraUsageDescription" = "Access to the camera is required to save card illustrations.";
+"CFBundleDisplayName" = "YGOTurnChecker";
 
 /* 
   InfoPlist.strings

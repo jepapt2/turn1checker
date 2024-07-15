@@ -1,5 +1,6 @@
 "NSPhotoLibraryUsageDescription" = "カードイラストを保存するために写真ライブラリへのアクセスが必要です";
 "NSCameraUsageDescription" = "カードイラストを保存するためにカメラへのアクセスが必要です。";
+"CFBundleDisplayName" = "ターン1チェッカー";
 
 /* 
   InfoPlist.strings

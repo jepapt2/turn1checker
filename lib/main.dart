@@ -12,6 +12,7 @@ Future<void> main() async {
   await dotenv.load(fileName: '.env');
   MobileAds.instance.initialize();
   WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
   runApp(TranslationProvider(child: const ProviderScope(child: App())));
 }
 
@@ -23,7 +24,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'turn1Checker',
-      locale: TranslationProvider.of(context).flutterLocale, // use provider
+      locale: LocaleSettings.currentLocale.flutterLocale, // use provider
       supportedLocales: const [
         Locale('en'),
         Locale('ja'),
