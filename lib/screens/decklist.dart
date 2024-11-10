@@ -56,7 +56,8 @@ class DeckListScreen extends HookConsumerWidget {
                             yesButtonText: t.text.goToPurchase,
                             descriptionTextStyle: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.normal))) {
-                          router.go('/upgrade');
+                          if (!context.mounted) return;
+                          context.push('/upgrade');
                         }
                         return;
                       } else {
@@ -144,7 +145,8 @@ class DeckListScreen extends HookConsumerWidget {
                                   descriptionTextStyle: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal))) {
-                                router.go('/upgrade');
+                                if (!context.mounted) return;
+                                context.push('/upgrade');
                               }
                             },
                             icon: const Icon(
