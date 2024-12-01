@@ -49,7 +49,7 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   slang: ^3.20.0
   slang_flutter: ^3.20.0
-  realm: ^1.3.0
+  realm: ^3.4.1
   flutter_hooks: ^0.20.3
   image_cropper: ^5.0.1
   image_picker: ^1.0.6
@@ -59,12 +59,12 @@ dependencies:
   purchases_flutter: ^6.29.2
   flutter_dotenv: ^5.1.0
   shared_preferences: ^2.2.3
-  google_mobile_ads: ^4.0.0
+  google_mobile_ads: ^5.2.0
   url_launcher: ^6.2.4
   rate_my_app: ^2.0.0
   flutter_native_splash: ^2.3.7
-  firebase_core: ^2.24.2
-  firebase_analytics: ^10.8.0
+  firebase_core: ^3.7.0
+  firebase_analytics: ^11.3.4
 
 dev_dependencies:
   flutter_test:
